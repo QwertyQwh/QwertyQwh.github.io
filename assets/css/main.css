@@ -305,8 +305,8 @@ input, select, textarea {
 	}
 
 
-	colorfont{
-		color:#007BA7;
+	colorfont,celadonBlue{
+		color:#007979;
 		font-weight: 1000;
 		font-size: x-large;
 	}
@@ -340,6 +340,16 @@ zhYuXuan{
 	font-size: 1.1em;
 }
 
+credit{
+	color: #3c3b3b;
+	font-family: "Raleway", Helvetica, sans-serif,"ZhFonts";
+	font-weight: 800;
+	letter-spacing: 0.25em;
+	line-height: 1.65;
+	text-transform: uppercase;
+	text-align: right;
+	font-size: x-small;
+}
 
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2452,9 +2462,24 @@ zhYuXuan{
 			.image.fit img {
 				width: 100%;
 			}
-
+			.image.zoom {
+				transition: transform .1s; /* Animation */
+				display: block;
+				margin: 0 0 2em 0;
+				width: 100%;
+				
+			  }
+			  
+			  .image.zoom:hover {
+				transform: scale(1.2);
+				z-index:999; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+			  }
+			  .image.zoom img {
+				width: 100%;
+			}
 		.image.featured {
 			display: block;
+			text-align: right;
 			margin: 0 0 3em 0;
 			width: 100%;
 		}
@@ -2927,6 +2952,7 @@ zhYuXuan{
 					margin-top: 0.5em;
 					text-transform: uppercase;
 					white-space: nowrap;
+					margin: 0 0 0.4em 0;
 				}
 
 		.post > a.image.featured {
