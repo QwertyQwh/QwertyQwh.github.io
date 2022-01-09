@@ -4,7 +4,7 @@
 
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -27,6 +27,10 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+}
+
+pzh{
+	font-weight: bolder;
 }
 
 
@@ -298,6 +302,10 @@ input, select, textarea {
 				color: #2ebaae !important;
 			}
 
+			a.page-link{position:relative;display:block;padding:.5rem .75rem;margin-left:-1px;line-height:1.25;color:#007bff;background-color:#fff;border:1px solid #dee2e6}a.page-link:hover{z-index:2;color:#0056b3;text-decoration:none;background-color:#e9ecef;border-color:#dee2e6}.page-link:focus{z-index:2;outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.25)}
+
+
+
 	strong, b {
 		color: #230018;
 		font-weight: 1000;
@@ -316,7 +324,7 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	p {
+	p,pzh {
 		margin: 0 0 2em 0;
 	}
 
@@ -391,10 +399,12 @@ credit{
 
 	blockquote {
 		border-left: solid 4px rgba(160, 160, 160, 0.3);
-		font-style: italic;
+		font-style:italic;
 		margin: 0 0 2em 0;
 		padding: 0.5em 0 0.5em 2em;
+		text-align: right;
 	}
+	
 
 	code {
 		background: rgba(160, 160, 160, 0.075);
@@ -2570,6 +2580,11 @@ credit{
 		padding-left: 0;
 	}
 
+	li.actions.disabled a.button.large.previous {
+		color :#aaaaaa !important;
+		vertical-align: middle;
+	}
+
 		ul.actions li {
 			padding: 0 0 0 1em;
 			vertical-align: middle;
@@ -3188,7 +3203,7 @@ credit{
 	header p {
 		font-family: "Raleway", Helvetica, sans-serif;
 		font-size: 0.7em;
-		font-weight: 400;
+
 		letter-spacing: 0.25em;
 		line-height: 2.5;
 		margin-top: -1em;
@@ -3837,3 +3852,15 @@ credit{
 			a2:hover {
 				border-bottom-color: transparent;
 			}
+
+
+			.container {
+				margin-top: 20px;
+			  }
+.page{
+	display: none;
+}
+			  .page-active {
+				display: block;
+			  }
+			  .pagination{display:-ms-flexbox;display:-webkit-flex;flex-wrap: nowrap; padding-left:0;list-style:none;border-radius:.25rem}
