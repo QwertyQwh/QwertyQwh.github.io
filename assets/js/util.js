@@ -110,7 +110,7 @@
 					// If an event was provided, cancel it.
 						if (event) {
 
-							event.preventDefault();
+							// event.preventDefault();
 							event.stopPropagation();
 
 						}
@@ -157,7 +157,7 @@
 								return;
 
 							// Cancel original event.
-								event.preventDefault();
+								// event.preventDefault();
 								event.stopPropagation();
 
 							// Hide panel.

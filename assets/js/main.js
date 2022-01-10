@@ -49,7 +49,6 @@
 		$body
 			.on('click', '[href="#search"]', function(event) {
 
-				event.preventDefault();
 
 				// Not visible?
 					if (!$search.hasClass('visible')) {
