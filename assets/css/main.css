@@ -5,7 +5,7 @@
 
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,
+iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,strongWhite
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -132,6 +132,7 @@ pzh{
 		#banner .inner p {
 			letter-spacing: 0.1em;
 			margin: 0;
+			line-height:25pt;
 			text-transform: uppercase;
 		}
 
@@ -309,7 +310,12 @@ input, select, textarea {
 
 	strong, b {
 		color: #230018;
-		font-weight: 1000;
+		font-weight: bold;
+		font-size: x-large;
+	}
+	strongWhite{
+		color: #ffffff;
+		font-weight:bold;
 		font-size: x-large;
 	}
 
@@ -459,6 +465,7 @@ credit{
 		flex-wrap: wrap;
 		box-sizing: border-box;
 		align-items: stretch;
+		justify-content: center;
 	}
 
 		.row > * {
