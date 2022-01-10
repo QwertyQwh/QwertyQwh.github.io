@@ -3485,7 +3485,7 @@ credit{
 			}
 		}
 
-		@media screen and (max-width: 736px) {
+		/* @media screen and (max-width: 736px) {
 
 			#header {
 				height: 2.75em;
@@ -3500,7 +3500,7 @@ credit{
 					display: none;
 				}
 
-		}
+		} */
 
 /* Wrapper */
 
