@@ -3378,6 +3378,7 @@ credit{
 			height: inherit;
 			line-height: inherit;
 			text-align: right;
+			display: none;
 		}
 
 			#header .main ul {
@@ -3466,12 +3467,22 @@ credit{
 				padding: 0 0.5em 0 0;
 			}
 
+
+
+			  
+
+
+
+
 		@media screen and (max-width: 980px) {
 
 			#header .links {
-				display: none;
+				display:none;
 			}
 
+			#header .main{
+				display: flex;
+			}
 		}
 
 		@media screen and (max-width: 736px) {
