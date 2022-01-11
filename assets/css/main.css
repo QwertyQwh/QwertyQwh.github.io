@@ -2506,6 +2506,7 @@ credit{
 				width: 100%;
 			}
 
+
 			@media screen and (max-width: 736px) {
 
 				.image.featured {
@@ -3883,3 +3884,4 @@ credit{
 				display: block;
 			  }
 			  .pagination{display:-ms-flexbox;display:-webkit-flex;flex-wrap: nowrap; padding-left:0;list-style:none;border-radius:.25rem}
+
