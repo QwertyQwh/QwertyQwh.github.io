@@ -5,7 +5,7 @@
 
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,strongWhite
+iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,strongWhite,infobox,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -156,7 +156,7 @@ blockquote, q {
 	quotes: none;
 }
 
-	blockquote:before, blockquote:after, q:before, q:after {
+	blockquote:before, blockquote:after, q:before, q:after,infobox:before, infobox:after{
 		content: '';
 		content: none;
 	}
@@ -410,6 +410,16 @@ credit{
 		margin: 0 0 2em 0;
 		padding: 0.5em 0 0.5em 2em;
 		text-align: right;
+	}
+
+	InfoBox {
+		border-left: solid 4px rgba(160, 160, 160, 0.3);
+		border-right: solid 4px rgba(160, 160, 160, 0.3);
+		margin: 0 0 0 0;
+		padding: 0.5em 0.5em 0.5em 2em;
+		text-align: left;
+		quotes: none;
+		display: block;
 	}
 	
 
@@ -3860,6 +3870,9 @@ credit{
 			font-style: italic !important;
 		}
 
+		bold{
+			font-weight: 900 !important;
+		}
 
 
 		a2 {
