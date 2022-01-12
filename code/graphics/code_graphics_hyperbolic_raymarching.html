@@ -82,6 +82,8 @@
 								</header>
 								<span class="image featured"><img src="images/code_graphics_hyperbolic_raymarching/featured.png" alt="" /> <Credit>Image: Behold the hyperbolic eye of mordor</Credit></span>
 
+<p> This post is a brief introduction to visualizing hyperbolic space. You'll find a link to my github sources at the end.</p>
+
 								<p> To understand what a hyperbolic space is, we define both the <bold>space</bold> and the <bold>distances</bold> slightly differently from its usual Euclidean notion. I sometimes like to think of it as a 'crumpled' space. </p>
 	
 <p>For some intuition, on the left are three "straight lines" on a shiny Euclidean paper. On the right, are the correponding "straight" lines on a Hyperbolic paper. </p>
@@ -208,12 +210,44 @@ The form \(Q\) is <bold>non-singular</bold> if \(E^{\perp} = 0\).</p>
 	</div>
 </div>
 
+<p>The downside is that it's prone to numerical errors. Not that I do not appreciate green sunrise on the striped desert. </p>
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-8"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/bug3.png" alt="" /></span></div>
+	</div>
+</div>
+
+<p>Alright, now apply everything you've learned about spheretracing to the hyperbolic space. The last piece of the puzzle is some realistic lighting.</p>
+
+<p>We'll use the classic Phong shading. Essentially Lighting information is divided into ambient, diffuse and specular. </p>
+
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-3"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/ambient.png" alt="" /></span></div>
+		<div class="col-3"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/diffuse.png" alt="" /></span></div>
+		<div class="col-3"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/specular.png" alt="" /></span></div>
+		<div class="col-3"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/combined.png" alt="" /></span></div>
+	</div>
+</div>
+
+<p>Now we can do whatever we want with the space, even generating a maze! See the picture below, you'll find five rooms centered around the same corner instead of four.</p>
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-8"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/flat_maze.png" alt="" /></span></div>
+	</div>
+</div>
+
+<p>Finally the code as promised. </p>
+
 <p><bold> ⬇ ⬇ ⬇ OPEN WITH CAUTION! IT MIGHT CRASH YOUR BROWSER! ⬇ ⬇ ⬇ </bold> </p>
+
+
+<p><a href="https://qwertyqwh.github.io/Raymarching-Hyperbolic-Geometry"> https://qwertyqwh.github.io/Raymarching-Hyperbolic-Geometry/</a></p>
 
 								<footer>
 
 									<ul class="stats">
-										<li><a href="../jumble.html">Jumble</a>&nbsp <a href="#">Previous Post</a>  &nbsp  <a href="#">Next Post</a> <br /> </li>
+										<li><a href="../jumble.html">Jumble</a>&nbsp <a href="../../play/game/first_game.html">Previous Post</a>  &nbsp  <a href="../../doodle/animation/doodle_animation_pianist.html">Next Post</a> <br /> </li>
 									</ul>
 								</footer>
 							</article>
