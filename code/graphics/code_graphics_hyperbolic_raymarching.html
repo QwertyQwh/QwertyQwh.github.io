@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Babble - Intro</title>
+		<title>HMarch</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../assets/css/main.css" />
@@ -69,10 +69,10 @@
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">I'm title</a><br />
-											<a href="#">标题</a></h2>
-										<p>punchline<br />
-										   小标题</p>
+										<h2><a href="#">Go Hyperbolic</a><br />
+											<a href="#">双曲空间旅行</a></h2>
+										<p>Search "Hyperbolic crochet"<br />
+										   搜搜看 “Hyperbolic crochet”</p>
 
 									</div>
 									<div class="meta">
@@ -80,11 +80,21 @@
 										<a href="../../postsByColor/ColorChart.html" class="author"><span class="name">Celadon Blue</span><img src="../../images/celadonBlue.jpg" alt="" /></a>
 									</div>
 								</header>
-								<span class="image featured"><img src="../images/code_graphics_hyperbolic_raymarching/featured.png" alt="" /> <Credit>Image: Behold the hyperbolic eye of mordor</Credit></span>
+								<span class="image featured"><img src="images/code_graphics_hyperbolic_raymarching/featured.png" alt="" /> <Credit>Image: Behold the hyperbolic eye of mordor</Credit></span>
 
-								<p> To understand what a hyperbolic space is, we define <bold>distances between two points</bold> slightly differently from its usual Euclidean notion. </p>
+								<p> To understand what a hyperbolic space is, we define both the <bold>space</bold> and the <bold>distances</bold> slightly differently from its usual Euclidean notion. </p>
+	
+<p>On the left are three "straight lines" on a shiny Euclidean paper. On the right, are the correponding "straight" lines on a Hyperbolic paper. </p>
+								<div class="box alt">
+									<div class="row gtr-uniform">
+										<div class="col-6"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/webHyper1.png" alt="" /></span></div>
+										<div class="col-6"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/webHyper2.png" alt="" /></span></div>
+									</div>
+								</div>
 
-								<p> Don't panic. It won't hurt a bit. </p>
+
+
+								<p> We are going a minimal tour in the Math Realm. Don't panic. It won't hurt a bit. </p>
 
 
 								<infobox>						
@@ -132,6 +142,45 @@ The form \(Q\) is <bold>non-singular</bold> if \(E^{\perp} = 0\).</p>
 								<p> </p>
 
 								<p>Take a break, catch your breath. The <bold>hyperbolic space</bold> is already in sight. It's just another metric space, meaning it takes a set of points and assigns distances to each pair of them in a way that makes sense. The actual definition is a one-liner but the proof takes efforts, which we have been omitting anyway.</p>
+								<infobox>
+
+									<p>As before let us consider \(F\) to be \(\mathbb{R}^{n+1}\) equipped with a quadratic form of Sylvester type \((-n,1)\). The hyperboloid \(S(F)\) is just the set of points with norm 1. It turns out \(S(F)\) has two connected components, and we will denote \(H^n\) to be either one of them.</p>
+									<p>We then define our metric on the hyperboloid to be 
+										$$
+										\cosh d(P,Q) = \langle P,Q\rangle, \qquad P,Q\in H^n
+										$$
+										This makes sense since \(\langle P,Q\rangle \geq 1\). The metric is clearly symmetrical in \(P\) and \(Q\). For \(P\neq Q\) we have that \(\langle P,Q\rangle >1\) and \(d(P,Q) >0\). The reader is welcome to prove the triangular inequality.</p>
+								</infobox>
+
+								<p></p>
+<p>I suppose I've lost most of you at this point. Let's keep on anyways. We'll do some extras by defining the 'rays' for our raymarching algorithm. 			</p>					
+								<p></p>
+
+<infobox>						
+
+								<p>
+									In a metric space \(M\), a curve \(\gamma: I\to M\) where \(I\) is an interval in \(\mathbb{R}\) is a geodesic if 
+									$$
+									d(\gamma(s),\gamma(t)) = \vert s-t\vert
+									$$
+									for any \(s,t \in I\).
+
+									
+								</p>
+
+<p>
+								Any geodesic curve \(\gamma:\mathbb{R}\to H^n\) can be written in the form 
+								$$
+								\gamma(t) = A \cosh t +T\sinh t, \qquad t\in \mathbb{R}
+								$$
+								where \(A \in H^n\) and \(T\) is a unit tangent vector to \(H^n\) at \(A\).
+							</p>
+							</infobox>			
+
+<p></p>
+
+<p>If you play games at all, you'd probably heard of raytracing. Raytracing and its variant spheretracing, is a way of detecting geometric shapes in 3D and recording the information on 2D 'lens'. It's surprisingly intuitive and the basic mechanism could be contained on one single page. </p>
+
 								<footer>
 
 									<ul class="stats">
