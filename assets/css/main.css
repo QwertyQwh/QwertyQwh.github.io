@@ -403,6 +403,14 @@ credit{
 		position: relative;
 		top: -0.5em;
 	}
+	
+	.lemongreen{
+		color: e7ff0f;
+	}
+
+	.plum{
+		color:8d4585;
+	}
 
 	blockquote {
 		border-left: solid 4px rgba(160, 160, 160, 0.3);

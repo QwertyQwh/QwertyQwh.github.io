@@ -72,19 +72,19 @@
 										<h2><a href="#">Go Hyperbolic</a><br />
 											<a href="#">双曲空间旅行</a></h2>
 										<p>Search "Hyperbolic crochet"<br />
-										   搜搜看 “Hyperbolic crochet”</p>
+										   搜搜看 “双曲钩针编织”</p>
 
 									</div>
 									<div class="meta">
 										<time class="published" datetime="2019-1-22"> April 30 2021 </time>
-										<a href="../../postsByColor/ColorChart.html" class="author"><span class="name">Celadon Blue</span><img src="../../images/celadonBlue.jpg" alt="" /></a>
+										<a href="../../postsByColor/ColorChart.html" class="author"><span class="name">Lemon Green</span><img src="../../images/lemonGreen.jpg" alt="" /></a>
 									</div>
 								</header>
 								<span class="image featured"><img src="images/code_graphics_hyperbolic_raymarching/featured.png" alt="" /> <Credit>Image: Behold the hyperbolic eye of mordor</Credit></span>
 
-								<p> To understand what a hyperbolic space is, we define both the <bold>space</bold> and the <bold>distances</bold> slightly differently from its usual Euclidean notion. </p>
+								<p> To understand what a hyperbolic space is, we define both the <bold>space</bold> and the <bold>distances</bold> slightly differently from its usual Euclidean notion. I sometimes like to think of it as a 'crumpled' space. </p>
 	
-<p>On the left are three "straight lines" on a shiny Euclidean paper. On the right, are the correponding "straight" lines on a Hyperbolic paper. </p>
+<p>For some intuition, on the left are three "straight lines" on a shiny Euclidean paper. On the right, are the correponding "straight" lines on a Hyperbolic paper. </p>
 								<div class="box alt">
 									<div class="row gtr-uniform">
 										<div class="col-6"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/webHyper1.png" alt="" /></span></div>
@@ -94,7 +94,7 @@
 
 
 
-								<p> We are going a minimal tour in the Math Realm. Don't panic. It won't hurt a bit. </p>
+								<p> Next we are going a minimal tour in the Math Realm. Don't panic. It won't hurt a bit. </p>
 
 
 								<infobox>						
@@ -179,7 +179,36 @@ The form \(Q\) is <bold>non-singular</bold> if \(E^{\perp} = 0\).</p>
 
 <p></p>
 
-<p>If you play games at all, you'd probably heard of raytracing. Raytracing and its variant spheretracing, is a way of detecting geometric shapes in 3D and recording the information on 2D 'lens'. It's surprisingly intuitive and the basic mechanism could be contained on one single page. </p>
+<p>If you play games at all, you'd probably heard of raytracing. Raytracing and its variant spheretracing, is a way of detecting geometric shapes in 3D and recording the information on 2D 'lens'. It's surprisingly intuitive and the basic mechanism could be contained on one single page. Here are two famous illustrations.</p>
+
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-6"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/appel.png" alt="" /></span></div>
+		<div class="col-6"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/wikirtx.png" alt="" /></span></div>
+	</div>
+</div>
+<p>Spheretracing expands this idea by a signed distance function, which returns the minimal distance from a certain point to any geometric shapes in the scene. </p>
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-8"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/sdf.jpg" alt="" /></span></div>
+	</div>
+</div>
+<p>This has two implications. First we can 'march' step by step into the scene without accidentally bumping into anything, as guranteed by the SDF.</p> 
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-8"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/racymarch2.png" alt="" /></span></div>
+	</div>
+</div>
+
+<p>Secondly we can calculate the surface normals by the gradient of SDF!</p>
+
+<div class="box alt">
+	<div class="row gtr-uniform">
+		<div class="col-8"><span class="image zoom"><img src="images/code_graphics_hyperbolic_raymarching/raymarch4.png" alt="" /></span></div>
+	</div>
+</div>
+
+<p><bold> ⬇ ⬇ ⬇ OPEN WITH CAUTION! IT MIGHT CRASH YOUR BROWSER! ⬇ ⬇ ⬇ </bold> </p>
 
 								<footer>
 
