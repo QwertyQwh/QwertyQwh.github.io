@@ -69,14 +69,14 @@
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">In Search of Lost...Food</a><br />
-											<a href="#">追忆似水流...食</a></h2>
-										<p>Sorry for those of you who went straight from the oven to the stomach.<br />
-										   那些被吞下肚前连张照片也没留下的，真的抱歉了。</p>
+										<h2><a href="#">I'm title</a><br />
+											<a href="#">标题</a></h2>
+										<p>punchline<br />
+										   小标题</p>
 
 									</div>
 									<div class="meta">
-										<time class="published" datetime="2019-1-22">January 22 2019  <br /> -May 24 2021 </time>
+										<time class="published" datetime="2019-1-22"> April 30 2021 </time>
 										<a href="../../postsByColor/ColorChart.html" class="author"><span class="name">Celadon Blue</span><img src="../../images/celadonBlue.jpg" alt="" /></a>
 									</div>
 								</header>
@@ -84,14 +84,54 @@
 
 								<p> To understand what a hyperbolic space is, we define <bold>distances between two points</bold> slightly differently from its usual Euclidean notion. </p>
 
+								<p> Don't panic. It won't hurt a bit. </p>
+
+
 								<infobox>						
-									<p>Let \(k\) denote a field of characteristics different from 2 and \(\mathbb{E}\) a vector space over \(k\) of finite dimension \(n\).  A <bold>quadratic form</bold>  on \(\mathbb{E}\) is a function \(Q: \mathbb{E}\to k\) homogeneous of degree 2, i.e.
+									<p>Let \(k\) denote a field of characteristics different from 2 and \(E\) a vector space over \(k\) of finite dimension \(n\).  A <bold>quadratic form</bold>  on \(E\) is a function \(Q: E\to k\) homogeneous of degree 2, i.e.
 									
 									$$Q(\lambda z) = \lambda^2 Q(z); $$
 
-									for any  \(\lambda \in k, z \in \mathbb{E}\).</p>
-								</infobox>
+									for any  \(\lambda \in k, z \in E\).</p>
 
+
+									<p>	The reader can prove that for a given qudratic form \(Q\), the associated form \(\langle~,~ \rangle: E\times E \to k\) given by the polarization formula
+$$
+  \langle x,y\rangle = \frac{1}{2}(Q(x+y)-Q(x)-Q(y))  
+$$
+is a symmetric biliear form. </p>
+
+
+<p>Given a quadratic form, \(x,y\in E\) are called <bold>orthogonal</bold> if \(\langle x,y\rangle = 0\). Linear subspaces \(U,V\) of \(E\) are <bold>orthogonal</bold> if \(\langle u,v\rangle = 0\) for all \(u\in U, v\in V\).  For a given linear subspace \(U\), the <bold>total orthogonal subspace</bold> \(U^{\perp }\) is given by 
+$$
+U^{\perp}  = \{e \in E \ |\ \langle e,u \rangle = 0, \text{ for all } u \in U\}.
+$$
+The form \(Q\) is <bold>non-singular</bold> if \(E^{\perp} = 0\).</p>
+
+<p>Let \(Q\) be a quadratic form on \(\mathbb{R}^n\). A proof by induction shows that there exists an orthonormal basis for \(E\), i.e. a basis \(\{e_1,e_2,\cdots,e_n\}\) with 
+	$$
+	\langle e_i,e_j\rangle = 
+	\begin{cases}
+	0 &i\neq j;\\
+	-1,0,1 & i = j.
+	\end{cases}
+	$$</p>
+
+<p>
+	We're set to state the famed <bold>Sylvester’s Theorem</bold>. For any orthonormal basis \(\{e_1,\cdots, e_n\}\) for a quadratic form \(Q\) over \(E= \mathbb{R}^n\), the numbers 
+	$$
+	\begin{align*}
+	p &= \left \vert \{i \ \vert\  \langle e_i,e_i \rangle = -1\} \right \vert \\
+	q  &=  \left \vert \{i \ \vert\ \langle e_i,e_i \rangle  =1\} \right \vert
+	\end{align*}
+	$$
+	are constant, independent of the basis considered. 
+	</p>
+
+								</infobox>
+								<p> </p>
+
+								<p>Take a break, catch your breath. The <bold>hyperbolic space</bold> is already in sight. It's just another metric space, meaning it takes a set of points and assigns distances to each pair of them in a way that makes sense. </p>
 								<footer>
 
 									<ul class="stats">
