@@ -5,7 +5,7 @@
 
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,strongWhite,infobox,
+iframe, h1, h2, h3, h4, h5, h6, p,pzh, blockquote,strongWhite,infobox,blockquoteleft,h0
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -335,7 +335,7 @@ input, select, textarea {
 		margin: 0 0 2em 0;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h0,h1, h2, h3, h4, h5, h6 {
 		color: #3c3b3b;
 		font-family: "Raleway", Helvetica, sans-serif,"ZhFonts";
 		font-weight: 800;
@@ -343,6 +343,10 @@ input, select, textarea {
 		line-height: 1.65;
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
+	}
+
+	h0{
+		font-size: x-large;
 	}
 
 zhYuXuan{
@@ -422,6 +426,15 @@ credit{
 		margin: 0 0 2em 0;
 		padding: 0.5em 0 0.5em 2em;
 		text-align: right;
+	}
+
+	blockquoteleft {
+		border-left: solid 4px rgba(160, 160, 160, 0.3);
+		font-style:italic;
+		margin: 0 0 2em 0;
+		padding: 0.5em 0 0.5em 2em;
+		text-align: left;
+		display: block;
 	}
 
 	InfoBox {
