@@ -120,7 +120,17 @@
 										<li>More randomization.</li>
 									</ul>
 
-									<p>The rest of the post is devoted to addressing the first problem. My instinct was to convert it into some sort of edge detection problem, for which there are plenty of good algorithms. However our problem is defined differently—given our coordinate in the image, we want to obtain the gradient of the 'nearest contour edge'. Even if we converted the image with an edge-detecter, the problem is not solved—we still need to generate a vvector field based on the edges.  </p>
+									<p>The rest of the post is devoted to addressing the first problem. To see what I mean, let's pull up some reference images (these two by Robert Delaunay). You'll find that the brush strokes are somewhat aligned with the layout of the picture. </p>
+									
+									
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-7"><span class="image zoom"><img src="images/Pointillism/pointy1.jpg" alt="" /></span></div>
+											<div class="col-5"><span class="image zoom"><img src="images/Pointillism/pointy2.jpg" alt="" /></span></div>
+										</div>
+									</div>
+
+									<p>My instinct was to convert it into some sort of edge detection problem, for which there are plenty of good algorithms. However our problem is defined differently—given our coordinate in the image, we want to obtain the gradient of the 'nearest contour edge'. Even if we converted the image with an edge-detecter, the problem is not solved—we still need to generate a vvector field based on the edges.  </p>
 
 									<p>That brings me to my second approach. Let's talk about statistics. Suppose we take the grayscaled local area of a pixel and treat each neighbouring pixel as a data point. Wouldn't the regression line be the local gradient we wanted? </p>
 									
