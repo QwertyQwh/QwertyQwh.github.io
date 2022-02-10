@@ -76,6 +76,11 @@ pzh{
 		opacity: 1;
 	}
 }
+canvas {
+	display :block;
+	width: 100%;
+	height: 50vw;
+}
 
 #banner {
 	background-attachment: scroll, scroll, scroll, fixed;
