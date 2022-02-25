@@ -95,7 +95,7 @@
 
 				
 								<p> <pzh>不多废话，先上合约。</pzh>  </p>
-<pre><code>// SPDX-License-Identifier: MIT
+<pre><code>//SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
 error AlreadyMatchingError();
@@ -125,7 +125,7 @@ contract RPS{
 
 
 	function StartMatching() public {
-		if(deposits[msg.sender]<Ticket){
+		if(deposits[msg.sender]< Ticket){
 			revert EntranceFeeNotPaidError();
 		}
 		if(waiting == msg.sender || matching[msg.sender] != address(0)){
@@ -155,7 +155,7 @@ contract RPS{
 		if(choices[msg.sender] != 0){
 			revert ChoiceConflictError();
 		}
-		if(choice == 0 || choice >3){
+		if(choice == 0 || choice > 3){
 			revert ChoiceOutOfRangeError();
 		}
 		address opponent = matching[msg.sender];
@@ -192,7 +192,7 @@ contract RPS{
 			rewards[msg.sender] += deposits[msg.sender];
 		else
 			rewards[opponent] += deposits[msg.sender];
-		if(win <=0)
+		if(win <= 0)
 			rewards[opponent] += deposits[opponent];
 		else
 			rewards[msg.sender] += deposits[opponent];
