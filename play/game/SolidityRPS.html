@@ -222,8 +222,6 @@ contract RPS{
 
 								<p> <pzh>大部分代码都直截了当。要注明的是第一：玩家在做好选择之后这个数据会先存在本地，只是调用StartMatching()来告诉合约我选好了，在StartMatching()之后需要不断地发polling来查询GetMatchingStatus()，不过带view标签的函数并不会改变合约的状态，因此不会有矿工的计算成本，因此不会有Gas Fee。所以即使一秒查个一千次也完全不会账户蒸发。第二：游戏逻辑保证了SendChoice()被调用时两边都已经做好了选择，杜绝了一方信息暴露的问题。如果玩家不通过游戏逻辑自己调用SendChoice()会怎么样？Ta会提前暴露自己的选择，后果自负。第三：使用Withdraw Pattern来防止打钱账户出错导致整个流程崩溃。</pzh>  </p>
 
-
-
 								<p><pzh>接下来我们就打开ganache客户端，在配置里选择我们的truffle项目。然后用"truffle migrate"命令来把合约放置在本地链上。放置前后效果如图。</pzh></p>
 								<div class="box alt">
 									<div class="row gtr-uniform">
