@@ -14,10 +14,10 @@ $('#pagination').twbsPagination({
     hrefVariable: '{{number}}',
   
     // Text labels
-    first: 'First',
-    prev: 'Previous',
-    next: 'Next',
-    last: 'Last',
+    first: '<<',
+    prev: '<',
+    next: '>',
+    last: '>>',
   
     // carousel-style pagination
     loop: false,
