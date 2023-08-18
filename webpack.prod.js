@@ -40,5 +40,10 @@ module.exports = merge(common, {
   plugins:[
     new MiniCssExtractPlugin({
       filename:"[name].[contenthash].css"
-    })]
+    }),
+    new CopyPlugin({
+      patterns: [
+          { from: "_redirects",to:"build/_redirects" }
+      ]}),],
+    
 });
