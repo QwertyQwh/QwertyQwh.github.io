@@ -1,5 +1,6 @@
 const path = require('path');
 const common = require("./webpack.common")
+const CopyPlugin = require("copy-webpack-plugin");
 const {merge} = require("webpack-merge");
 const MiniCssExtractPlugin =  require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
