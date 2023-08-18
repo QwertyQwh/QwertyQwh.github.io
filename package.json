@@ -61,5 +61,5 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.15.1"
   },
-  "homepage": "https://qwertyqwh.github.io/home"
+  "homepage": "https://qwertyqwh.github.io"
 }
