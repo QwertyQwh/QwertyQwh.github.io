@@ -56,7 +56,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    static: path.resolve(__dirname, './dist'),
+    static: path.resolve(__dirname, './build'),
     open: {
       target: ['http://localhost:8090/home'],
       app: {
@@ -64,7 +64,6 @@ module.exports = {
         arguments: [],
       },
     },
-    hot: true,
     port: 8090,
   },
   plugins:[

@@ -2,6 +2,7 @@ import Home from './Home.jsx'
 import  {BlogLoader} from './Router/BlogLoader'
 import {
     createBrowserRouter,
+    createHashRouter,
     RouterProvider,
   } from "react-router-dom";
 import Wrapper from './Wrapper.jsx';
@@ -10,7 +11,7 @@ import Blog from './Pages/Blog/Blog.jsx';
 import TestScene from './Scene/TestScene.jsx';
 import { SectionLoader } from './Router/SectionLoader.js';
 import Section_Router from './Pages/Sections/Section_Router.jsx';
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: <Wrapper />,
