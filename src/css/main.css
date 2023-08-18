@@ -1,10 +1,9 @@
 
-@font-face { font-family: "Amatic"; src: url('../assets/fonts/AmaticSC-Bold.TTF'); } 
+@font-face { font-family: "Amatic"; src: url('../assets/fonts/AmaticSC-Bold.ttf'); } 
 @font-face { font-family: "Poiret"; src: url('../assets/fonts/PoiretOne-Regular.ttf'); } 
 @font-face { font-family: "OCRA"; src: url('../assets/fonts/OCRAEXT.TTF'); } 
 @font-face { font-family: "OLDENG"; src: url('../assets/fonts/OLDENGL.TTF'); } 
 @font-face { font-family: "Allison"; src: url('../assets/fonts/Allison_Script.otf'); } 
-@font-face { font-family: "Chalk"; src: url('../assets/fonts/vanderchalk.ttf'); } 
 @font-face { font-family: "Joker"; src: url('../assets/fonts/JOKERMAN.TTF'); } 
 @font-face { font-family: "GDC_R"; src: url('../assets/fonts/FZGDCTJW-R.TTF');} 
 @font-face { font-family: "GDC_L"; src: url('../assets/fonts/FZGDCTJW-L.TTF');} 
