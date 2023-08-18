@@ -68,8 +68,8 @@ module.exports = {
     port: 8090,
   },
   plugins:[
-    new CleanWebpackPlugin()
-    ,new CopyPlugin({
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
       patterns: [
           { from: "src/assets/model",to:"assets/model" }
       ]}),
