@@ -1,0 +1,431 @@
+
+@font-face { font-family: "Amatic"; src: url('../assets/fonts/AmaticSC-Bold.TTF'); } 
+@font-face { font-family: "Poiret"; src: url('../assets/fonts/PoiretOne-Regular.ttf'); } 
+@font-face { font-family: "OCRA"; src: url('../assets/fonts/OCRAEXT.TTF'); } 
+@font-face { font-family: "OLDENG"; src: url('../assets/fonts/OLDENGL.TTF'); } 
+@font-face { font-family: "Allison"; src: url('../assets/fonts/Allison_Script.otf'); } 
+@font-face { font-family: "Chalk"; src: url('../assets/fonts/vanderchalk.ttf'); } 
+@font-face { font-family: "Joker"; src: url('../assets/fonts/JOKERMAN.TTF'); } 
+@font-face { font-family: "GDC_R"; src: url('../assets/fonts/FZGDCTJW-R.TTF');} 
+@font-face { font-family: "GDC_L"; src: url('../assets/fonts/FZGDCTJW-L.TTF');} 
+@font-face { font-family: "Comfortaa"; src: url('../assets/fonts/Comfortaa-Regular.ttf'); } 
+@font-face { font-family: "Code"; src: url('../assets/fonts/SourceCodePro-Regular.ttf'); } 
+@font-face {
+  font-family: 'ZSZK';
+  src: url('../assets/fonts/FZZJ-ZSZKJW.TTF');}
+@font-face {
+  font-family: 'MQSX';
+  src: url('../assets/fonts/FZZJ-MQSXTJW.TTF');
+}
+
+
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  cursor: none;
+  font-family: Comfortaa,GDC_R;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; 
+}
+
+html,
+body,
+#root
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fefefe;
+}
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+.sticker{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+
+/*Cursor region
+*/
+#cursorRim {
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    pointer-events: none;
+    transition: opacity .3s;  
+    transition-timing-function: ease-in;
+    mix-blend-mode: difference;
+    z-index: 100;
+  }
+
+  #cursorInner {
+    border-radius: 50%;
+    background-color: hsl(53, 57%, 68%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    opacity: 1;
+    z-index: 100;
+  }
+
+
+  #cursorWave{
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid hsl(53, 57%, 88%);
+    position: inherit;
+    top:50%;
+    left:50%;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    opacity: 1;
+    z-index: 100;
+  }
+
+
+/* Tibet cursor */
+#cursor,#cursorCircle, #spell,#cursorBackground{
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  width: 20px;
+  height: 20px;
+  transition: transform .3s;  
+  transition-timing-function: ease-in;
+  z-index: 100;
+
+}
+
+
+#cursorLine, #cursorLines{
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  z-index: 100;
+
+}
+
+#cursorCircle {
+  fill: #4a221a;
+  opacity :1;
+  z-index: 200;
+  transition: opacity .3s ;
+  transition-timing-function: ease-in;
+  z-index: 100;
+
+}
+
+
+/*Blog region*/
+
+  /* .titleBlock{
+    height: 120vh;
+    width: 100%;
+    background-color: #DDA15E;
+    position: absolute;
+    top:0pt
+  }
+
+  .titleImg {
+    width:100%;
+    height:100vh;
+    object-fit: cover;
+    overflow: hidden;
+    top:0pt;
+    position: absolute;
+  }
+
+  .link{
+    position: absolute;
+    top:100pt;
+    left: 20pt;
+    width: 100pt;
+    height: 20pt;
+  }
+
+  .contentBlock{
+    background-color: #fefefe;
+    position: absolute;
+    left:0pt;
+    right: 20vw;
+    top:100vh;
+    display: block;
+    opacity: 0.95;
+  }
+
+  .txtBlock{
+    padding-top: 100pt;
+    padding-right:20%;
+    padding-left: 20%;
+    padding-bottom: 100pt;
+  }
+
+.blog{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex; 
+  flex-direction: column;
+  position: absolute;
+} */
+
+
+.fullscreen{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0pt;
+  left:0pt;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 200%;
+  display: grid;
+  grid-template-columns:  1fr;
+}
+
+.canvas {
+  pointer-events: none;
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 200vh;
+}
+
+
+.portrait{
+  position:absolute;
+  overflow: hidden;
+  display: flex;
+}
+
+.portraitContainer{
+  width:100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex; 
+  position:absolute;
+  scroll-behavior: smooth;
+  flex-direction: column;
+
+}
+
+.portraitBg{
+  width:100%;
+  height:400vh;
+  position:absolute;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.portraitFocus{
+  margin: auto;
+  background-color: #DDA15E;
+  z-index: 100;
+  position: absolute;
+  transition: 2s;
+}
+
+.footer{
+  position:absolute;
+  width: 100%;
+  left:0px;
+  background-color: #fefefe;
+}
+
+/*HomePage */
+.homeFan{
+  position: absolute;
+  top:-2vw;
+  width: 15vw;
+}
+.homeSheep{
+  position: absolute;
+  width: 4vw;
+}
+
+.homeStage{
+  position: absolute;
+  width: 40vw;
+  left: 45vw;
+  display: block;
+  text-align: center;
+}
+
+.homeShapes{
+  position: absolute;
+  width: 40vw;
+  left: 45vw;
+  display: block;
+  text-align: center;
+  mix-blend-mode: multiply;
+}
+.homeOverlays{
+  position: absolute;
+  text-align: center;
+  width: 40vw;
+  left: 45vw;
+  display: block;
+}
+.homeOverlays .screen{
+  top:-115.5vw;
+  left: -6.9vw;
+  position: relative;
+}
+#Laptop_Overlay_Center{
+  transform: scale(0.488) 
+}
+
+.homeOverlays .reflection{
+  top:-156vw;
+  position: relative;
+}
+.homeStripe{
+  position: absolute;
+  width: 50vw;
+  left: 40vw;
+  display: block;
+  height: 100vh;
+  background-color:  #057B86;
+}
+
+.homeBg{
+  width: 100%;
+  height: 100%;
+  background-color: #EADCC2;
+  position: absolute;
+}
+.homeTitles{
+  position:absolute;
+  text-align: center;
+  width: 40vw;
+  left: 0vw;
+  display: block;
+}
+.homeTitles a{
+  display: inline-block;
+  font-size: 3em;
+  color:#DF5F3F;
+}
+
+.homeIntroTitle{
+  position: absolute;
+  text-align: center;
+  width: 40vw;
+  display: block;
+  margin: 0%;
+}
+
+.homeIntro{
+  font-size: 1.3em;
+  text-align:center;
+  height: 100vh;
+  color: #EADCC2;
+  mix-blend-mode: initial;
+}
+
+.homeIntro .line {
+  position: absolute;
+  left: 0;
+  top: 9.5vw;
+  margin: auto;
+  height: 0.1em;
+  width: 100%;
+  background-color: #EADCC2;
+  transform-origin: 0.5 0;
+}
+
+
+.homeIntroTitle h1{
+  display: block;
+  font-size: 3em;
+  color:#DF5F3F;
+}
+
+.avator{
+  transform: scale(0.1);
+  display: block;
+  width: 40vw;
+  position:absolute;
+  top: -26vw;
+}
+.scrollDown{
+  display: block;
+  width: 10vw;
+  position:absolute;
+  left : 60vw;
+  bottom: 6vh;
+}
+
+.homeDot{
+  height: 25px;
+  width: 25px;
+  background-color: #cd522f;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  transform: scale(0);
+}
+
+
+/* Home Icon Section */
+.homeIconContainer{
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  left: 92vw;
+  width: 6vw;
+  top:0%;
+}
+.homeIcons{
+  position: relative;
+  text-align: center;
+  margin-top: 2vh;
+}
+#Phone{
+  stroke-dashoffset: 0;
+  stroke-dasharray: 69 999;
+}
+#Email{
+  stroke-dashoffset: 0;
+  stroke-dasharray: 112 999;
+}
+#Wechat{
+  stroke-dashoffset: 0;
+  stroke-dasharray: 105 999;
+}
+.homeHintCopy{
+  opacity: 0;
+  position: absolute;
+  left: 70vw;
+  width: 20vw;
+  font-size: 5vw;
+  color:#EADCC2;
+  text-align: center;
+}
+
+
+
+
+
