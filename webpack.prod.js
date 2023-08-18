@@ -44,7 +44,7 @@ module.exports = merge(common, {
     }),
     new CopyPlugin({
       patterns: [
-          { from: "_redirects",to:"build/_redirects" }
+          { from: "_redirects",to:"_redirects" }
       ]}),],
     
 });
