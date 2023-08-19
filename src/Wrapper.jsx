@@ -23,11 +23,12 @@ export default function Wrapper(){
   const cursorFocus = useRef();
   const cursorDeFocus = useRef();
   const cursorReset = useRef();
-
+  const cursorGetPosition = useRef()
   useEffectOnce(()=>{
     cursorFocus.current = cursorRef.current.playFocus
     cursorDeFocus.current = cursorRef.current.playDeFocus
-    cursorReset.current = cursorRef.current.reset
+    cursorReset.current = cursorRef.current.Reset
+    cursorGetPosition.current = cursorRef.current.getMousePosition
   })
 //#endregion
 
@@ -40,7 +41,7 @@ useEffectOnce(()=>{
 //#endregion
     return <>
     <TransitionCircleContext.Provider value = {{PlayTransition:transitionCirclePlay} }>
-    <CursorContext.Provider value = {{Focus:cursorFocus,DeFocus: cursorDeFocus,Reset:cursorReset}}>
+    <CursorContext.Provider value = {{Focus:cursorFocus,DeFocus: cursorDeFocus,Reset:cursorReset,GetPosition: cursorGetPosition}}>
     <DeviceContext.Provider value = {MobileCheck()? "mobile":"console"}>
         <Outlet />
     <Cursor ref = {cursorRef}/>

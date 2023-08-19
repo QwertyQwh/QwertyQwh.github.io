@@ -80,6 +80,7 @@ export default forwardRef( function Cursor(props,ref){
         }
     }
 
+
     useEventListener('mousemove',handleWindowMouseMove,[])
 
     useInterval(()=>{
@@ -258,6 +259,9 @@ export default forwardRef( function Cursor(props,ref){
           Reset(){
             playAnimationDeFocus()
             focusing = false
+          },
+          getMousePosition(){
+            return mousePosition
           }
         };
       }, [cursorStyle]);

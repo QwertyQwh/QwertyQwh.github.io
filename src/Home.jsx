@@ -23,6 +23,8 @@ import Logger from './Debug/Logger'
 import { randInt } from 'three/src/math/MathUtils'
 import { useNavigate} from 'react-router-dom'
 
+
+//TODO: CHECK TRANSITION BUG && ADD MOBILE DOUBLE CLICK CHECK
 const introPage = 0;
 const codingPage = 1;
 const artPage = 2;

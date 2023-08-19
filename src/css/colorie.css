@@ -3,7 +3,7 @@
   --bubbleRadius: 5vh;
   --bubbleSpin: 35vh;
   height: 100vh;
-  background-color: #ffdab9
+  background-color: #b0d0d3
   
 }
 .colorieBg *{
@@ -73,8 +73,8 @@
   height: auto;
   position: absolute;
   display: flex;
-  padding-top: 100px;
-  padding-bottom: 80px;
+  padding-top: 8vh;
+  padding-bottom: 5vh;
   top: 0%;
   bottom: 0%;
   right: 0%;
@@ -95,7 +95,7 @@
 }
 
 .colorieBg .heading_title {
-  max-width: 60%;
+  max-width: 50%;
 }
 
 .colorieBg .heading_title h1{
@@ -108,7 +108,10 @@
 
 
 
-.colorieBg .desc{
+.colorieBg .date{
+  font-family: Poiret;
+  font-weight: 900;
+
   max-width: 30%;
   margin-top: 0;
   margin-bottom: 0;
