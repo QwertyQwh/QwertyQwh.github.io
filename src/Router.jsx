@@ -8,7 +8,7 @@ import {
 import Wrapper from './Wrapper.jsx';
 import Blog_Legacy from './Pages/Blog_Legacy/Blog_Legacy.jsx';
 import Blog from './Pages/Blog/Blog.jsx';
-import TestScene from './Scene/TestScene.jsx';
+import TestScene from './Scene_Legacy/TestScene.jsx';
 import { SectionLoader } from './Router/SectionLoader.js';
 import Section_Router from './Pages/Sections/Section_Router.jsx';
   const router = createHashRouter([

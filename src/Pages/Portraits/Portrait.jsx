@@ -1,6 +1,6 @@
 import { useEffectOnce } from 'usehooks-ts'
 import { useState,useImperativeHandle,forwardRef,lazy } from 'react';
-import TestObject from '../../Scene/TestObject';
+import TestObject from '../../Scene_Legacy/TestObject';
 import { PerspectiveCamera } from '@react-three/drei';
 import TestPen from './PortraitContents/TestPen';
 import Logger from '../../Debug/Logger';

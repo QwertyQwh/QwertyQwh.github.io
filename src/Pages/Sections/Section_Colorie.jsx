@@ -1,7 +1,14 @@
 import { useRef } from 'react';
-
+import { Canvas } from '@react-three/fiber';
+import { PerspectiveCamera } from '@react-three/drei';
+import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
+import { Perf } from 'r3f-perf';
+import ColorieShowcase from './ColorieShowcase';
+import { OrbitControls } from '@react-three/drei';
+import { Environment } from '@react-three/drei';
+import hdr_Studio from '../../assets/textures/hdr/poly_haven_studio_1k.hdr'
 export default function Section_Colorie(props){
-    console.log(props)
+  
     return (<>
         <div className='colorieBg'>
         <div className='poster'>
@@ -21,11 +28,23 @@ export default function Section_Colorie(props){
         </div>
         </div>
         </div>
-        
+        <div>
+
+        </div>
         <div className='cornerPalette'>
         </div>
         <div className= 'cornerBubble'>
         </div>
+        <Canvas  shadows flat dpr = {[1,2]} gl = {{
+            toneMapping: ACESFilmicToneMapping,
+            antialias:true, alpha:true}} className ='canvas'  >
+        <PerspectiveCamera makeDefault position={[-15, 25, 15]}/>
+
+        <OrbitControls makeDefault/>
+        
+        <ColorieShowcase />
+        <Perf position = 'bottom-right' />
+        </Canvas>
         </div>
         </>)
 }

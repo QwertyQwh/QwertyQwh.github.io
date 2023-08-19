@@ -38,6 +38,10 @@ module.exports = {
         type: 'asset/resource',
        },
        {
+        test: /\.(fbx)$/,
+        type: 'asset/resource',
+       },
+       {
         test: /\.svg$/,
         use: [{loader:'@svgr/webpack',
         options: {
