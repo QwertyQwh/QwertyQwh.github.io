@@ -1,4 +1,4 @@
-import { useRef,useEffect } from 'react';
+import { useRef,useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
 import { Perf } from 'r3f-perf';
@@ -6,13 +6,17 @@ import ColorieShowcase from './ColorieShowcase';
 import anime from 'animejs';
 import { useControls,button } from 'leva';
 import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'usehooks-ts';
-import { PerspectiveCamera,OrbitControls } from '@react-three/drei';
+import { PerspectiveCamera,OrbitControls, Environment } from '@react-three/drei';
+import Logger from '../../Debug/Logger';
+import { Lightformer } from '@react-three/drei';
 
 export default function Section_Colorie(props){
+    Logger.Warn("Colorie is rerendering")
     const ref_canvas = useRef()
     const ref_showcase = useRef()
+    const [colorDark, setColorDark] = useState("#7caca2");
+    const [colorLight, setColorLight] = useState("#b0d0d3");
     useEffectOnce(()=>{
-        console.log(ref_canvas.current)
         anime.timeline({loop:true}).add({
             targets: ref_canvas.current,
             translateY:['-1vh','1vh'],
@@ -25,9 +29,11 @@ export default function Section_Colorie(props){
             easing:'easeInOutSine'
         })
     })
+    useEffect(()=>{
 
+    },[colorDark])
 
-    //Canvas Section
+    //#region Canvas 
     const ref_threeObj = useRef()
     const {width,height} = useWindowSize()
     const ref_camera = useRef()
@@ -41,13 +47,19 @@ export default function Section_Colorie(props){
     }   
     const {foo} = useControls('cursor',{
         foo: button(() => {    
-            Rotate()}),
+            Rotate()
+            if(rotateToPi.current){
+                setColorDark("#ffaaba")
+                setColorLight("#ffcad4")
+            }else{
+                setColorDark("#7caca2")
+                setColorLight("#b0d0d3")
+            }
+
+        }),
     })
-    useEffect(() => {
-        if(height>width){
-            ref_camera.current.zoom = 0.8*width/height
-        }
-    }, [width,height]);
+
+    
     useInterval(()=>{
         if(!ref_threeObj.current){
             return
@@ -66,9 +78,9 @@ export default function Section_Colorie(props){
         ref_camera.current.position.y = (e.clientY/height-0.5)*3
     }
     useEventListener('mousemove',handleWindowMouseMove,[])
-
+//#endregion
     return (<>
-        <div className='colorieBg'>
+        <div className='colorieBg' style={{backgroundColor: colorLight}}>
         <div className='poster'>
         <div className='blog'>
         <div className='layout_1'>
@@ -77,21 +89,29 @@ export default function Section_Colorie(props){
         <h1>中文and English混杂在一起</h1>
         </div>
         <div className='heading_date'>
-        Aug 25,  2023
+            <div className='date_line'>
+                 August 25 
+            </div>
+            <div className='date_line'>
+                2023
+            </div>
         </div>
         </div>
-
         <div className='about_1'>
-        This is a bunch of description. 这是一段简介
+        This is a bunch of description. 这是一段简介.这是一段很长的简介。这是一段很长的简介。这是一段很长的简介这是一段很长的简介这是一段很长的简介。
         </div>
         </div>
- 
         </div>
         </div>
         <div>
-
         </div>
+        <div className='paletteShadow'>
+
         <div className='cornerPalette'>
+            <div className='txtPalette' >
+            {/* READ */}
+            </div>
+        </div>
         </div>
         <div className= 'cornerBubble'>
         </div>
@@ -99,15 +119,26 @@ export default function Section_Colorie(props){
 
         <Canvas ref={ref_canvas} shadows flat dpr = {[1,2]} gl = {{
             toneMapping: NoToneMapping,
-            antialias:true, alpha:true}} className ='canvas'  >
-                    <directionalLight  intensity={1.5}position={[-10, 0, 10]}/>
-        <pointLight intensity={0.8}position={[-5, -5,10]} />
-        <pointLight intensity={0.3}position={[-5, -5,-10]} />
+            antialias:true, alpha:true}}   className ='canvas'  style={{pointerEvents:"none"}}>
+            
         <ambientLight intensity={0.5}/>
-        <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={0.8} ref={ref_camera} />
+        <Environment blur={1} resolution={512}>
+        <Lightformer
+    form="circle" // circle | ring | rect (optional, default = rect)
+    intensity={7} // power level (optional = 1)
+    color="white" // (optional = white)
+    scale={[1,1]} // Scale it any way you prefer (optional = [1, 1])
+    target={[0, 0, 0]}
+    position = {[-2, -1, 10]} // Target position (optional = undefined)
+    />
+    <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
+    <Lightformer form="rect" color="white" intensity={50} scale={5} position={[-10, 0, 10]} target={[0, 0, 0]} />
+
+    </Environment>
+        <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={height<width?0.8:0.8*width/height} ref={ref_camera} />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate ={false}  enableDamping makeDefault/>
         <group rotation={[Math.PI*0.5,Math.PI*0.25,0]} ref = {ref_threeObj} >
-        <ColorieShowcase />
+        <ColorieShowcase shadowColor = {colorDark} />
         </group>
         <Perf position = 'bottom-right' />
         </Canvas>
