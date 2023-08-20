@@ -2,14 +2,14 @@ import {  useTexture,OrthographicCamera,PerspectiveCamera,OrbitControls } from '
 import { useFBX,useGLTF } from '@react-three/drei';
 import { memo } from 'react';
 import { forwardRef, useImperativeHandle,useEffect } from 'react';
-import keyboard_Roughness from '../../assets/textures/board_Roughness.png'
-import keyboard_Displace from '../../assets/textures/board_Displacement.png'
-import keyboard_Base from '../../assets/textures/board_BaseColor.png'
-import keyboard_Emission from '../../assets/textures/board_Emission.png'
-import keyboard_Normal from '../../assets/textures/board_Normal.png'
+import keyboard_Roughness from '../../../assets/textures/board_Roughness.png'
+import keyboard_Displace from '../../../assets/textures/board_Displacement.png'
+import keyboard_Base from '../../../assets/textures/board_BaseColor.png'
+import keyboard_Emission from '../../../assets/textures/board_Emission.png'
+import keyboard_Normal from '../../../assets/textures/board_Normal.png'
 import { useRef } from 'react';
 import { EffectComposer,Bloom } from '@react-three/postprocessing';
-import Logger from '../../Debug/Logger';
+import Logger from '../../../Debug/Logger';
 export default memo(function  ColorieShowcase(props){
     Logger.Warn('ColorieShowcase is rerendering')
     const model =  useGLTF('../../assets/model/keyboard.gltf')

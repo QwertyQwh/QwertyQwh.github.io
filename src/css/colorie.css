@@ -1,6 +1,5 @@
 .colorieBg {
-  --paletteRadius: 25vh;
-  --bubbleRadius: 5vh;
+  --bubbleRadius: 4vh;
   --bubbleSpin: 35vh;
   height: 100vh;
   background-color: #b0d0d3
@@ -12,16 +11,12 @@
 }
 
 .colorieBg .cornerPalette{
-  width: calc(var(--paletteRadius)*2);
-  height: calc(var(--paletteRadius)*2);
   position: absolute;
-  left: calc(var(--paletteRadius)*-1);
-  bottom: calc(var(--paletteRadius)*-1);
   background-color: #7caca2;
   border: 8px solid ;
   border-color: #1e1e1e;
   text-align: center;
-  border-radius: calc(var(--paletteRadius)*2);
+  border-radius: 400px;
 }
 
 .colorieBg .txtPalette{
@@ -35,18 +30,26 @@
 
 .colorieBg .cornerBubble{
   position: absolute;
-  background-color: #f1b2bd;
-  width: calc(var(--bubbleRadius)*2);
-  height: calc(var(--bubbleRadius)*2);
-  left: calc(var(--bubbleRadius)*-1);
-  bottom: calc(var(--bubbleRadius)*-1);
-  border-radius: calc(var(--bubbleRadius)*2);
+  background-color: #ffcad4;
+  border-radius: 100px;
   border: 3px solid ;
-  border-color: #1e1e1e;
-  transform: rotate(-60deg) translateX(var(--bubbleSpin)) ;
+  border-color: #ffcad4;
   transition: border-color 0.5s;
   
 }
+.txtBubble{
+  text-align: center;
+  margin: auto;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 33% 0;
+  transition: transform 0.5s;
+}
+.txtBubble:hover{
+  transform: scale(1.3);
+
+}
+
 
 .colorieBg .cornerBubble:hover{
   border-color: #fefefe;
@@ -118,9 +121,7 @@
 }
 
 
-
 .colorieBg .heading_date{
-
   max-width: 30%;
   right: 5vh;
   position: relative;
@@ -165,7 +166,6 @@
 
   .colorieBg .heading_title{
     max-width: 100%;
-
   }
   .colorieBg .heading_title h1{
     text-indent: -0.5em;

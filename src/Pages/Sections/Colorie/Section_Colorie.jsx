@@ -7,15 +7,22 @@ import anime from 'animejs';
 import { useControls,button } from 'leva';
 import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'usehooks-ts';
 import { PerspectiveCamera,OrbitControls, Environment } from '@react-three/drei';
-import Logger from '../../Debug/Logger';
+import Logger from '../../../Debug/Logger';
 import { Lightformer } from '@react-three/drei';
-import { DeviceContext } from '../../Contexts/Contexts';
+import { DeviceContext } from '../../../Contexts/Contexts';
+import Colorie_Bubble from './Colorie_Bubble';
+
+const bubbleInterval = Math.PI/12
 
 export default function Section_Colorie(props){
     Logger.Warn("Colorie is rerendering")
     const ref_canvas = useRef()
     const ref_showcase = useRef()
     const device = useContext(DeviceContext)
+    const bubbleRotOffset = useRef(Math.PI/6)
+    const paletteRad = useRef(250)
+    const bubbleSpin = useRef(300)
+    const bubbleRad = useRef(30)
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
     useEffectOnce(()=>{
@@ -39,6 +46,7 @@ export default function Section_Colorie(props){
     const ref_threeObj = useRef()
     const {width,height} = useWindowSize()
     const ref_camera = useRef()
+    
 
     const targetRotation = useRef(0)
     const rotateToPi = useRef(false)
@@ -112,14 +120,17 @@ export default function Section_Colorie(props){
         </div>
         <div className='paletteShadow'>
 
-        <div className='cornerPalette'>
+        <div className='cornerPalette' style={{width: `${paletteRad.current*2}px`,height: `${paletteRad.current*2}px`,bottom:`${-bubbleSpin.current*.5-paletteRad.current }px`,left:`${-paletteRad.current }px`}}>
             <div className='txtPalette' >
             {/* READ */}
             </div>
         </div>
         </div>
-        <div className= 'cornerBubble'>
+        <div className='bubbles'>
+            {[...Array(5)].map((elmt,id)=>{console.log(bubbleRotOffset.current+id*bubbleInterval);return (<Colorie_Bubble key={id} txt = {"Web"} phaseAngle={bubbleRotOffset.current+id*bubbleInterval} spin={bubbleSpin.current} radius = {bubbleRad.current}/>)})}
         </div>
+
+
         <div className='threeCanvas'>
 
         <Canvas ref={ref_canvas} shadows flat dpr = {[1,2]} gl = {{

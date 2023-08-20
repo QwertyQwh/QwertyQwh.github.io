@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import Section_Colorie from './Section_Colorie';
+import Section_Colorie from './Colorie/Section_Colorie';
 
 export default function Section_Router(props){
     const data = useLoaderData()

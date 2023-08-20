@@ -1,4 +1,4 @@
-import Section_Colorie from "../Pages/Sections/Section_Colorie"
+import Section_Colorie from "../Pages/Sections/Colorie/Section_Colorie"
 export default {
     coding: {
         name : "coding",
