@@ -9,6 +9,62 @@ export default {
             day:25,
             year:2023,
         },
-        section: 'coding'
+        about:"A bunch of desc",
+        sectionId: 'coding'
+    },
+    test2:{
+        content: <Blog_Test />,
+        title: "Thie is Test2",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        sectionId: 'coding'
+    },
+    test3:{
+        content: <Blog_Test />,
+        title: "This is Test3",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        sectionId: 'coding'
+    },
+    test4:{
+        content: <Blog_Test />,
+        title: "Thie is Test4",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        sectionId: 'coding'
+    },
+    test5:{
+        content: <Blog_Test />,
+        title: "Thie is Test5",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        sectionId: 'coding'
+    },
+    test6:{
+        content: <Blog_Test />,
+        title: "Thie is Test6",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        sectionId: 'coding'
     }
 }
