@@ -1,4 +1,4 @@
-import { useRef,useEffect, useState } from 'react';
+import { useRef,useEffect, useState, useContext } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
 import { Perf } from 'r3f-perf';
@@ -9,11 +9,13 @@ import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'use
 import { PerspectiveCamera,OrbitControls, Environment } from '@react-three/drei';
 import Logger from '../../Debug/Logger';
 import { Lightformer } from '@react-three/drei';
+import { DeviceContext } from '../../Contexts/Contexts';
 
 export default function Section_Colorie(props){
     Logger.Warn("Colorie is rerendering")
     const ref_canvas = useRef()
     const ref_showcase = useRef()
+    const device = useContext(DeviceContext)
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
     useEffectOnce(()=>{
@@ -45,19 +47,22 @@ export default function Section_Colorie(props){
         targetRotation.current = rotateToPi.current? Math.PI:0
         
     }   
-    const {foo} = useControls('cursor',{
-        foo: button(() => {    
-            Rotate()
-            if(rotateToPi.current){
-                setColorDark("#ffaaba")
-                setColorLight("#ffcad4")
-            }else{
-                setColorDark("#7caca2")
-                setColorLight("#b0d0d3")
-            }
+    if(PRODUCTION){
+        const {foo} = useControls('cursor',{
+            foo: button(() => {    
+                Rotate()
+                if(rotateToPi.current){
+                    setColorDark("#ffaaba")
+                    setColorLight("#ffcad4")
+                }else{
+                    setColorDark("#7caca2")
+                    setColorLight("#b0d0d3")
+                }
+    
+            }),
+        })
+    }
 
-        }),
-    })
 
     
     useInterval(()=>{
@@ -140,7 +145,7 @@ export default function Section_Colorie(props){
         <group rotation={[Math.PI*0.5,Math.PI*0.25,0]} ref = {ref_threeObj} >
         <ColorieShowcase shadowColor = {colorDark} />
         </group>
-        <Perf position = 'bottom-right' />
+        {!PRODUCTION? (<Perf position = 'bottom-right' />):null}
         </Canvas>
         </div>
 

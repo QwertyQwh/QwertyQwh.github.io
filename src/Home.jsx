@@ -1085,7 +1085,6 @@ const OnShapesLeave = (page)=>{
 }
 const mobileFirstClick = useRef(0)
 const OnShapesClick = (page)=>{
-  console.log('shape clicked')
   if(device=='mobile'&& mobileFirstClick.current == 0){
     mobileFirstClick.current++
     return
@@ -1114,10 +1113,8 @@ const OnShapesClick = (page)=>{
     {
       if(!animCtrl_Transition.current){
         if(index-1>=0){
-          console.log(index)
           OnShapesLeave(index)
           setIndex(index-1,0)
-          console.log('setting true')
 
         }
       }
@@ -1126,10 +1123,8 @@ const OnShapesClick = (page)=>{
     {
       if(!animCtrl_Transition.current){
         if(index+1<=maxPage){
-          console.log(index)
           OnShapesLeave(index)
           setIndex(index+1)
-          console.log('setting true')
 
         }
       }
@@ -1173,7 +1168,6 @@ let writingTimer = null
 let writingSuffixCounter = 0
 let writingSuffixDir = 1
 const onTitleWriting = ()=>{
-  console.log(writingTimer)
   writingTimer ??= setInterval(() => {
     writingSuffixCounter+=writingSuffixDir
     if(writingSuffixCounter == -1){
