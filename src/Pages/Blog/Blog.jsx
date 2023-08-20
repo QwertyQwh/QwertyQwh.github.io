@@ -4,7 +4,7 @@ import { useEventListener, useEffectOnce, useWindowSize } from "usehooks-ts"
 import Svg_Arrow from '../../assets/svg/blog_arrow.svg'
 import Svg_Pin from '../../assets/svg/blog_pin.svg'
 import { Number2Month } from "../../Utils/Utils"
-import { TransitionCircleContext } from "../../Contexts/Contexts"
+import { CursorContext, TransitionCircleContext } from "../../Contexts/Contexts"
 
 
 export default function Blog(){
@@ -19,6 +19,7 @@ export default function Blog(){
     const ref_BtnSection = useRef()
     const {width,height} = useWindowSize()
     const transitionCircle = useContext(TransitionCircleContext)
+    const cursor = useContext(CursorContext)
     useEffect(()=>{
         document.querySelectorAll('.blogBg .titleBlock img').forEach((elmt,id)=>{
             console.log(elmt)
@@ -29,26 +30,37 @@ export default function Blog(){
     const OnBtnHomeClicked = ()=>{
         const rect = ref_BtnHome.current.getBoundingClientRect()
         transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#fefefe",()=> navigate(`../../home`))
+        cursor.DeFocus.current()
     }
     const OnBtnSectionClicked = ()=>{
         const rect = ref_BtnSection.current.getBoundingClientRect()
         transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#fefefe",()=> navigate(`../../section/${data.section}`))
-        navigate()
+        cursor.DeFocus.current()
     }
-
-
+    const OnBtnHomeOver = ()=>{
+        cursor.Focus.current()
+    }
+    const OnBtnSectionOver = ()=>{
+        cursor.Focus.current()
+    }
+    const OnBtnHomeLeave = ()=>{
+        cursor.DeFocus.current()
+    }
+    const OnBtnSectionLeave = ()=>{
+        cursor.DeFocus.current()
+    }
     return (
         <div className="blogBg" ref = {ref_Bg}>
         <div className="header">
         <div className='homeBtns'>
-        <button className = 'home' onClick={OnBtnHomeClicked}>
+        <button className = 'home' onClick={OnBtnHomeClicked} onMouseOver={OnBtnHomeOver} onMouseLeave={OnBtnHomeLeave}>
         <span className="button_top" ref = {ref_BtnHome}> Home
         </span>
         </button>
         <div style={{display:"inline-block",width:40,margin:"0 0.5em",top: '.6em',position:'relative'}}>
         <Svg_Arrow /> 
         </div>
-        <button className = 'home' onClick={OnBtnSectionClicked}>
+        <button className = 'home' onClick={OnBtnSectionClicked} onMouseOver={OnBtnSectionOver} onMouseLeave={OnBtnSectionLeave}>
         <span className="button_top" ref = {ref_BtnSection}> {data.section}
         </span>
         </button>

@@ -1089,9 +1089,11 @@ const OnShapesClick = (page)=>{
   switch(page){
     case codingPage:
       PlayDotSwell('55%', '45%',"coding")
+      cursor.DeFocus.current()
       break;
     case writingPage:
       PlayDotSwell('65%', '65%',"writing")
+      cursor.DeFocus.current()
       break;
   }
 }
