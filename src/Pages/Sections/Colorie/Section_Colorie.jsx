@@ -23,6 +23,8 @@ export default function Section_Colorie(props){
     const paletteRad = useRef(250)
     const bubbleSpin = useRef(300)
     const bubbleRad = useRef(30)
+    
+    const bubbleSelected = useRef(-1)
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
     useEffectOnce(()=>{
@@ -36,6 +38,12 @@ export default function Section_Colorie(props){
             translateY:['1vh','-1vh'],
             duration:1500,
             easing:'easeInOutSine'
+        })
+        anime({
+            targets: '.cornerBubble',
+            scale: [1,2],
+            duration:10000,
+            loop:true
         })
     })
     useEffect(()=>{
@@ -127,6 +135,7 @@ export default function Section_Colorie(props){
         </div>
         </div>
         <div className='bubbles'>
+        <Colorie_Bubble  txt = {"Web"} phaseAngle={bubbleRotOffset.current+bubbleInterval} spin={bubbleSpin.current} radius = {bubbleRad.current}/>
             {[...Array(5)].map((elmt,id)=>{console.log(bubbleRotOffset.current+id*bubbleInterval);return (<Colorie_Bubble key={id} txt = {"Web"} phaseAngle={bubbleRotOffset.current+id*bubbleInterval} spin={bubbleSpin.current} radius = {bubbleRad.current}/>)})}
         </div>
 
