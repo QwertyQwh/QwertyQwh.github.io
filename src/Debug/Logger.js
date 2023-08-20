@@ -1,6 +1,6 @@
-const __LOG = true
-const __LOGSTICKER = true
-const __LOGCURSOR = true
+const __LOG = !PRODUCTION
+const __LOGSTICKER = !PRODUCTION
+const __LOGCURSOR = !PRODUCTION
 
 export default class Logger{
     static Log(msg){

@@ -6,6 +6,8 @@ const MiniCssExtractPlugin =  require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require('webpack');
+
 module.exports = merge(common, {
   mode:"production",
   output: {
@@ -45,6 +47,9 @@ module.exports = merge(common, {
     new CopyPlugin({
       patterns: [
           { from: "./_redirects",to:"./" }
-      ]}),],
-    
+    ]}),      
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(true),
+    })],
+
 });

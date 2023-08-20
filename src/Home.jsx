@@ -15,7 +15,7 @@ import { useSwipeable } from 'react-swipeable'
 import Svg_ShapeIconPhone from './assets/svg/shape_Icon_Phone.svg'
 import Svg_ShapeIconEmail from './assets/svg/shape_Icon_Email.svg'
 import Svg_ShapeIconWechat from './assets/svg/shape_Icon_Wechat.svg'
-import { CursorContext,TransitionCircleContext } from './Contexts/Contexts'
+import { CursorContext,DeviceContext,TransitionCircleContext } from './Contexts/Contexts'
 import anime from 'animejs'
 import {RandomAscii} from './Utils/Utils'
 import { memo } from 'react'
@@ -24,7 +24,7 @@ import { randInt } from 'three/src/math/MathUtils'
 import { useNavigate} from 'react-router-dom'
 
 
-//TODO: CHECK TRANSITION BUG && ADD MOBILE DOUBLE CLICK CHECK
+//TODO: CHECK TRANSITION BUG && Usereducer for index
 const introPage = 0;
 const codingPage = 1;
 const artPage = 2;
@@ -110,6 +110,7 @@ export default memo(function Home(){
   const animCtrl_Icon = useRef(false)
   const animCtrl_Avator = useRef(false)
   const cursor = useContext(CursorContext)
+  const device = useContext(DeviceContext)
   const transitionCircle = useContext(TransitionCircleContext)
   const navigate = useNavigate()
 
@@ -264,13 +265,21 @@ export default memo(function Home(){
       loop: false,
     })
   }
+  const transitionCtrlAnim = useRef(null)
   const PlayWritingTransition = ()=>{
-    anime({
+    if(transitionCtrlAnim.current){
+      transitionCtrlAnim.current.pause()
+    }
+    transitionCtrlAnim.current = anime({
       targets: writingOverlay.current,
       translateY: (3*(-index+writingPage)+0.5)*height-1.586*0.5*width,
       duration:4000,
       easing: easingFunc,
       loop: false,
+      complete: function(anim) {
+        animCtrl_Transition.current = false;
+        document.querySelectorAll('.introLetters').forEach((elmt,id)=>elmt.style.transform += 'translateX(0)')
+      }
     })
     anime({
       targets: writingBook.current,
@@ -318,10 +327,7 @@ export default memo(function Home(){
       duration:3500,
       easing: easingFunc,
       loop: false,
-      complete: function(anim) {
-        animCtrl_Transition.current = false;
-        document.querySelectorAll('.introLetters').forEach((elmt,id)=>elmt.style.transform += 'translateX(0)')
-      }
+
     })
     anime({
       targets: '.introZhLetters',
@@ -753,7 +759,6 @@ export default memo(function Home(){
     })
   }
   const PlayDotSwell = (x,y,pageName)=>{
-    console.log(transitionCircle)
     transitionCircle.PlayTransition.current({x:x,y:y},"#cd522f",()=>navigate(`../section/${pageName}/`))
   }
   //#endregion
@@ -772,25 +777,21 @@ export default memo(function Home(){
     }else{
       clearTimeout(scrollDownTimer)
     }
-    PlayCodingTransition()
-    PlayWritingTransition()
-    PlayIntroTransition()
-    //#region letters transition
+      PlayCodingTransition()
+      PlayWritingTransition()
+      PlayIntroTransition()
+  
+      anime({
+        targets: ".artLetters",
+        translateY: (-index+ artPage+0.5)*height-0.2*0.4*width,
+        delay: (el, i) => 150*i,
+        duration:3500,
+        easing: easingFunc,
+        loop: false,
+      })
+      animCtrl_Transition.current = true
+      mobileFirstClick.current = 0
 
-    anime({
-      targets: ".artLetters",
-      translateY: (-index+ artPage+0.5)*height-0.2*0.4*width,
-      delay: (el, i) => 150*i,
-      duration:3500,
-      easing: easingFunc,
-      loop: false,
-    })
-
-
-    //#endregion
-
-    animCtrl_Transition.current = true
-    
   })
   useEffect(()=>{
     document.querySelector("#Scroll_Down").style.opacity = 0
@@ -1037,7 +1038,6 @@ const OnShapesEnter = (page)=>{
   //   return
   // }
   cursor.Focus.current()
-  console.log("entering")
 
   switch (page) {
     case codingPage:
@@ -1063,8 +1063,7 @@ const OnShapesLeave = (page)=>{
   // if(isInTransition.current){
   //   return
   // }
-  console.log("leaving")
-
+  mobileFirstClick.current = 0
   cursor.DeFocus.current()
   switch (page) {
     case codingPage:
@@ -1084,8 +1083,17 @@ const OnShapesLeave = (page)=>{
       break;
   }
 }
-
+const mobileFirstClick = useRef(0)
 const OnShapesClick = (page)=>{
+  console.log('shape clicked')
+  if(device=='mobile'&& mobileFirstClick.current == 0){
+    mobileFirstClick.current++
+    return
+  }
+  if(mobileFirstClick.current == 1){
+    mobileFirstClick.current = 0
+  }
+
   switch(page){
     case codingPage:
       PlayDotSwell('55%', '45%',"coding")
@@ -1106,8 +1114,11 @@ const OnShapesClick = (page)=>{
     {
       if(!animCtrl_Transition.current){
         if(index-1>=0){
+          console.log(index)
           OnShapesLeave(index)
           setIndex(index-1,0)
+          console.log('setting true')
+
         }
       }
     }
@@ -1115,8 +1126,11 @@ const OnShapesClick = (page)=>{
     {
       if(!animCtrl_Transition.current){
         if(index+1<=maxPage){
+          console.log(index)
           OnShapesLeave(index)
           setIndex(index+1)
+          console.log('setting true')
+
         }
       }
     }
