@@ -47,7 +47,7 @@ export default function Section_Colorie(props){
         targetRotation.current = rotateToPi.current? Math.PI:0
         
     }   
-    if(PRODUCTION){
+    if(!PRODUCTION){
         const {foo} = useControls('cursor',{
             foo: button(() => {    
                 Rotate()
