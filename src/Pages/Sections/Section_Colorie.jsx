@@ -118,10 +118,10 @@ export default function Section_Colorie(props){
         <div className='threeCanvas'>
 
         <Canvas ref={ref_canvas} shadows flat dpr = {[1,2]} gl = {{
-            toneMapping: NoToneMapping,
+            toneMapping: ACESFilmicToneMapping,
             antialias:true, alpha:true}}   className ='canvas'  style={{pointerEvents:"none"}}>
             
-        <ambientLight intensity={0.5}/>
+        {/* <ambientLight intensity={0.5}/> */}
         <Environment blur={1} resolution={512}>
         <Lightformer
     form="circle" // circle | ring | rect (optional, default = rect)
@@ -132,7 +132,7 @@ export default function Section_Colorie(props){
     position = {[-2, -1, 10]} // Target position (optional = undefined)
     />
     <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
-    <Lightformer form="rect" color="white" intensity={50} scale={5} position={[-10, 0, 10]} target={[0, 0, 0]} />
+    <Lightformer  form="circle" color="white" intensity={20} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
 
     </Environment>
         <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={height<width?0.8:0.8*width/height} ref={ref_camera} />

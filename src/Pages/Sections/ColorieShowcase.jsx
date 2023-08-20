@@ -35,7 +35,8 @@ export default memo(function  ColorieShowcase(props){
         <meshBasicMaterial color={props.shadowColor} depthWrite={false} />
         </mesh>
         <mesh geometry={model.nodes.board.geometry}  >
-        <meshStandardMaterial flatShading = {false} map={txtr_keyboard_Base} roughnessMap={txtr_keyboard_Roughness} bumpMap={txtr_keyboard_Displace} emissive={'#ffffff'} emissiveIntensity={1} emissiveMap={txtr_keyboard_Emission} normalMap={txtr_keyboard_Normal}/>
+        <meshStandardMaterial flatShading = {true} map={txtr_keyboard_Base} roughnessMap={txtr_keyboard_Roughness} bumpMap={txtr_keyboard_Displace} emissive={'#ffffff'} emissiveIntensity={1} emissiveMap={txtr_keyboard_Emission}/>
+        {/* <meshBasicMaterial map={txtr_keyboard_Normal} /> */}
         </mesh>
         <mesh geometry={model.nodes.outline.geometry} >
         <meshBasicMaterial  color={'#111111'} />
