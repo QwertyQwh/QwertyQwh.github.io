@@ -17,24 +17,17 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
             }else{
                 ref_bubble.current.style.opacity = 1
                 ref_thumbnail.current.textContent = data.thumbnail
-                anime({
-                    targets:".cornerBubble",
-                    translateY: spin*.5,
-                    borderColor: (elmt,i)=>{
-                        if(i == id){
-                            return colorsLight[i]
-                        }else{
-                            return colorsDark[i]
-                        }
-                    },
-                    rotate: (elmt,i)=>{
-                            return -1
-  
-                    },
-                    translateX: spin,
-                    duration:10000,
-                })
+
             }
+          },
+          SetRot(rot){
+            anime({
+                targets:ref_bubble.current,
+                translateY: spin*.5,
+                rotate: rot,
+                translateX: spin,
+                duration:1000,
+            })
           }
         };
       }, []);

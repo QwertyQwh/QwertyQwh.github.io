@@ -11,7 +11,7 @@ export default {
         },
         about:"A bunch of desc",
         sectionId: 'coding',
-        thumbnail: 'Web',
+        thumbnail: '0',
     },
     test2:{
         content: <Blog_Test />,
@@ -22,7 +22,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        thumbnail: 'c#',
+        thumbnail: '1',
         sectionId: 'coding'
     },
     test3:{
@@ -34,7 +34,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        thumbnail: 'c++',
+        thumbnail: '2',
         sectionId: 'coding'
     },
     test4:{
@@ -46,7 +46,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        thumbnail: 'JS',
+        thumbnail: '3',
         sectionId: 'coding'
     },
     test5:{
@@ -58,7 +58,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        thumbnail: 'Unity',
+        thumbnail: '4',
         sectionId: 'coding'
     },
     test6:{
@@ -70,7 +70,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        thumbnail: 'BK',
+        thumbnail: '5',
         sectionId: 'coding'
     }
 }

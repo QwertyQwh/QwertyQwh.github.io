@@ -13,10 +13,10 @@ import { DeviceContext } from '../../../Contexts/Contexts';
 import Colorie_Bubble from './Colorie_Bubble';
 import { Color } from 'three';
 import BlogCatalog from '../../../Catalogs/BlogCatalog';
-import { Number2Month } from '../../../Utils/Utils';
+import { Number2Month, proper_modulo } from '../../../Utils/Utils';
 
 const num_bubbles = 7
-const bubbleInterval = Math.PI/12
+const bubbleInterval = Math.PI/3/(num_bubbles-3)
 // const fakers = {bubbleRad: 30,bubbleSpin:300,paletteRad:250,angleOffset:0}
 const colorsLight = ["#b0d0d3","#ffcad4","#bfd6dd","#ffe5d9","#e0d9fc","#cad6ea","#fef9c2"]
 const colorsDark = ["#7caca2","#ffaaba","#80a8b7","#ffd2c0","#c0b1fc","#a3bfe8","#fcf1a4"]
@@ -46,7 +46,22 @@ export default function Section_Colorie(props){
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
     const refs_bubbles = [...Array(num_bubbles)].map(()=>useRef())
-    
+
+    const IndexToRotation = (id)=>{
+        //special condition here
+        if(CurIndex.current<3){
+            return  bubbleRotOffset+bubbleInterval*id-CurIndex.current*bubbleInterval
+        }
+        const offsetInterval = proper_modulo(3-id+CurIndex.current,num_bubbles)
+        const targetRot = bubbleRotOffset+3*bubbleInterval -bubbleInterval*offsetInterval
+        return targetRot
+    }
+    const IndexToPage = (id)=>{
+        if(CurIndex.current<3){
+            return  id
+        }
+        return id+Math.floor((3-id+CurIndex.current)/7)*7;
+    }
     
     useEffectOnce(()=>{
         anime.timeline({loop:true}).add({
@@ -66,7 +81,7 @@ export default function Section_Colorie(props){
         const date = blogList.current[CurIndex.current][1].date
         ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
         ref_Year.current.textContent =  date.year
-        refs_bubbles.forEach((elmt,id)=>refs_bubbles[id].current.SetContent(id<blogList.current.length? blogList.current[id][1]:null))
+        refs_bubbles.forEach((elmt,id)=>refs_bubbles[id].current.SetContent( id<blogList.current.length? blogList.current[id][1]:null))
    
 
     })
@@ -86,9 +101,7 @@ export default function Section_Colorie(props){
         })
     }
 //#region BubbleEvents
-    const IndexToRotation = (bubble_id)=>{
-        
-    }
+
 
 
 
@@ -157,10 +170,14 @@ export default function Section_Colorie(props){
             scale:[0,1],
             duration:800
         })
-        if(id-3>=0){
-            //In this case we need to set the content of the leftmost bubble
-        }
+
+
+        refs_bubbles.forEach((elmt,order)=>{
+            refs_bubbles[order].current.SetContent( IndexToPage(order)<blogList.current.length? blogList.current[IndexToPage(order)][1]:null)
+        })
+
         CurIndex.current = id
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order)))
 
     }
 
@@ -181,12 +198,12 @@ export default function Section_Colorie(props){
             },
             rotate: (elmt,i)=>{
                 if(i == id){
-                    return bubbleRotOffset+i*bubbleInterval
+                    return IndexToRotation(i)
                 }
                 if(i>id){
-                    return bubbleRotOffset+i*bubbleInterval+0.05
+                    return IndexToRotation(i)+0.05
                 }
-                return bubbleRotOffset+i*bubbleInterval-0.05
+                return IndexToRotation(i)-0.05
             },
             scale: (elmt,i)=>{
                 if(i == id){
@@ -206,7 +223,7 @@ export default function Section_Colorie(props){
                     return colorsDark[i]
             },
             rotate: (elmt,i)=>{
-                return bubbleRotOffset+i*bubbleInterval
+                return IndexToRotation(i)
             },
             scale: (elmt,i)=>{
                 return 1
@@ -312,18 +329,15 @@ export default function Section_Colorie(props){
         </div>
         <div>
         </div>
-        <div className='paletteShadow'>
 
+        <div className='bubbles'>
+        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
+        </div>
         <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
             <div className='txtPalette' >
             {/* READ */}
             </div>
         </div>
-        </div>
-        <div className='bubbles'>
-        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
-        </div>
-
 
         <div className='threeCanvas'>
 
