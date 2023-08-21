@@ -195,7 +195,7 @@ export default memo(function Home(){
       targets: '.homeIntro .line',
       duration: 600,
       easing: "easeOutExpo",
-      translateY: (el, i) => (-0.12*width + 0.12*2*width*i) + "px"
+      translateY: (el, i) => (-0.12*width + 0.13*2*width*i) + "px"
     }).add({
       targets: greetIntro.current,
       opacity: [0,1],
