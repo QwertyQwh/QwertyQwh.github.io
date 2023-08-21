@@ -10,7 +10,8 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
-        sectionId: 'coding'
+        sectionId: 'coding',
+        thumbnail: 'Web',
     },
     test2:{
         content: <Blog_Test />,
@@ -21,6 +22,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
+        thumbnail: 'c#',
         sectionId: 'coding'
     },
     test3:{
@@ -32,6 +34,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
+        thumbnail: 'c++',
         sectionId: 'coding'
     },
     test4:{
@@ -43,6 +46,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
+        thumbnail: 'JS',
         sectionId: 'coding'
     },
     test5:{
@@ -54,6 +58,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
+        thumbnail: 'Unity',
         sectionId: 'coding'
     },
     test6:{
@@ -65,6 +70,7 @@ export default {
             year:2023,
         },
         about:"A bunch of desc",
+        thumbnail: 'BK',
         sectionId: 'coding'
     }
 }

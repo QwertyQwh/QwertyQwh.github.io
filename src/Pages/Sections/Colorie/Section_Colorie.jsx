@@ -15,11 +15,11 @@ import { Color } from 'three';
 import BlogCatalog from '../../../Catalogs/BlogCatalog';
 import { Number2Month } from '../../../Utils/Utils';
 
-const num_bubbles = 5
-const bubbleInterval = -Math.PI/12
+const num_bubbles = 7
+const bubbleInterval = Math.PI/12
 // const fakers = {bubbleRad: 30,bubbleSpin:300,paletteRad:250,angleOffset:0}
-const colorsLight = ["#b0d0d3","#ffcad4","#ffe5d9","#e0d9fc","#fef9c2"]
-const colorsDark = ["#7caca2","#ffaaba","#ffd2c0","#c0b1fc","#fcf1a4"]
+const colorsLight = ["#b0d0d3","#ffcad4","#bfd6dd","#ffe5d9","#e0d9fc","#cad6ea","#fef9c2"]
+const colorsDark = ["#7caca2","#ffaaba","#80a8b7","#ffd2c0","#c0b1fc","#a3bfe8","#fcf1a4"]
 
 
 
@@ -27,6 +27,7 @@ export default function Section_Colorie(props){
     Logger.Warn("Colorie is rerendering")
     const blogList = useRef([])
     const ref_canvas = useRef()
+    const ref_Palette = useRef()
     const ref_showcase = useRef()
     const ref_ColorDot = useRef()
     const ref_Title = useRef()
@@ -35,14 +36,16 @@ export default function Section_Colorie(props){
     const ref_MonthDay = useRef()
     const ref_Year = useRef()
     const device = useContext(DeviceContext)
-    const [bubbleRotOffset, setbubbleRotOffset] = useState(-Math.PI/6);
+    const animCtrl_Transition = useRef(false)
+
+    const [bubbleRotOffset, setbubbleRotOffset] = useState(-Math.PI/3);
     const CurIndex = useRef(0)
     const [paletteRad, setpaletteRad] = useState(250);
     const [bubbleSpin, setbubbleSpin] = useState(300);
     const [bubbleRad, setbubbleRad] = useState(30);
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
-    const bubble_refs = [...Array(5)].map(()=>useRef())
+    const refs_bubbles = [...Array(num_bubbles)].map(()=>useRef())
     
     
     useEffectOnce(()=>{
@@ -58,16 +61,17 @@ export default function Section_Colorie(props){
             easing:'easeInOutSine'
         })
         Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
-
-    })
-
-    useEffect(()=>{
         ref_Title.current.textContent = blogList.current[CurIndex.current][1].title
         ref_About.current.textContent = blogList.current[CurIndex.current][1].about
         const date = blogList.current[CurIndex.current][1].date
         ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
         ref_Year.current.textContent =  date.year
+        refs_bubbles.forEach((elmt,id)=>refs_bubbles[id].current.SetContent(id<blogList.current.length? blogList.current[id][1]:null))
+   
+
     })
+
+    
 
     const ColorSwell = ({x,y},color,callback) =>{
         ref_ColorDot.current.style.top = y
@@ -76,14 +80,23 @@ export default function Section_Colorie(props){
         anime.timeline().add({
           targets: ref_ColorDot.current,
           scale: [0,150],
-          duration:1200,
+          duration:800,
           easing: 'easeInQuad',
           complete: ()=>{callback()},
         })
     }
 //#region BubbleEvents
-    const OnBubbleClick = (id) =>{
-     
+    const IndexToRotation = (bubble_id)=>{
+        
+    }
+
+
+
+    const TransitTo= (id)=>{
+        if(animCtrl_Transition.current){
+            return
+        }
+        animCtrl_Transition.current = true
         Rotate()
         ColorSwell({x:'10%',y:'100%'},colorsLight[id],()=>{setColorLight(colorsLight[id]);   setColorDark(colorsDark[id])})
         anime.timeline().add({
@@ -91,38 +104,68 @@ export default function Section_Colorie(props){
             translateY: [0,-100],
             opacity:[1,0],
             easing: 'easeInSine',
-            duration:800,
+            duration:600,
+            complete:()=>{
+                ref_Title.current.textContent = blogList.current[id][1].title
+            }
         }).add({
             targets:ref_About.current,
             translateY: [0,-100],
             opacity:[1,0],
             easing: 'easeInSine',
-            duration:800,
-        },"-=500").add({
+            duration:600,
+            complete:()=>{
+                ref_About.current.textContent = blogList.current[id][1].about
+            }
+        },"-=400").add({
             targets:ref_Date.current,
             translateY: [0,-100],
             opacity:[1,0],
             easing: 'easeInSine',
-            duration:800,
-        },"-=500").add({
+            duration:600,
+            complete:()=>{
+                const date = blogList.current[id][1].date
+                ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
+                ref_Year.current.textContent =  date.year
+            }
+        },"-=400").add({
             targets:ref_Title.current,
             translateY: [100,0],
             opacity:[0,1],
             easing: 'easeOutSine',
-            duration:800,
+            duration:600,
         }).add({
             targets:ref_About.current,
             translateY: [100,0],
             opacity:[0,1],
             easing: 'easeOutSine',
-            duration:800,
-        },"-=500").add({
+            duration:600,
+            complete:()=>{
+                animCtrl_Transition.current = false
+            }
+        },"-=400").add({
             targets:ref_Date.current,
             translateY: [100,0],
             opacity:[0,1],
             easing: 'easeOutSine',
-            duration:800,
-        },"-=500")
+            duration:600,
+
+        },"-=400")
+        ref_Palette.current.style.backgroundColor = colorsDark[id]
+        anime({
+            targets:ref_Palette.current,
+            scale:[0,1],
+            duration:800
+        })
+        if(id-3>=0){
+            //In this case we need to set the content of the leftmost bubble
+        }
+        CurIndex.current = id
+
+    }
+
+    const OnBubbleClick = (id) =>{
+        TransitTo(id)
     }
 
     const OnBubbleEnter = (id)=>{
@@ -141,9 +184,9 @@ export default function Section_Colorie(props){
                     return bubbleRotOffset+i*bubbleInterval
                 }
                 if(i>id){
-                    return bubbleRotOffset+i*bubbleInterval-0.05
+                    return bubbleRotOffset+i*bubbleInterval+0.05
                 }
-                return bubbleRotOffset+i*bubbleInterval+0.05
+                return bubbleRotOffset+i*bubbleInterval-0.05
             },
             scale: (elmt,i)=>{
                 if(i == id){
@@ -172,9 +215,28 @@ export default function Section_Colorie(props){
             duration:1000,
         })
     }
-
+    const handleWheel= (event)=>{
+        if (event.deltaY < 0)
+        {
+          if(!animCtrl_Transition.current){
+            if(CurIndex.current-1>=0){
+              TransitTo(CurIndex.current-1)
+            }
+          }
+        }
+        else if (event.deltaY > 0)
+        {
+          if(!animCtrl_Transition.current){
+            if(CurIndex.current+1<blogList.current.length){
+              TransitTo(CurIndex.current+1)
+            }
+          }
+        }
+      }
+  useEventListener('wheel', handleWheel,window);
     //#endregion
 
+    
     //#region Canvas 
     const ref_threeObj = useRef()
     const {width,height} = useWindowSize()
@@ -234,19 +296,16 @@ export default function Section_Colorie(props){
         <div className='layout_1'>
         <div className='heading_1'>
         <div className='heading_title' >
-        <h1 ref = {ref_Title}>中文and English混杂在一起</h1>
+        <h1 ref = {ref_Title}></h1>
         </div>
         <div className='heading_date' ref = {ref_Date}>
             <div className='date_line' ref = {ref_MonthDay}>
-                 August 25 
             </div>
             <div className='date_line' ref = {ref_Year}>
-                2023
             </div>
         </div>
         </div>
         <div className='about_1'ref = {ref_About}>
-        This is a bunch of description. 这是一段简介.这是一段很长的简介。这是一段很长的简介。这是一段很长的简介这是一段很长的简介这是一段很长的简介。
         </div>
         </div>
         </div>
@@ -255,14 +314,14 @@ export default function Section_Colorie(props){
         </div>
         <div className='paletteShadow'>
 
-        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}}>
+        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
             <div className='txtPalette' >
             {/* READ */}
             </div>
         </div>
         </div>
         <div className='bubbles'>
-        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id} txt = {"Web"} phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} />)})}
+        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
         </div>
 
 

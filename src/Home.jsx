@@ -347,7 +347,7 @@ export default memo(function Home(){
       delay: function(el, i) { return i * 250 },
       direction: 'reverse',
       loop: true,
-      endDelay: 500,
+      endDelay: 900,
     });
   }
   const writingBookLettersConvergeDuration = 1000

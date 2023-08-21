@@ -25,5 +25,6 @@ export default memo(forwardRef(function Sticker(props,ref){
           }
         };
       }, []);
+      
     return <span className='homeDot' ref = {dot} />
 }))
