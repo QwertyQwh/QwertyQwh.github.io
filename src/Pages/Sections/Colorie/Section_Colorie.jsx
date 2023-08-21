@@ -56,6 +56,7 @@ export default function Section_Colorie(props){
         const targetRot = bubbleRotOffset+3*bubbleInterval -bubbleInterval*offsetInterval
         return targetRot-Math.floor((3-id+curPage.current)/7)*Math.PI*2
     }
+
     const IndexToPage = (id)=>{
         if(curPage.current<3){
             return  id
@@ -209,7 +210,7 @@ export default function Section_Colorie(props){
             refs_bubbles[order].current.SetContent( IndexToPage(order)<blogList.current.length? blogList.current[IndexToPage(order)][1]:null,IndexToPage(order))
         })
 
-        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),direction,OrdinalTargetIndex(order,page) ))
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),direction,OrdinalTargetIndex(order,prev) ))
 
 
 
