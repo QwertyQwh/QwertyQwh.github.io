@@ -38,7 +38,7 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
                   }
                   return rot-0.05
               },
-              easing: 'spring(0.5, 100, 10, 0)',
+              easing: 'spring(1, 80, 12, 0)',
                 translateX: spin,
                 scale:id == curFeaturedId? 1.4:1,
                 duration:800,

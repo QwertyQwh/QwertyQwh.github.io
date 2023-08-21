@@ -28,8 +28,9 @@ export default function Section_Colorie(props){
     const blogList = useRef([])
     const ref_canvas = useRef()
     const ref_Palette = useRef()
-    const ref_showcase = useRef()
-    const ref_ColorDot = useRef()
+    const ref_Read = useRef()
+    const ref_ColorDotBottom = useRef()
+    const ref_ColorDotTop = useRef()
     const ref_Title = useRef()
     const ref_About = useRef()
     const ref_Date = useRef()
@@ -115,15 +116,42 @@ export default function Section_Colorie(props){
    
 
     })
+    const animReadSwell = useRef()
+    const PlayReadSwell = ()=>{
+        
+        console.log('entering')
+        animReadSwell.current ??= anime({
+            targets: ref_Read.current,
+            scale:[1,1.5],
+            duration:600,
+            complete:()=>[
+                animReadSwell.current = null
+            ]
+        })
+    }
+    const animReadShrink = useRef()
 
-    
+    const PlayReadShrink = ()=>{
+        console.log('leaving')
+        animReadShrink.current ??= anime({
+            targets: ref_Read.current,
+            scale:[1.5,1],
+            duration:600,
+            complete:()=>[
+                animReadShrink.current = null
+            ]
+        })
+    }
 
     const ColorSwell = ({x,y},color,callback) =>{
-        ref_ColorDot.current.style.top = y
-        ref_ColorDot.current.style.left = x
-        ref_ColorDot.current.style.backgroundColor = color
+        ref_ColorDotBottom.current.style.top = y
+        ref_ColorDotBottom.current.style.left = x
+        ref_ColorDotTop.current.style.bottom = y
+        ref_ColorDotTop.current.style.right = x
+        ref_ColorDotBottom.current.style.backgroundColor = color
+        ref_ColorDotTop.current.style.backgroundColor = color
         anime.timeline().add({
-          targets: ref_ColorDot.current,
+          targets: [ref_ColorDotBottom.current,ref_ColorDotTop.current],
           scale: [0,150],
           duration:800,
           easing: 'easeInQuad',
@@ -196,11 +224,13 @@ export default function Section_Colorie(props){
 
         },"-=400")
         ref_Palette.current.style.backgroundColor = colorsDark[page%num_bubbles]
+        ref_Read.current.style.backgroundColor = colorsDark[page%num_bubbles]
         anime({
-            targets:ref_Palette.current,
+            targets: [ref_Palette.current,ref_Read.current],
             scale:[0,1],
             duration:800
         })
+
 
         const prev= curPage.current
         curPage.current = page
@@ -318,19 +348,19 @@ export default function Section_Colorie(props){
         
     }   
     if(!PRODUCTION){
-        const {foo} = useControls('cursor',{
-            foo: button(() => {    
-                Rotate()
-                if(rotateToPi.current){
-                    setColorDark("#ffaaba")
-                    setColorLight("#ffcad4")
-                }else{
-                    setColorDark("#7caca2")
-                    setColorLight("#b0d0d3")
-                }
+        // const {foo} = useControls('cursor',{
+        //     foo: button(() => {    
+        //         Rotate()
+        //         if(rotateToPi.current){
+        //             setColorDark("#ffaaba")
+        //             setColorLight("#ffcad4")
+        //         }else{
+        //             setColorDark("#7caca2")
+        //             setColorLight("#b0d0d3")
+        //         }
     
-            }),
-        })
+        //     }),
+        // })
     }
 
 
@@ -356,9 +386,14 @@ export default function Section_Colorie(props){
 //#endregion
     return (<>
         <div className='colorieBg' style={{backgroundColor: colorLight}}>
-        <span className='homeDot' ref = {ref_ColorDot} />
+        <span className='homeDot' ref = {ref_ColorDotBottom} />
+        <span className='homeDot' ref = {ref_ColorDotTop} />
+        <div className='header'>
 
+
+        </div>
         <div className='poster'>
+
         <div className='blog'>
         <div className='layout_1'>
         <div className='heading_1'>
@@ -383,11 +418,7 @@ export default function Section_Colorie(props){
         <div className='bubbles'>
         {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
         </div>
-        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
-            <div className='txtPalette' >
-            {/* READ */}
-            </div>
-        </div>
+
 
         <div className='threeCanvas'>
 
@@ -416,6 +447,16 @@ export default function Section_Colorie(props){
         </group>
         {!PRODUCTION? (<Perf position = 'bottom-right' />):null}
         </Canvas>
+        </div>
+        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
+            <div className='txtPalette' >
+            {/* READ */}
+            </div>
+        </div>
+        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,top:`${-bubbleSpin*.5-paletteRad }px`,right:`${-paletteRad }px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink}>
+            <div className='txtPalette'  >
+            READ
+            </div>
         </div>
         </div>
 
