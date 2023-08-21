@@ -62,7 +62,18 @@ export default function Section_Colorie(props){
         }
         return id+Math.floor((3-id+CurIndex.current)/7)*7;
     }
-    
+    const OrdinalCurIndex = (id)=>{
+        const offseted=  proper_modulo(id-CurIndex.current,num_bubbles)
+        if(offseted == 0){
+            return 0
+        }else if(offseted <=3){
+            return 1
+        }else 
+        {
+            return -1
+        }
+    }
+
     useEffectOnce(()=>{
         anime.timeline({loop:true}).add({
             targets: ref_canvas.current,
@@ -82,6 +93,7 @@ export default function Section_Colorie(props){
         ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
         ref_Year.current.textContent =  date.year
         refs_bubbles.forEach((elmt,id)=>refs_bubbles[id].current.SetContent( id<blogList.current.length? blogList.current[id][1]:null))
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),CurIndex.current%num_bubbles,OrdinalCurIndex(order) ))
    
 
     })
@@ -177,7 +189,7 @@ export default function Section_Colorie(props){
         })
 
         CurIndex.current = id
-        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order)))
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),CurIndex.current%num_bubbles,OrdinalCurIndex(order) ))
 
     }
 
@@ -197,6 +209,10 @@ export default function Section_Colorie(props){
                 }
             },
             rotate: (elmt,i)=>{
+                if(CurIndex.current%num_bubbles == id){
+                    //The hovered bubble is the featured bubble
+
+                }
                 if(i == id){
                     return IndexToRotation(i)
                 }
@@ -207,7 +223,7 @@ export default function Section_Colorie(props){
             },
             scale: (elmt,i)=>{
                 if(i == id){
-                    return 1.5
+                    return 1.4
                 }
                 return 1
             },
@@ -223,10 +239,18 @@ export default function Section_Colorie(props){
                     return colorsDark[i]
             },
             rotate: (elmt,i)=>{
-                return IndexToRotation(i)
+                const rot=  IndexToRotation(i)
+                const ordinal = OrdinalCurIndex(i)
+                if(ordinal == 0){
+                    return rot
+                }
+                if(ordinal >0){
+                    return rot+0.05
+                }
+                return rot-0.05
             },
             scale: (elmt,i)=>{
-                return 1
+                return CurIndex.current%num_bubbles == i?1.4:1
             },
             translateX: bubbleSpin,
             duration:1000,

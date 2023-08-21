@@ -17,15 +17,23 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
             }else{
                 ref_bubble.current.style.opacity = 1
                 ref_thumbnail.current.textContent = data.thumbnail
-
             }
           },
-          SetRot(rot){
+          SetRot(rot, curFeaturedId, OrdinalCur){
             anime({
                 targets:ref_bubble.current,
                 translateY: spin*.5,
-                rotate: rot,
+                rotate: (elmt,i)=>{
+                  if(OrdinalCur == 0){
+                      return rot
+                  }
+                  if(OrdinalCur >0){
+                      return rot+0.05
+                  }
+                  return rot-0.05
+              },
                 translateX: spin,
+                scale:id == curFeaturedId? 1.4:1,
                 duration:1000,
             })
           }
