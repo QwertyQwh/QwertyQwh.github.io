@@ -29,12 +29,12 @@ export default function Blog(){
     
     const OnBtnHomeClicked = ()=>{
         const rect = ref_BtnHome.current.getBoundingClientRect()
-        transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#fefefe",()=> navigate(`../../home`))
+        transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#EADCC2",()=> navigate(`../../home`))
         cursor.DeFocus.current()
     }
     const OnBtnSectionClicked = ()=>{
         const rect = ref_BtnSection.current.getBoundingClientRect()
-        transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#fefefe",()=> navigate(`../../section/${data.section}`))
+        transitionCircle.PlayTransition.current({y:`${(rect.top+rect.bottom)/2}px`,x:`${(rect.left+rect.right)/2}px`},"#EADCC2",()=> navigate(`../../section/${data.sectionId}`))
         cursor.DeFocus.current()
     }
     const OnBtnHomeOver = ()=>{
@@ -61,7 +61,7 @@ export default function Blog(){
         <Svg_Arrow /> 
         </div>
         <button className = 'home' onClick={OnBtnSectionClicked} onMouseOver={OnBtnSectionOver} onMouseLeave={OnBtnSectionLeave}>
-        <span className="button_top" ref = {ref_BtnSection}> {data.section}
+        <span className="button_top" ref = {ref_BtnSection}> {data.sectionId}
         </span>
         </button>
         </div>

@@ -9,11 +9,12 @@ import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'use
 import { PerspectiveCamera,OrbitControls, Environment } from '@react-three/drei';
 import Logger from '../../../Debug/Logger';
 import { Lightformer } from '@react-three/drei';
-import { DeviceContext } from '../../../Contexts/Contexts';
+import { CursorContext, DeviceContext,TransitionCircleContext } from '../../../Contexts/Contexts';
 import Colorie_Bubble from './Colorie_Bubble';
 import { Color } from 'three';
 import BlogCatalog from '../../../Catalogs/BlogCatalog';
 import { Number2Month, proper_modulo } from '../../../Utils/Utils';
+import { useNavigate } from 'react-router-dom';
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
@@ -37,6 +38,10 @@ export default function Section_Colorie(props){
     const ref_MonthDay = useRef()
     const ref_Year = useRef()
     const device = useContext(DeviceContext)
+    const cursor = useContext(CursorContext)
+    const navigate = useNavigate()
+  const transitionCircle = useContext(TransitionCircleContext)
+
     const animCtrl_Transition = useRef(false)
 
     const [bubbleRotOffset, setbubbleRotOffset] = useState(-Math.PI/3);
@@ -118,7 +123,7 @@ export default function Section_Colorie(props){
     })
     const animReadSwell = useRef()
     const PlayReadSwell = ()=>{
-        
+        cursor.Focus.current()
         console.log('entering')
         animReadSwell.current ??= anime({
             targets: ref_Read.current,
@@ -132,6 +137,8 @@ export default function Section_Colorie(props){
     const animReadShrink = useRef()
 
     const PlayReadShrink = ()=>{
+        cursor.DeFocus.current()
+
         console.log('leaving')
         animReadShrink.current ??= anime({
             targets: ref_Read.current,
@@ -142,6 +149,13 @@ export default function Section_Colorie(props){
             ]
         })
     }
+
+    const  OnReadClick = ()=>{
+        const x = '90%'
+        const y = '10%'
+        transitionCircle.PlayTransition.current({x:x,y:y},colorsDark[curPage.current%num_bubbles],()=>navigate(`../blogs/${blogList.current[curPage.current%num_bubbles][0]}/`))
+
+    } 
 
     const ColorSwell = ({x,y},color,callback) =>{
         ref_ColorDotBottom.current.style.top = y
@@ -453,7 +467,7 @@ export default function Section_Colorie(props){
             {/* READ */}
             </div>
         </div>
-        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,top:`${-bubbleSpin*.5-paletteRad }px`,right:`${-paletteRad }px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink}>
+        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,top:`${-bubbleSpin*.5-paletteRad }px`,right:`${-paletteRad }px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink} onClick={OnReadClick}>
             <div className='txtPalette'  >
             READ
             </div>

@@ -17,10 +17,11 @@ export default memo(forwardRef(function Sticker(props,ref){
                 easing: 'easeInQuad',
                 complete: ()=>{callback()},
               }).add({
+                delay:1000,
                 targets: dot.current,
-                scale: 0,
-                duration:30,
-                easing: 'easeInQuad',
+                scale: [150,0],
+                duration:800,
+                easing: 'easeOutQuad',
               })
           }
         };
