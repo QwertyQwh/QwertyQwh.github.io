@@ -39,7 +39,7 @@ export default function Section_Colorie(props){
     const animCtrl_Transition = useRef(false)
 
     const [bubbleRotOffset, setbubbleRotOffset] = useState(-Math.PI/3);
-    const CurIndex = useRef(0)
+    const curPage = useRef(0)
     const [paletteRad, setpaletteRad] = useState(250);
     const [bubbleSpin, setbubbleSpin] = useState(300);
     const [bubbleRad, setbubbleRad] = useState(30);
@@ -49,29 +49,46 @@ export default function Section_Colorie(props){
 
     const IndexToRotation = (id)=>{
         //special condition here
-        if(CurIndex.current<3){
-            return  bubbleRotOffset+bubbleInterval*id-CurIndex.current*bubbleInterval
+        if(curPage.current<3){
+            return  bubbleRotOffset+bubbleInterval*id-curPage.current*bubbleInterval
         }
-        const offsetInterval = proper_modulo(3-id+CurIndex.current,num_bubbles)
+        const offsetInterval = proper_modulo(3-id+curPage.current,num_bubbles)
         const targetRot = bubbleRotOffset+3*bubbleInterval -bubbleInterval*offsetInterval
-        return targetRot
+        return targetRot-Math.floor((3-id+curPage.current)/7)*Math.PI*2
     }
     const IndexToPage = (id)=>{
-        if(CurIndex.current<3){
+        if(curPage.current<3){
             return  id
         }
-        return id+Math.floor((3-id+CurIndex.current)/7)*7;
+        return id+Math.floor((3-id+curPage.current)/7)*7;
     }
     const OrdinalCurIndex = (id)=>{
-        const offseted=  proper_modulo(id-CurIndex.current,num_bubbles)
+        const offseted=  proper_modulo(id-curPage.current,num_bubbles)
         if(offseted == 0){
             return 0
         }else if(offseted <=3){
-            return 1
+            return offseted
         }else 
         {
-            return -1
+            return offseted-7
         }
+    }
+
+    const OrdinalTargetIndex = (id,target)=>{
+        const offseted=  proper_modulo(id-target,num_bubbles)
+        if(offseted == 0){
+            return 0
+        }else if(offseted <=3){
+            return offseted
+        }else 
+        {
+            return offseted-7
+        }
+    }
+    const OrdinalTarget = (id, targetId)=>{
+        const ordinalSelf = OrdinalCurIndex(id)
+        const oridnalTarget = OrdinalCurIndex(targetId)
+        return ordinalSelf-oridnalTarget
     }
 
     useEffectOnce(()=>{
@@ -87,13 +104,13 @@ export default function Section_Colorie(props){
             easing:'easeInOutSine'
         })
         Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
-        ref_Title.current.textContent = blogList.current[CurIndex.current][1].title
-        ref_About.current.textContent = blogList.current[CurIndex.current][1].about
-        const date = blogList.current[CurIndex.current][1].date
+        ref_Title.current.textContent = blogList.current[curPage.current][1].title
+        ref_About.current.textContent = blogList.current[curPage.current][1].about
+        const date = blogList.current[curPage.current][1].date
         ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
         ref_Year.current.textContent =  date.year
-        refs_bubbles.forEach((elmt,id)=>refs_bubbles[id].current.SetContent( id<blogList.current.length? blogList.current[id][1]:null))
-        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),CurIndex.current%num_bubbles,OrdinalCurIndex(order) ))
+        refs_bubbles.forEach((elmt,id)=>{ refs_bubbles[id].current.SetContent(IndexToPage(id)<blogList.current.length? blogList.current[IndexToPage(id)][1]:null,id)})
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),0,OrdinalCurIndex(order) ))
    
 
     })
@@ -117,13 +134,14 @@ export default function Section_Colorie(props){
 
 
 
-    const TransitTo= (id)=>{
+    const TransitTo= (page)=>{
+        const direction = page-curPage.current
         if(animCtrl_Transition.current){
             return
         }
         animCtrl_Transition.current = true
         Rotate()
-        ColorSwell({x:'10%',y:'100%'},colorsLight[id],()=>{setColorLight(colorsLight[id]);   setColorDark(colorsDark[id])})
+        ColorSwell({x:'10%',y:'100%'},colorsLight[page%num_bubbles],()=>{setColorLight(colorsLight[page%num_bubbles]);   setColorDark(colorsDark[page%num_bubbles])})
         anime.timeline().add({
             targets:ref_Title.current,
             translateY: [0,-100],
@@ -131,7 +149,7 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
-                ref_Title.current.textContent = blogList.current[id][1].title
+                ref_Title.current.textContent = blogList.current[page%num_bubbles][1].title
             }
         }).add({
             targets:ref_About.current,
@@ -140,7 +158,7 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
-                ref_About.current.textContent = blogList.current[id][1].about
+                ref_About.current.textContent = blogList.current[page%num_bubbles][1].about
             }
         },"-=400").add({
             targets:ref_Date.current,
@@ -149,7 +167,7 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
-                const date = blogList.current[id][1].date
+                const date = blogList.current[page%num_bubbles][1].date
                 ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
                 ref_Year.current.textContent =  date.year
             }
@@ -176,25 +194,31 @@ export default function Section_Colorie(props){
             duration:600,
 
         },"-=400")
-        ref_Palette.current.style.backgroundColor = colorsDark[id]
+        ref_Palette.current.style.backgroundColor = colorsDark[page%num_bubbles]
         anime({
             targets:ref_Palette.current,
             scale:[0,1],
             duration:800
         })
 
+        const prev= curPage.current
+        curPage.current = page
 
         refs_bubbles.forEach((elmt,order)=>{
-            refs_bubbles[order].current.SetContent( IndexToPage(order)<blogList.current.length? blogList.current[IndexToPage(order)][1]:null)
+            console.log(IndexToPage(order));
+            refs_bubbles[order].current.SetContent( IndexToPage(order)<blogList.current.length? blogList.current[IndexToPage(order)][1]:null,IndexToPage(order))
         })
 
-        CurIndex.current = id
-        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),CurIndex.current%num_bubbles,OrdinalCurIndex(order) ))
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),direction,OrdinalTargetIndex(order,page) ))
+
+
 
     }
 
     const OnBubbleClick = (id) =>{
-        TransitTo(id)
+        const page = refs_bubbles[id].current.GetPage()
+        console.log(page)
+        TransitTo(page)
     }
 
     const OnBubbleEnter = (id)=>{
@@ -209,14 +233,15 @@ export default function Section_Colorie(props){
                 }
             },
             rotate: (elmt,i)=>{
-                if(CurIndex.current%num_bubbles == id){
+                if(curPage.current%num_bubbles == id){
                     //The hovered bubble is the featured bubble
 
                 }
-                if(i == id){
+                const ordinal = OrdinalTarget(i,id)
+                if(ordinal == 0){
                     return IndexToRotation(i)
                 }
-                if(i>id){
+                if(ordinal>0){
                     return IndexToRotation(i)+0.05
                 }
                 return IndexToRotation(i)-0.05
@@ -250,7 +275,7 @@ export default function Section_Colorie(props){
                 return rot-0.05
             },
             scale: (elmt,i)=>{
-                return CurIndex.current%num_bubbles == i?1.4:1
+                return curPage.current%num_bubbles == i?1.4:1
             },
             translateX: bubbleSpin,
             duration:1000,
@@ -260,16 +285,16 @@ export default function Section_Colorie(props){
         if (event.deltaY < 0)
         {
           if(!animCtrl_Transition.current){
-            if(CurIndex.current-1>=0){
-              TransitTo(CurIndex.current-1)
+            if(curPage.current-1>=0){
+              TransitTo(curPage.current-1)
             }
           }
         }
         else if (event.deltaY > 0)
         {
           if(!animCtrl_Transition.current){
-            if(CurIndex.current+1<blogList.current.length){
-              TransitTo(CurIndex.current+1)
+            if(curPage.current+1<blogList.current.length){
+              TransitTo(curPage.current+1)
             }
           }
         }

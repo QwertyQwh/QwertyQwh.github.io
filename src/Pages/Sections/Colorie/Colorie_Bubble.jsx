@@ -9,20 +9,26 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
     const ref_thumbnail = useRef()
     const ref_bubble = useRef()
     const [rot, setrot] = useState(phaseAngle);
+    const curPage = useRef(id)
     useImperativeHandle(ref, () => {
         return {
-          SetContent(data) {
+          GetPage(){
+            return curPage.current
+          },
+          SetContent(data,page) {
+            curPage.current = page
             if(data == null){
-                ref_bubble.current.style.opacity = 0
+                ref_bubble.current.style.display = 'none'
             }else{
-                ref_bubble.current.style.opacity = 1
+                ref_bubble.current.style.display = 'block'
                 ref_thumbnail.current.textContent = data.thumbnail
             }
           },
-          SetRot(rot, curFeaturedId, OrdinalCur){
-            anime({
+          SetRot(rot, curFeaturedId, OrdinalCur,direction,OrdinalPrev){
+              anime({
                 targets:ref_bubble.current,
                 translateY: spin*.5,
+                delay: direction>0?(OrdinalPrev+3)*80: (4-OrdinalPrev)*80,
                 rotate: (elmt,i)=>{
                   if(OrdinalCur == 0){
                       return rot
@@ -32,11 +38,13 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
                   }
                   return rot-0.05
               },
+              easing: 'spring(0.5, 100, 10, 0)',
                 translateX: spin,
                 scale:id == curFeaturedId? 1.4:1,
-                duration:1000,
+                duration:8000,
             })
-          }
+            }
+
         };
       }, []);
     return (

@@ -72,5 +72,30 @@ export default {
         about:"A bunch of desc",
         thumbnail: '5',
         sectionId: 'coding'
+    },
+    test7:{
+        content: <Blog_Test />,
+        title: "Thie is Test7",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        thumbnail: '5',
+        sectionId: 'coding'
+    },
+    test8:{
+        content: <Blog_Test />,
+        title: "Thie is Test8",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        thumbnail: '5',
+        sectionId: 'coding'
     }
+
 }
