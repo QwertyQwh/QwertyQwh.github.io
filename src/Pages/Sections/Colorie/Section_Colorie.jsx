@@ -15,6 +15,7 @@ import { Color } from 'three';
 import BlogCatalog from '../../../Catalogs/BlogCatalog';
 import { Number2Month, proper_modulo } from '../../../Utils/Utils';
 import { useNavigate } from 'react-router-dom';
+import Svg_Home from '../../../assets/svg/home.svg'
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
@@ -37,6 +38,7 @@ export default function Section_Colorie(props){
     const ref_Date = useRef()
     const ref_MonthDay = useRef()
     const ref_Year = useRef()
+    const ref_Home = useRef()
     const device = useContext(DeviceContext)
     const cursor = useContext(CursorContext)
     const navigate = useNavigate()
@@ -154,8 +156,10 @@ export default function Section_Colorie(props){
         const x = '90%'
         const y = '10%'
         transitionCircle.PlayTransition.current({x:x,y:y},colorsDark[curPage.current%num_bubbles],()=>navigate(`../blogs/${blogList.current[curPage.current%num_bubbles][0]}/`))
-
+        cursor.DeFocus.current()
+        
     } 
+
 
     const ColorSwell = ({x,y},color,callback) =>{
         ref_ColorDotBottom.current.style.top = y
@@ -172,11 +176,23 @@ export default function Section_Colorie(props){
           complete: ()=>{callback()},
         })
     }
+
+    const OnHomeEnter = ()=>{
+        cursor.Focus.current()
+    }
+
+    const OnHomeLeave = ()=>{
+        cursor.DeFocus.current()
+    }
+    const OnHomeClick = ()=>{
+        const x = '0%'
+        const y = '0%'
+        transitionCircle.PlayTransition.current({x:x,y:y},"#fefefe",()=>navigate(`../home`))
+        cursor.DeFocus.current()
+
+    }
+
 //#region BubbleEvents
-
-
-
-
     const TransitTo= (page)=>{
         const direction = page-curPage.current
         if(animCtrl_Transition.current){
@@ -184,7 +200,7 @@ export default function Section_Colorie(props){
         }
         animCtrl_Transition.current = true
         Rotate()
-        ColorSwell({x:'10%',y:'100%'},colorsLight[page%num_bubbles],()=>{setColorLight(colorsLight[page%num_bubbles]);   setColorDark(colorsDark[page%num_bubbles])})
+        ColorSwell({x:'10%',y:'100%'},colorsLight[page%num_bubbles],()=>{setColorLight(colorsLight[page%num_bubbles]);   setColorDark(colorsDark[page%num_bubbles]); })
         anime.timeline().add({
             targets:ref_Title.current,
             translateY: [0,-100],
@@ -262,7 +278,7 @@ export default function Section_Colorie(props){
 
     const OnBubbleClick = (id) =>{
         const page = refs_bubbles[id].current.GetPage()
-        console.log(page)
+
         TransitTo(page)
     }
 
@@ -400,11 +416,15 @@ export default function Section_Colorie(props){
 //#endregion
     return (<>
         <div className='colorieBg' style={{backgroundColor: colorLight}}>
+
         <span className='homeDot' ref = {ref_ColorDotBottom} />
         <span className='homeDot' ref = {ref_ColorDotTop} />
+        <button ref = {ref_Home} onMouseOver={OnHomeEnter} onMouseOut={OnHomeLeave} onClick={OnHomeClick} >
+            <div style={{transform:'scale(0.3)',display:'inline'}}>
+             <Svg_Home />
+            </div>
+</button>
         <div className='header'>
-
-
         </div>
         <div className='poster'>
 
