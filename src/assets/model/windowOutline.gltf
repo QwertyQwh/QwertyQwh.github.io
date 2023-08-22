@@ -3,6 +3,10 @@
 		"generator":"Khronos glTF Blender I/O v3.5.30",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular",
+		"KHR_materials_ior"
+	],
 	"scene":2,
 	"scenes":[
 		{
@@ -21,7 +25,7 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"buildings"
+			"name":"windowOutline"
 		}
 	],
 	"animations":[
@@ -49,7 +53,7 @@
 					}
 				}
 			],
-			"name":"buildings",
+			"name":"windowOutline",
 			"samplers":[
 				{
 					"input":5,
@@ -71,23 +75,33 @@
 	],
 	"materials":[
 		{
-			"doubleSided":true,
-			"name":"buildings",
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularColorFactor":[
+						2.371357614441398,
+						2.371357614441398,
+						2.371357614441398
+					]
+				},
+				"KHR_materials_ior":{
+					"ior":1.4500000476837158
+				}
+			},
+			"name":"outline",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
+					0,
+					0,
+					0,
 					1
 				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"roughnessFactor":0.5527864098548889
 			}
 		}
 	],
 	"meshes":[
 		{
-			"name":"Mesh.22590",
+			"name":"Mesh.22594",
 			"primitives":[
 				{
 					"attributes":{
@@ -106,42 +120,42 @@
 		{
 			"bufferView":0,
 			"componentType":5123,
-			"count":11045,
+			"count":1199,
 			"normalized":true,
 			"type":"VEC4"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":11045,
+			"count":1199,
 			"max":[
-				256.898681640625,
-				0.9889307022094727,
-				115.3652572631836
+				14.363204002380371,
+				8.499170303344727,
+				10.948296546936035
 			],
 			"min":[
-				-151.14089965820312,
-				-230.6881561279297,
-				-292.67431640625
+				-14.363204002380371,
+				-1.0626800060272217,
+				-10.916417121887207
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":11045,
+			"count":1199,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":11045,
+			"count":1199,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":26694,
+			"count":3564,
 			"type":"SCALAR"
 		},
 		{
@@ -178,59 +192,59 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":88360,
+			"byteLength":9592,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":132540,
-			"byteOffset":88360,
+			"byteLength":14388,
+			"byteOffset":9592,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":88360,
-			"byteOffset":220900,
+			"byteLength":9592,
+			"byteOffset":23980,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":132540,
-			"byteOffset":309260,
+			"byteLength":14388,
+			"byteOffset":33572,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":53388,
-			"byteOffset":441800,
+			"byteLength":7128,
+			"byteOffset":47960,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":100,
-			"byteOffset":495188
+			"byteOffset":55088
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":495288
+			"byteOffset":55188
 		},
 		{
 			"buffer":0,
 			"byteLength":400,
-			"byteOffset":495588
+			"byteOffset":55488
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":495988
+			"byteOffset":55888
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":496288,
-			"uri":"buildings.bin"
+			"byteLength":56188,
+			"uri":"windowOutline.bin"
 		}
 	]
 }

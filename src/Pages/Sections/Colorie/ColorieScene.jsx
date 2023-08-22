@@ -47,12 +47,16 @@ export default forwardRef(function ColorieScene(props,ref){
     )
       useEffect(()=>{
         camera.zoom = height<width?0.8:0.8*width/height
-      },[width,height])
-
+        camera.updateProjectionMatrix();
+      })
+      useEffectOnce(()=>{
+        
+      })
 
 
     
     useInterval(()=>{
+
         if(!ref_threeObj.current){
             return
         }

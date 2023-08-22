@@ -6,7 +6,8 @@ import { useRef, useState } from "react"
 import * as THREE from 'three'
 import { extend, useFrame } from "@react-three/fiber"
 import { geometry } from "maath"
-import keyboard_Base from '../../../assets/textures/cap_BaseColor.png'
+import portal_Base from '../../../assets/textures/buildings_BaseColor.png'
+import portal_Roughness from '../../../assets/textures/buildings_Roughness.png'
 import { useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { Environment,Lightformer } from "@react-three/drei";
@@ -29,15 +30,22 @@ export default memo(function  ModelPortal(props){
     const buildings=  useGLTF('../../assets/model/buildings.gltf')
     const window=  useGLTF('../../assets/model/window.gltf')
     const portal =  useGLTF('../../assets/model/portal.gltf')
-    const txtr_keyboard_Base = useTexture(keyboard_Base)
-    txtr_keyboard_Base.flipY = false
+    const buildingOutline =  useGLTF('../../assets/model/buildingOutline.gltf')
+    const windowOutline =  useGLTF('../../assets/model/windowOutline.gltf')
+    const txtr_portal_Base = useTexture(portal_Base)
+    const txtr_portal_Roughness = useTexture(portal_Roughness)
+    txtr_portal_Base.flipY = false
+    txtr_portal_Roughness.flipY = false
     
     return  (<>
         <mesh geometry={window.nodes.window.geometry} >
-        <meshStandardMaterial />
+        <meshStandardMaterial map={txtr_portal_Base} roughnessMap={txtr_portal_Roughness}/>
         </mesh>
         <mesh geometry={portal.nodes.portal.geometry} >
         <meshStandardMaterial side={THREE.FrontSide}/>
+        </mesh>
+        <mesh geometry={windowOutline.nodes.windowOutline.geometry} >
+        <meshBasicMaterial color={"#1e1e1e"}  />
         </mesh>
     <mesh geometry={portal.nodes.portal.geometry} >
 
@@ -56,7 +64,10 @@ export default memo(function  ModelPortal(props){
         <Lightformer  form="circle" color="white" intensity={10} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
         </Environment>
             <mesh geometry={buildings.nodes.buildings.geometry} >
-            <meshStandardMaterial  />
+            <meshStandardMaterial flatShading = {true} map={txtr_portal_Base} roughnessMap={txtr_portal_Roughness}/>
+        </mesh>
+        <mesh geometry={buildingOutline.nodes.buildingOutline.geometry} >
+        <meshBasicMaterial color={"#1e1e1e"}  />
         </mesh>
         <Sky sunPosition={[0.5, 0.5, 0]} inclination={1} azimuth={0} />
           </MeshPortalMaterial>
