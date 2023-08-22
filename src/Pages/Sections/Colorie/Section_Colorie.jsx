@@ -18,6 +18,8 @@ import { useNavigate } from 'react-router-dom';
 import Svg_Home from '../../../assets/svg/home.svg'
 import ModelInk from './ModelInk';
 import settings from '../../../Settings'; 
+import { useThree } from '@react-three/fiber';
+import ColorieScene from './ColorieScene';
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
@@ -40,6 +42,7 @@ export default function Section_Colorie(props){
     const ref_MonthDay = useRef()
     const ref_Year = useRef()
     const ref_Home = useRef()
+    const ref_scene = useRef()
     const device = useContext(DeviceContext)
     const cursor = useContext(CursorContext)
     const navigate = useNavigate()
@@ -55,7 +58,6 @@ export default function Section_Colorie(props){
     const [colorDark, setColorDark] = useState("#7caca2");
     const [colorLight, setColorLight] = useState("#b0d0d3");
     const refs_bubbles = [...Array(num_bubbles)].map(()=>useRef())
-
     const IndexToRotation = (id)=>{
         //special condition here
         if(curPage.current<3){
@@ -197,7 +199,7 @@ export default function Section_Colorie(props){
             return
         }
         animCtrl_Transition.current = true
-        Rotate()
+        ref_scene.current.Rotate()
         ColorSwell({x:'10%',y:'100%'},colorsLight[page%num_bubbles],()=>{setColorLight(colorsLight[page%num_bubbles]);   setColorDark(colorsDark[page%num_bubbles]); })
         anime.timeline().add({
             targets:ref_Title.current,
@@ -264,7 +266,6 @@ export default function Section_Colorie(props){
         curPage.current = page
 
         refs_bubbles.forEach((elmt,order)=>{
-            console.log(IndexToPage(order));
             refs_bubbles[order].current.SetContent( IndexToPage(order)<blogList.current.length? blogList.current[IndexToPage(order)][1]:null,IndexToPage(order))
         })
 
@@ -361,43 +362,6 @@ export default function Section_Colorie(props){
   useEventListener('wheel', handleWheel,window);
     //#endregion
 
-    
-    //#region Canvas 
-    const ref_threeObj = useRef()
-    const {width,height} = useWindowSize()
-    const ref_camera = useRef()
-    
-
-    const targetRotation = useRef(0)
-    const rotateToPi = useRef(false)
-    const Rotate = ()=>{
-        rotateToPi.current = !rotateToPi.current
-        targetRotation.current = rotateToPi.current? Math.PI:0
-        
-    }   
-
-
-
-    
-    useInterval(()=>{
-        if(!ref_threeObj.current){
-            return
-        }
-        if(Math.abs(ref_threeObj.current.rotation.z-targetRotation.current)<0.01){
-            return
-        }
-        ref_threeObj.current.rotateZ(0.03*(Math.abs(targetRotation.current-ref_threeObj.current.rotation.z)))
-
-    },15)
-    const handleWindowMouseMove = e=>{
-        if(!ref_camera.current){
-            return
-        }
-        ref_camera.current.position.x = -(e.clientX/width-0.5)*3
-        ref_camera.current.position.y = (e.clientY/height-0.5)*3
-    }
-    useEventListener('mousemove',handleWindowMouseMove,[])
-//#endregion
     return (<>
         <div className='colorieBg' style={{backgroundColor: colorLight}}>
 
@@ -437,25 +401,11 @@ export default function Section_Colorie(props){
         <div className='threeCanvas'>
         <Canvas ref={ref_canvas} shadows flat dpr = {[1,2]} gl = {{
             toneMapping: ACESFilmicToneMapping,
-            antialias:true, alpha:true}}   className ='canvas'  style={{pointerEvents:"none"}}>
-        <Environment blur={1} resolution={512}>
-        <Lightformer
-        form="circle" // circle | ring | rect (optional, default = rect)
-        intensity={7} // power level (optional = 1)
-        color="white" // (optional = white)
-        scale={[1,1]} // Scale it any way you prefer (optional = [1, 1])
-        target={[0, 0, 0]}
-        position = {[-2, -1, 10]} // Target position (optional = undefined)
-        />
-        <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
-        <Lightformer  form="circle" color="white" intensity={10} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
-        </Environment>
-        <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={height<width?0.8:0.8*width/height} ref={ref_camera} />
-        <OrbitControls enableZoom={false} enablePan={false} enableRotate ={false}  enableDamping makeDefault/>
-        <group rotation={[Math.PI*0.5,0,0]} ref = {ref_threeObj} >
-            {cloneElement(props.model,{shadowColor:colorDark} )}
-        </group>
-        {!PRODUCTION? (<Perf position = 'bottom-right' />):null}
+            antialias:true, alpha:true}}
+            camera={{position:[0, 0, 30]}} 
+               className ='canvas'  style={{pointerEvents:"none"}}>
+        <ColorieScene colorLight = {colorLight} colorDark = {colorDark} model = {props.model} ref = {ref_scene} />
+
         </Canvas>
         </div>
         <div className='bubbles'>
