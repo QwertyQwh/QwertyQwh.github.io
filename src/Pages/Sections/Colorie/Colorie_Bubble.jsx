@@ -1,7 +1,8 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import anime from "animejs"
-const colorsLight = ["#b0d0d3","#ffcad4","#bfd6dd","#ffe5d9","#e0d9fc","#cad6ea","#fef9c2"]
-const colorsDark = ["#7caca2","#ffaaba","#80a8b7","#ffd2c0","#c0b1fc","#a3bfe8","#fcf1a4"]
+import settings from "../../../Settings"
+const colorsLight = settings.colorie.colorsLight
+const colorsDark = settings.colorie.colorsDark
 
 
 //todo ADD HIGHLIGHT bubble

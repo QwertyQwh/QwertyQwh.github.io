@@ -1,4 +1,4 @@
-import { useRef,useEffect, useState, useContext } from 'react';
+import { useRef,useEffect, useState, useContext, cloneElement } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
 import { Perf } from 'r3f-perf';
@@ -17,13 +17,13 @@ import { Number2Month, proper_modulo } from '../../../Utils/Utils';
 import { useNavigate } from 'react-router-dom';
 import Svg_Home from '../../../assets/svg/home.svg'
 import ModelInk from './ModelInk';
+import settings from '../../../Settings'; 
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
 // const fakers = {bubbleRad: 30,bubbleSpin:300,paletteRad:250,angleOffset:0}
-const colorsLight = ["#b0d0d3","#ffcad4","#bfd6dd","#ffe5d9","#e0d9fc","#cad6ea","#fef9c2"]
-const colorsDark = ["#7caca2","#ffaaba","#80a8b7","#ffd2c0","#c0b1fc","#a3bfe8","#fcf1a4"]
-
+const colorsLight = settings.colorie.colorsLight
+const colorsDark = settings.colorie.colorsDark
 
 
 export default function Section_Colorie(props){
@@ -127,7 +127,6 @@ export default function Section_Colorie(props){
     const animReadSwell = useRef()
     const PlayReadSwell = ()=>{
         cursor.Focus.current()
-        console.log('entering')
         animReadSwell.current ??= anime({
             targets: ref_Read.current,
             scale:[1,1.5],
@@ -141,8 +140,6 @@ export default function Section_Colorie(props){
 
     const PlayReadShrink = ()=>{
         cursor.DeFocus.current()
-
-        console.log('leaving')
         animReadShrink.current ??= anime({
             targets: ref_Read.current,
             scale:[1.5,1],
@@ -378,21 +375,7 @@ export default function Section_Colorie(props){
         targetRotation.current = rotateToPi.current? Math.PI:0
         
     }   
-    if(!PRODUCTION){
-        // const {foo} = useControls('cursor',{
-        //     foo: button(() => {    
-        //         Rotate()
-        //         if(rotateToPi.current){
-        //             setColorDark("#ffaaba")
-        //             setColorLight("#ffcad4")
-        //         }else{
-        //             setColorDark("#7caca2")
-        //             setColorLight("#b0d0d3")
-        //         }
-    
-        //     }),
-        // })
-    }
+
 
 
     
@@ -450,42 +433,36 @@ export default function Section_Colorie(props){
         <div>
         </div>
 
-        <div className='bubbles'>
-        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
-        </div>
-
 
         <div className='threeCanvas'>
-
         <Canvas ref={ref_canvas} shadows flat dpr = {[1,2]} gl = {{
             toneMapping: ACESFilmicToneMapping,
             antialias:true, alpha:true}}   className ='canvas'  style={{pointerEvents:"none"}}>
-            
-        {/* <ambientLight intensity={0.5}/> */}
         <Environment blur={1} resolution={512}>
         <Lightformer
-    form="circle" // circle | ring | rect (optional, default = rect)
-    intensity={7} // power level (optional = 1)
-    color="white" // (optional = white)
-    scale={[1,1]} // Scale it any way you prefer (optional = [1, 1])
-    target={[0, 0, 0]}
-    position = {[-2, -1, 10]} // Target position (optional = undefined)
-    />
-    <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
-    <Lightformer  form="circle" color="white" intensity={10} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
-
-    </Environment>
+        form="circle" // circle | ring | rect (optional, default = rect)
+        intensity={7} // power level (optional = 1)
+        color="white" // (optional = white)
+        scale={[1,1]} // Scale it any way you prefer (optional = [1, 1])
+        target={[0, 0, 0]}
+        position = {[-2, -1, 10]} // Target position (optional = undefined)
+        />
+        <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
+        <Lightformer  form="circle" color="white" intensity={10} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
+        </Environment>
         <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={height<width?0.8:0.8*width/height} ref={ref_camera} />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate ={false}  enableDamping makeDefault/>
         <group rotation={[Math.PI*0.5,0,0]} ref = {ref_threeObj} >
-        <ModelInk shadowColor = {colorDark} />
+            {cloneElement(props.model,{shadowColor:colorDark} )}
         </group>
         {!PRODUCTION? (<Perf position = 'bottom-right' />):null}
         </Canvas>
         </div>
+        <div className='bubbles'>
+        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
+        </div>
         <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
             <div className='txtPalette' >
-            {/* READ */}
             </div>
         </div>
         <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,top:`${-bubbleSpin*.5-paletteRad }px`,right:`${-paletteRad }px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink} onClick={OnReadClick}>

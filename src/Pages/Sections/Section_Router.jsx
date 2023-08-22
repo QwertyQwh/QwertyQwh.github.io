@@ -9,6 +9,9 @@ export default function Section_Router(props){
         case 'coding':
             return <Section_Colorie {...data} />
             break;
+        case 'writing':
+            return <Section_Colorie {...data} />
+            break;   
     
         default:
             

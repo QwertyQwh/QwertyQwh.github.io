@@ -24,6 +24,7 @@ import { randInt } from 'three/src/math/MathUtils'
 import { useNavigate} from 'react-router-dom'
 
 
+
 //TODO: CHECK TRANSITION BUG && Usereducer for index
 const introPage = 0;
 const codingPage = 1;
@@ -338,8 +339,9 @@ export default memo(function Home(){
       loop: false,
     })
   }
-  const PlayCodingCoffeSteamLoop = ()=>{
-    anime({
+  const Animcoffeeloop = useRef()
+  const PlayCodingCoffeeSteamLoop = ()=>{
+    Animcoffeeloop.current ??= anime({
       targets: '#steam  path',
       strokeDashoffset: [anime.setDashoffset, -28.8],
       easing: 'easeInOutSine',
@@ -835,7 +837,7 @@ export default memo(function Home(){
     document.querySelectorAll('#Writing_Sheep').forEach((elmt)=>{elmt.style.transform = 'scale(0)'})
     document.querySelectorAll('.introZhLetters').forEach((elmt)=>{elmt.style.opacity = 0})
 
-    PlayCodingCoffeSteamLoop()
+    PlayCodingCoffeeSteamLoop()
     PlayGlobalFadeIn()
     PlayAvatorBlinkLoop()
     PlayScrollDownLoop()

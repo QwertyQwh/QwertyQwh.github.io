@@ -96,6 +96,18 @@ export default {
         about:"A bunch of desc",
         thumbnail: '5',
         sectionId: 'coding'
+    },
+    testwriting:{
+        content: <Blog_Test />,
+        title: "Thie is TestWriting",
+        date: {
+            month:8,
+            day:25,
+            year:2023,
+        },
+        about:"A bunch of desc",
+        thumbnail: '5',
+        sectionId: 'writing'
     }
 
 }
