@@ -2,7 +2,7 @@ import { useRef,useEffect, useState, useContext } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
 import { Perf } from 'r3f-perf';
-import ColorieShowcase from './ColorieShowcase';
+import ModelKeyboard from './ModelKeyboard';
 import anime from 'animejs';
 import { useControls,button } from 'leva';
 import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'usehooks-ts';
@@ -16,6 +16,7 @@ import BlogCatalog from '../../../Catalogs/BlogCatalog';
 import { Number2Month, proper_modulo } from '../../../Utils/Utils';
 import { useNavigate } from 'react-router-dom';
 import Svg_Home from '../../../assets/svg/home.svg'
+import ModelInk from './ModelInk';
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
@@ -471,13 +472,13 @@ export default function Section_Colorie(props){
     position = {[-2, -1, 10]} // Target position (optional = undefined)
     />
     <Lightformer form="ring" color={colorLight} intensity={6} scale={9} position={[0, 4, 10]} target={[0, 0, 0]} />
-    <Lightformer  form="circle" color="white" intensity={20} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
+    <Lightformer  form="circle" color="white" intensity={10} scale={5} position={[-8, 0, 10]} target={[0, 0, 0]} />
 
     </Environment>
         <PerspectiveCamera makeDefault position={[0, 0, 30]} zoom={height<width?0.8:0.8*width/height} ref={ref_camera} />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate ={false}  enableDamping makeDefault/>
-        <group rotation={[Math.PI*0.5,Math.PI*0.25,0]} ref = {ref_threeObj} >
-        <ColorieShowcase shadowColor = {colorDark} />
+        <group rotation={[Math.PI*0.5,0,0]} ref = {ref_threeObj} >
+        <ModelInk shadowColor = {colorDark} />
         </group>
         {!PRODUCTION? (<Perf position = 'bottom-right' />):null}
         </Canvas>
