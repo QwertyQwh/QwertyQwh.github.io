@@ -913,7 +913,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:500
+      delay:600
     }).add({
       targets: '#art_1',
       translateY:'-=20',
@@ -925,7 +925,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:900
+      delay:1000
     }).add({
       targets: '#art_2',
       translateY:'-=20',
@@ -937,7 +937,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:1300
+      delay:1400
     }).add({
       targets: '#art_3',
       translateY:'-=20',
