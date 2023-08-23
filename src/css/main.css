@@ -339,6 +339,18 @@ body,
   background-color: #EADCC2;
   position: absolute;
 }
+.artTrack{
+  position:absolute;
+  text-align: center;
+  width: 40vw;
+  left: 0vw;
+  display: block;
+}
+
+#tracks{
+  stroke-dasharray: 80 1000;
+  stroke-dashoffset: 80;
+}
 .homeTitles{
   position:absolute;
   text-align: center;
@@ -413,10 +425,13 @@ body,
 
 .artDot{
   position: absolute;
-  height: 3px;
+  height: 4px;
   background-color: #cd522f;
   border-radius: 50%;
   width: 3px;
+  opacity: 0;
+  left: calc(20vw - 1.9em);
+  top: calc(-2.1vw);
 }
 
 

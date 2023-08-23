@@ -10,12 +10,13 @@ import Svg_ShapeWritingFan from './assets/svg/shape_writing_fan.svg'
 import Svg_ShapeWritingSheep from './assets/svg/shape_writing_sheep.svg'
 import Svg_ShapeArtDavid from './assets/svg/shape_art_david.svg'
 import Svg_ShapeArtDavidOverlay from './assets/svg/shape_art_david_overlay.svg'
-import Svg_ShapeArtHand from './assets/svg/shape_art_hand.svg'
 import Svg_ShapeArtHandOverlay from './assets/svg/shape_art_hand_overlay.svg'
 import Svg_ShapeArtLog1 from './assets/svg/shape_art_log1.svg'
 import Svg_ShapeArtLog2 from './assets/svg/shape_art_log2.svg'
 import Svg_ShapeArtAngry from './assets/svg/shape_art_angry.svg'
 import Svg_Avator from './assets/svg/avator.svg'
+import Svg_ArtTrack from './assets/svg/art_track.svg'
+import Svg_ArtTracks from './assets/svg/art_tracks.svg'
 import Svg_ScrollDown from './assets/svg/scrollDown.svg'
 import { useEffectOnce, useWindowSize,useEventListener} from 'usehooks-ts'
 import { useSwipeable } from 'react-swipeable'
@@ -63,8 +64,8 @@ Well, mostly random thoughts.
   txtCoding.split("").forEach((val,ind)=> {cntntCoding.push( <span key = {`coding_${ind}`}>
     <a  style ={{fontFamily: "OCRA"}} className='codingLetters'>{val}</a>
     </span>)})
-  txtArt.split("").forEach((val,ind)=> {cntntArt.push( <span key = {`art_${ind}`}>
-    <a  style ={{fontFamily: "Amatic"}} className='artLetters'>{val}</a>
+  txtArt.split("").forEach((val,ind)=> {cntntArt.push( <span key = {`art_${ind}`} >
+    <a id = {`art_${ind}`} style ={{fontFamily: "Amatic"}} className='artLetters'>{val}</a>
     </span>)})
   txtWriting.split("").forEach((val,ind)=> {cntntWriting.push( <span key = {`writing_${ind}`}>
   <a  style ={{fontFamily: "OLDENG"}} className='writingLetters'>{val}</a>
@@ -109,7 +110,7 @@ export default memo(function Home(){
   const writingSheep_3 = useRef()
   const artDavid = useRef()
   const artOverlays = useRef()
-  const artShapes = useRef()
+  const artDot = useRef()
   const artLog1 = useRef()
   const artLog2 = useRef()
   const artAngry = useRef()
@@ -539,7 +540,7 @@ export default memo(function Home(){
       duration:600,
     },"-=300")
   }
-
+  
   const writingBookLettersLoopAnims = useRef([])
   const PlayWritingBookLettersLoop = ()=>{
     for (let i = 0; i < txtWritingBook.length; i++) {
@@ -842,6 +843,109 @@ export default memo(function Home(){
       easing: easingFunc,
       loop: false,
     })
+    anime({
+      targets: ".artTrack",
+      translateY: (-index+ artPage+0.5)*height-0.2*0.4*width,
+      duration:3500,
+      easing: easingFunc,
+      loop: false,
+    })
+  }
+  const track1 = anime.path('#track1 path');
+  const track2 = anime.path('#track2 path');
+  const track3 = anime.path('#track3 path');
+  const track4 = anime.path('#track4 path');
+  const animDotJump = useRef()
+  const PlayArtDotJump = ()=>{
+    if(animDotJump.current){
+      return
+    }
+    artDot.current.style.opacity = 1
+    anime.timeline({      targets: '.artDot'}).add({
+      translateX: track1('x'),
+      translateY: track1('y'),
+      easing: 'cubicBezier(0.000, 0.755, 1.000, 0.535)',
+      duration: 400,
+    }).add({
+      translateX: track2('x'),
+      translateY: track2('y'),
+      easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
+      duration: 400,
+    }).add({
+      translateX: track3('x'),
+      translateY: track3('y'),
+      easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
+      duration: 400,
+    }).add({
+      translateX: track4('x'),
+      translateY: track4('y'),
+      easing: 'cubicBezier(0.000, 0.440, 1.000, 0.325)',
+      duration: 400,
+      complete:()=>{
+    artDot.current.style.opacity = 0
+      }
+    })
+    animDotJump.current ??= anime.timeline().add({
+      targets: '#track1 path',
+      strokeDashoffset: [80, -300],
+      easing: 'cubicBezier(0.000, 0.755, 1.000, 0.535)',
+      duration: 400,
+      delay:200
+    }).add({
+      targets: '#track2 path',
+      strokeDashoffset: [80, -230],
+      easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
+      duration: 400,
+    }).add({
+      targets: '#track3 path',
+      strokeDashoffset: [80, -245],
+      easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
+      duration: 400,
+    }).add({
+      targets: '#track4 path',
+      strokeDashoffset: [80, -320],
+      easing: 'cubicBezier(0.000, 0.440, 1.000, 0.325)',
+      duration: 400,
+      complete:()=>{
+        animDotJump.current = null
+      }
+    })
+    anime.timeline().add({
+      targets: '#art_1',
+      translateY:'+=20',
+      easing: 'easeOutQuad',
+      duration:200,
+      delay:450
+    }).add({
+      targets: '#art_1',
+      translateY:'-=20',
+      easing: 'easeInQuad',
+      duration:400,
+    })
+    anime.timeline().add({
+      targets: '#art_2',
+      translateY:'+=20',
+      easing: 'easeOutQuad',
+      duration:200,
+      delay:850
+    }).add({
+      targets: '#art_2',
+      translateY:'-=20',
+      easing: 'easeInQuad',
+      duration:400,
+    })
+    anime.timeline().add({
+      targets: '#art_3',
+      translateY:'+=20',
+      easing: 'easeOutQuad',
+      duration:200,
+      delay:1250
+    }).add({
+      targets: '#art_3',
+      translateY:'-=20',
+      easing: 'easeInQuad',
+      duration:400,
+    })
   }
   const PlayWritingBookOverlayTextFadeIn = ()=>{
     anime({
@@ -929,6 +1033,8 @@ export default memo(function Home(){
     document.querySelector("#log1").style.transform = " translateX(-2vw) translateY(2vw) scale(1)"
     document.querySelector("#log2").style.transform = " translateX(2vw) translateY(2vw) scale(1)"
     document.querySelector("#angry").style.transform = " translateX(-2vw) translateY(2vw) scale(1)"
+    // document.querySelector("#artTrack").style.transform = "translateX(0vw) translateY(-14.7vw) scale(0.195)"
+    document.querySelector("#tracks").style.transform = "translateX(0vw) translateY(-14.7vw) scale(0.195)"
     // document.querySelector("#hand").style.transform = "translateX(-3vw)  translateY(8vw) scale(1) "
     document.querySelector(".scrollDown").style.opacity = 0
     writingBookOverlayText.current.style.opacity = 0
@@ -939,7 +1045,6 @@ export default memo(function Home(){
     document.querySelector("#Writing_Stage_Fan").style.transform = 'scale(0)'
     document.querySelectorAll('#Writing_Sheep').forEach((elmt)=>{elmt.style.transform = 'scale(0)'})
     document.querySelectorAll('.introZhLetters').forEach((elmt)=>{elmt.style.opacity = 0})
-    
     PlayCodingCoffeeSteamLoop()
     PlayGlobalFadeIn()
     PlayAvatorBlinkLoop()
@@ -1340,6 +1445,8 @@ animCtrl_IntroTitle.current ??= anime.timeline()
 },'-=1400')
 }
 
+
+
 const OnTitlesEnter = (page)=>{
   switch(page){
     case codingPage:
@@ -1351,6 +1458,8 @@ const OnTitlesEnter = (page)=>{
     case introPage:
       OnTitleIntro();
       break
+    case artPage:
+    PlayArtDotJump();
   }
 }
 //#endregion
@@ -1470,8 +1579,15 @@ return (<div {...handlers}>
   </div>
   </div>
 
+  {/* <div className = 'artTrack' >
+  <Svg_ArtTrack  />
+  </div> */}
+  <div className = 'artTrack' >
+  <Svg_ArtTracks  />
+      <div className='artDot' ref = {artDot}/>
+      </div>
+    <div className='homeTitles'ref={titleArt} onMouseEnter={()=>OnTitlesEnter(artPage)}>
 
-    <div className='homeTitles'ref={titleArt}>
     {cntntArt}
     </div>
   </span>
