@@ -102,6 +102,18 @@ export default function Section_Colorie(props){
         const oridnalTarget = OrdinalCurIndex(targetId)
         return ordinalSelf-oridnalTarget
     }
+    useEffect(()=>{
+        console.log(props.id)
+        TransitTo(0)
+        blogList.current = []
+        Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
+        ref_About.current.textContent = blogList.current[curPage.current][1].about
+        const date = blogList.current[curPage.current][1].date
+        ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
+        ref_Year.current.textContent =  date.year
+        refs_bubbles.forEach((elmt,id)=>{ refs_bubbles[id].current.SetContent(IndexToPage(id)<blogList.current.length? blogList.current[IndexToPage(id)][1]:null,id)})
+        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),0,OrdinalCurIndex(order) ))
+    },[props])
 
     useEffectOnce(()=>{
         anime.timeline({loop:true}).add({
@@ -115,14 +127,7 @@ export default function Section_Colorie(props){
             duration:1500,
             easing:'easeInOutSine'
         })
-        Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
-        ref_Title.current.textContent = blogList.current[curPage.current][1].title
-        ref_About.current.textContent = blogList.current[curPage.current][1].about
-        const date = blogList.current[curPage.current][1].date
-        ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
-        ref_Year.current.textContent =  date.year
-        refs_bubbles.forEach((elmt,id)=>{ refs_bubbles[id].current.SetContent(IndexToPage(id)<blogList.current.length? blogList.current[IndexToPage(id)][1]:null,id)})
-        refs_bubbles.forEach((elmt,order)=>refs_bubbles[order].current.SetRot(IndexToRotation(order),curPage.current%num_bubbles,OrdinalCurIndex(order),0,OrdinalCurIndex(order) ))
+    
    
 
     })
@@ -199,7 +204,7 @@ export default function Section_Colorie(props){
             return
         }
         animCtrl_Transition.current = true
-        ref_scene.current.Rotate()
+        ref_scene.current?.Rotate()
         ColorSwell({x:'10%',y:'100%'},colorsLight[page%num_bubbles],()=>{setColorLight(colorsLight[page%num_bubbles]);   setColorDark(colorsDark[page%num_bubbles]); })
         anime.timeline().add({
             targets:ref_Title.current,
