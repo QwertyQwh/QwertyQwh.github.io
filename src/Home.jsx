@@ -8,6 +8,13 @@ import Svg_ShapeWritingOverlay from './assets/svg/shape_writing_overlay.svg'
 import Svg_ShapeWritingStage from './assets/svg/shape_writing_stage.svg'
 import Svg_ShapeWritingFan from './assets/svg/shape_writing_fan.svg'
 import Svg_ShapeWritingSheep from './assets/svg/shape_writing_sheep.svg'
+import Svg_ShapeArtDavid from './assets/svg/shape_art_david.svg'
+import Svg_ShapeArtDavidOverlay from './assets/svg/shape_art_david_overlay.svg'
+import Svg_ShapeArtHand from './assets/svg/shape_art_hand.svg'
+import Svg_ShapeArtHandOverlay from './assets/svg/shape_art_hand_overlay.svg'
+import Svg_ShapeArtLog1 from './assets/svg/shape_art_log1.svg'
+import Svg_ShapeArtLog2 from './assets/svg/shape_art_log2.svg'
+import Svg_ShapeArtAngry from './assets/svg/shape_art_angry.svg'
 import Svg_Avator from './assets/svg/avator.svg'
 import Svg_ScrollDown from './assets/svg/scrollDown.svg'
 import { useEffectOnce, useWindowSize,useEventListener} from 'usehooks-ts'
@@ -24,7 +31,6 @@ import { randInt } from 'three/src/math/MathUtils'
 import { useNavigate} from 'react-router-dom'
 
 
-
 //TODO: CHECK TRANSITION BUG && Usereducer for index
 const introPage = 0;
 const codingPage = 1;
@@ -32,7 +38,7 @@ const artPage = 2;
 const writingPage = 3;
 const maxPage = 3
 const txtCoding = 'coding_'
-const txtArt = "~Art~"
+const txtArt = "·Art·"
 const txtWriting = "Writing "
 const txtWritingSuffix = ", with a pen."
 const txtIntro = "Weihang Qin"
@@ -80,6 +86,7 @@ export default memo(function Home(){
   const introSection = useRef()
   const codingSection = useRef()
   const writingSection = useRef()
+  const artSection = useRef()
   const titleCoding = useRef()
   const titleArt = useRef()
   const titleWriting = useRef()
@@ -100,6 +107,14 @@ export default memo(function Home(){
   const writingSheep_1 = useRef()
   const writingSheep_2 = useRef()
   const writingSheep_3 = useRef()
+  const artDavid = useRef()
+  const artOverlays = useRef()
+  const artShapes = useRef()
+  const artLog1 = useRef()
+  const artLog2 = useRef()
+  const artAngry = useRef()
+  const artDavidOverlay = useRef()
+  const artHandOverlay = useRef()
   const hintCopy = useRef()
   const laptopOverlay = useRef()
   const containerIcons = useRef()
@@ -120,7 +135,7 @@ export default memo(function Home(){
   //#region Animations
   const PlayGlobalFadeIn = ()=>{
     anime({
-      targets: [writingSection.current,codingSection.current],
+      targets: [writingSection.current,codingSection.current,artSection.current],
       opacity: [-1,1],
       easing: 'steps(2)',
       duration: 8000,
@@ -744,6 +759,90 @@ export default memo(function Home(){
       easing: 'easeInOutQuad'
     })
   }
+
+  const PlayArtHandLoop = ()=>{
+    anime.timeline({loop:true,
+      targets:artHandOverlay.current,
+    }).add({
+      translateY: [0,-50],
+      duration: 500,
+    }).add({
+      translateY: [-50,-30],
+      duration: 500,
+      endDelay:500
+    }).add({
+      rotate:[0,45],
+      duration:1000,
+      endDelay: 800,
+    }).add({
+      rotate:[45,0],
+      duration:1000,
+    }).add({
+      translateY: [-30,0],
+      duration: 500,
+      endDelay:1000,
+    })
+
+  }
+  const artLogsFadeInAnim = useRef()
+  const artLogsFadeOutAnim = useRef()
+  const PlayArtLogsFadeIn = ()=>{
+    console.log('fading in')
+    artLogsFadeOutAnim.current?.pause()
+    artLogsFadeOutAnim.current = null
+    artLogsFadeInAnim.current ??= anime.timeline().add({
+      targets:artAngry.current,
+      scale:1,
+      duration:600,
+    }).add({
+      targets:artLog1.current,
+      scale:1,
+      duration:900,
+    }).add({
+      targets:artLog2.current,
+      scale:1,
+      duration:900,
+    },'+=500')
+  }
+  const PlayArtLogsFadeOut = ()=>{
+    console.log('fading out')
+    artLogsFadeInAnim.current?.pause()
+    artLogsFadeInAnim.current = null
+    artLogsFadeOutAnim.current ??= anime.timeline().add({
+      targets:[artLog2.current,artAngry.current,artLog1.current],
+      scale:0,
+      duration:800,
+    })
+  }
+  const PlayArtTransition = ()=>{
+    //HACK: When we transition to another page while the fading out anim is playing, the shapes don't get to disappear.
+    artAngry.current.style.transform = 'scale(0)'
+    artLog1.current.style.transform = 'scale(0)'
+    artLog2.current.style.transform = 'scale(0)'
+    anime({
+      targets: [artAngry.current,artLog1.current,artLog2.current,artDavid.current],
+      translateY: (3*(-index+artPage)+0.5)*height-0.35*0.5*width-0.15*width,
+      duration:2000,
+      easing: easingFunc,
+      loop: false,
+    })
+    anime({
+      targets: artOverlays.current,
+      translateY: (3*(-index+artPage)+0.5)*height-0.35*0.5*width-0.15*width,
+      duration:4000,
+      easing: easingFunc,
+      loop: false,
+
+    })
+    anime({
+      targets: ".artLetters",
+      translateY: (-index+ artPage+0.5)*height-0.2*0.4*width,
+      delay: (el, i) => 150*i,
+      duration:3500,
+      easing: easingFunc,
+      loop: false,
+    })
+  }
   const PlayWritingBookOverlayTextFadeIn = ()=>{
     anime({
       targets: writingBookOverlayText.current,
@@ -781,16 +880,10 @@ export default memo(function Home(){
     }
       PlayCodingTransition()
       PlayWritingTransition()
+      PlayArtTransition()
       PlayIntroTransition()
   
-      anime({
-        targets: ".artLetters",
-        translateY: (-index+ artPage+0.5)*height-0.2*0.4*width,
-        delay: (el, i) => 150*i,
-        duration:3500,
-        easing: easingFunc,
-        loop: false,
-      })
+
       animCtrl_Transition.current = true
       mobileFirstClick.current = 0
 
@@ -830,13 +923,23 @@ export default memo(function Home(){
   useEffectOnce(()=>{
     //hack to override the scale before anime
     document.querySelector("#Laptop_Overlay_Center").style.transform = "scale(0.488)"
+    document.querySelector("#david").style.transform = "translateX(-2vw) translateY(2vw) scale(1) "
+    document.querySelector("#davidOverlay").style.transform = "translateX(-2vw) translateY(-70.5vw) scale(1) "
+    document.querySelector("#handOverlay").style.transform = " translateX(0vw) translateY(0vw) scale(1)"
+    document.querySelector("#log1").style.transform = " translateX(-2vw) translateY(2vw) scale(1)"
+    document.querySelector("#log2").style.transform = " translateX(2vw) translateY(2vw) scale(1)"
+    document.querySelector("#angry").style.transform = " translateX(-2vw) translateY(2vw) scale(1)"
+    // document.querySelector("#hand").style.transform = "translateX(-3vw)  translateY(8vw) scale(1) "
     document.querySelector(".scrollDown").style.opacity = 0
     writingBookOverlayText.current.style.opacity = 0
+    artAngry.current.style.transform = 'scale(0)'
+    artLog1.current.style.transform = 'scale(0)'
+    artLog2.current.style.transform = 'scale(0)'
     document.querySelector("#Writing_Stage").style.transform = 'scaleY(0)'
     document.querySelector("#Writing_Stage_Fan").style.transform = 'scale(0)'
     document.querySelectorAll('#Writing_Sheep').forEach((elmt)=>{elmt.style.transform = 'scale(0)'})
     document.querySelectorAll('.introZhLetters').forEach((elmt)=>{elmt.style.opacity = 0})
-
+    
     PlayCodingCoffeeSteamLoop()
     PlayGlobalFadeIn()
     PlayAvatorBlinkLoop()
@@ -845,7 +948,8 @@ export default memo(function Home(){
     PlayDotDotDotLoop()
     PlayWritingFanLoop()
     PlayWritingSheepLoop()
-    setIndex(0)
+    PlayArtHandLoop()
+    setIndex(2)
   })
 
 //#region IconEvents
@@ -1058,13 +1162,17 @@ const OnShapesEnter = (page)=>{
       PlayWritingStageFadeIn()
       dotdotdotLoop.current.play()
       break;
+    case artPage:
+      if(animCtrl_Transition.current){
+        return
+      }
+      PlayArtLogsFadeIn()
+      break;
   }
 
 }
 const OnShapesLeave = (page)=>{
-  // if(isInTransition.current){
-  //   return
-  // }
+
   mobileFirstClick.current = 0
   cursor.DeFocus.current()
   switch (page) {
@@ -1083,11 +1191,16 @@ const OnShapesLeave = (page)=>{
       PlayWritingStageFadeOut()
       dotdotdotLoop.current.pause()
       break;
+    case artPage:
+
+      PlayArtLogsFadeOut()
+      break;
   }
 }
 const mobileFirstClick = useRef(0)
 const OnShapesClick = (page)=>{
   if(device=='mobile'&& mobileFirstClick.current == 0){
+    console.log('first Click')
     mobileFirstClick.current++
     return
   }
@@ -1104,6 +1217,9 @@ const OnShapesClick = (page)=>{
       PlayDotSwell('65%', '65%',"writing")
       cursor.DeFocus.current()
       break;
+    case artPage:
+      PlayDotSwell('65%', '50%',"art")
+      cursor.DeFocus.current()
   }
 }
 //#endregion
@@ -1328,11 +1444,37 @@ return (<div {...handlers}>
   </span>
   </div>
   </span>
+  <span className='_ArtSection' ref = {artSection} >
+  <div style={{position:'absolute'}} ref = {artOverlays}>
+  <div className='homeOverlays david' ref={artDavidOverlay} >
+  <Svg_ShapeArtDavidOverlay />
+  </div>
+  <div className='homeOverlays hand' ref={artHandOverlay} >
+  <Svg_ShapeArtHandOverlay />
+  </div>
+  </div>
   
+  <div   onMouseEnter={()=>OnShapesEnter(artPage)} onMouseLeave = {()=>OnShapesLeave(artPage)} onClick={()=>OnShapesClick(artPage)}>
 
-  <div className='homeTitles'ref={titleArt}>
-  {cntntArt}
-</div>
+  <div className='homeShapes david' ref={artDavid} >
+  <Svg_ShapeArtDavid />
+  </div>
+  <div className='homeShapes homeLog1' ref = {artLog1}>
+  <Svg_ShapeArtLog1 />
+  </div>
+  <div className='homeShapes angry' ref = {artAngry}>
+  <Svg_ShapeArtAngry />
+  </div>
+  <div className='homeShapes homeLog2'ref = {artLog2} >
+  <Svg_ShapeArtLog2 />
+  </div>
+  </div>
+
+
+    <div className='homeTitles'ref={titleArt}>
+    {cntntArt}
+    </div>
+  </span>
 
 <span className='_IconSection'>
 <div className='homeIconContainer' ref = {containerIcons}>

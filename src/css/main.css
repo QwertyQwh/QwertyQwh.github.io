@@ -280,6 +280,30 @@ body,
   text-align: center;
   mix-blend-mode: multiply;
 }
+
+.homeLog1{
+  mix-blend-mode: initial;
+}
+.homeLog2{
+  mix-blend-mode: initial;
+}
+
+.angry{
+  mix-blend-mode: initial;
+}
+.homeOverlays.hand{
+  transform-origin: 85% bottom;
+}
+.homeShapes.angry{
+  transform-origin: 38% calc(50vh - 20vw);
+}
+.homeShapes.homeLog1{
+  transform-origin: 45% calc(50vh - 18vw);
+}
+.homeShapes.homeLog2{
+  transform-origin: 70% calc(50vh + 25vw);
+}
+
 .homeOverlays{
   position: absolute;
   text-align: center;
@@ -387,6 +411,14 @@ body,
   transform: scale(0);
 }
 
+.artDot{
+  position: absolute;
+  height: 3px;
+  background-color: #cd522f;
+  border-radius: 50%;
+  width: 3px;
+}
+
 
 /* Home Icon Section */
 .homeIconContainer{
@@ -423,8 +455,6 @@ body,
   color:#EADCC2;
   text-align: center;
 }
-
-
 
 
 
