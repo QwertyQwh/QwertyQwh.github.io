@@ -31,7 +31,9 @@ export default memo(function  ModelKeyboard(props){
         {/* <mesh geometry={model.nodes.outline.geometry} position={[0,0,0]} scale={1.6}>
         <meshBasicMaterial color={"#ba957b"} depthWrite={false} />
         </mesh> */}
-        <mesh geometry={model.nodes.outline.geometry} position={[0,0,0]} scale={1.5}>
+        <group scale={1.9}>
+
+        <mesh geometry={model.nodes.outline.geometry} position={[0,0,0]} scale={1.3}>
         <meshBasicMaterial color={props.shadowColor} depthWrite={false} />
         </mesh>
         <mesh geometry={model.nodes.board.geometry}  >
@@ -42,6 +44,7 @@ export default memo(function  ModelKeyboard(props){
         <meshBasicMaterial  color={'#111111'} />
         </mesh>
 
+        </group>
 
         </>)
 })

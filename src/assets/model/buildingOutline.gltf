@@ -101,7 +101,7 @@
 	],
 	"meshes":[
 		{
-			"name":"Mesh.22595",
+			"name":"Mesh.007",
 			"primitives":[
 				{
 					"attributes":{
@@ -120,42 +120,42 @@
 		{
 			"bufferView":0,
 			"componentType":5123,
-			"count":9545,
+			"count":7384,
 			"normalized":true,
 			"type":"VEC4"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":9545,
+			"count":7384,
 			"max":[
-				36.08940505981445,
+				35.25061798095703,
 				1.4872199296951294,
-				53.60511779785156
+				53.027767181396484
 			],
 			"min":[
-				-43.26834487915039,
-				-101.95301818847656,
-				-52.3524169921875
+				-42.55366516113281,
+				-101.23834228515625,
+				-51.606876373291016
 			],
 			"type":"VEC3"
 		},
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":9545,
+			"count":7384,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":9545,
+			"count":7384,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":19071,
+			"count":13476,
 			"type":"SCALAR"
 		},
 		{
@@ -192,58 +192,58 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":76360,
+			"byteLength":59072,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":114540,
-			"byteOffset":76360,
+			"byteLength":88608,
+			"byteOffset":59072,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":76360,
-			"byteOffset":190900,
+			"byteLength":59072,
+			"byteOffset":147680,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":114540,
-			"byteOffset":267260,
+			"byteLength":88608,
+			"byteOffset":206752,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":38142,
-			"byteOffset":381800,
+			"byteLength":26952,
+			"byteOffset":295360,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":100,
-			"byteOffset":419944
+			"byteOffset":322312
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":420044
+			"byteOffset":322412
 		},
 		{
 			"buffer":0,
 			"byteLength":400,
-			"byteOffset":420344
+			"byteOffset":322712
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":420744
+			"byteOffset":323112
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":421044,
+			"byteLength":323412,
 			"uri":"buildingOutline.bin"
 		}
 	]

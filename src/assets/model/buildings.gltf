@@ -87,7 +87,7 @@
 	],
 	"meshes":[
 		{
-			"name":"Mesh.22590",
+			"name":"Mesh.003",
 			"primitives":[
 				{
 					"attributes":{
@@ -106,14 +106,14 @@
 		{
 			"bufferView":0,
 			"componentType":5123,
-			"count":11045,
+			"count":7317,
 			"normalized":true,
 			"type":"VEC4"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":11045,
+			"count":7317,
 			"max":[
 				256.898681640625,
 				0.9889307022094727,
@@ -129,19 +129,19 @@
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":11045,
+			"count":7317,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":11045,
+			"count":7317,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":26694,
+			"count":13638,
 			"type":"SCALAR"
 		},
 		{
@@ -178,58 +178,58 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":88360,
+			"byteLength":58536,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":132540,
-			"byteOffset":88360,
+			"byteLength":87804,
+			"byteOffset":58536,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":88360,
-			"byteOffset":220900,
+			"byteLength":58536,
+			"byteOffset":146340,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":132540,
-			"byteOffset":309260,
+			"byteLength":87804,
+			"byteOffset":204876,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":53388,
-			"byteOffset":441800,
+			"byteLength":27276,
+			"byteOffset":292680,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":100,
-			"byteOffset":495188
+			"byteOffset":319956
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":495288
+			"byteOffset":320056
 		},
 		{
 			"buffer":0,
 			"byteLength":400,
-			"byteOffset":495588
+			"byteOffset":320356
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":495988
+			"byteOffset":320756
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":496288,
+			"byteLength":321056,
 			"uri":"buildings.bin"
 		}
 	]

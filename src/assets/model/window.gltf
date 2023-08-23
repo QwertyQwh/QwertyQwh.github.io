@@ -106,21 +106,21 @@
 		{
 			"bufferView":0,
 			"componentType":5123,
-			"count":2403,
+			"count":2451,
 			"normalized":true,
 			"type":"VEC4"
 		},
 		{
 			"bufferView":1,
 			"componentType":5126,
-			"count":2403,
+			"count":2451,
 			"max":[
-				14.009651184082031,
+				14.331995964050293,
 				8.284830093383789,
 				10.507237434387207
 			],
 			"min":[
-				-14.009650230407715,
+				-14.331972122192383,
 				-0.570448637008667,
 				-10.507237434387207
 			],
@@ -129,19 +129,19 @@
 		{
 			"bufferView":2,
 			"componentType":5126,
-			"count":2403,
+			"count":2451,
 			"type":"VEC2"
 		},
 		{
 			"bufferView":3,
 			"componentType":5126,
-			"count":2403,
+			"count":2451,
 			"type":"VEC3"
 		},
 		{
 			"bufferView":4,
 			"componentType":5123,
-			"count":6684,
+			"count":6804,
 			"type":"SCALAR"
 		},
 		{
@@ -178,58 +178,58 @@
 	"bufferViews":[
 		{
 			"buffer":0,
-			"byteLength":19224,
+			"byteLength":19608,
 			"byteOffset":0,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":28836,
-			"byteOffset":19224,
+			"byteLength":29412,
+			"byteOffset":19608,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":19224,
-			"byteOffset":48060,
+			"byteLength":19608,
+			"byteOffset":49020,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":28836,
-			"byteOffset":67284,
+			"byteLength":29412,
+			"byteOffset":68628,
 			"target":34962
 		},
 		{
 			"buffer":0,
-			"byteLength":13368,
-			"byteOffset":96120,
+			"byteLength":13608,
+			"byteOffset":98040,
 			"target":34963
 		},
 		{
 			"buffer":0,
 			"byteLength":100,
-			"byteOffset":109488
+			"byteOffset":111648
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":109588
+			"byteOffset":111748
 		},
 		{
 			"buffer":0,
 			"byteLength":400,
-			"byteOffset":109888
+			"byteOffset":112048
 		},
 		{
 			"buffer":0,
 			"byteLength":300,
-			"byteOffset":110288
+			"byteOffset":112448
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":110588,
+			"byteLength":112748,
 			"uri":"window.bin"
 		}
 	]

@@ -31,15 +31,18 @@ export default memo(function  ModelInk(props){
         {/* <mesh geometry={model.nodes.outline.geometry} position={[0,0,0]} scale={1.6}>
         <meshBasicMaterial color={"#ba957b"} depthWrite={false} />
         </mesh> */}
-        <mesh geometry={model.nodes.outline.geometry} position={[0,-2,0]} scale={4}>
+        <group scale={1.3}>
+
+        <mesh geometry={model.nodes.outline.geometry}  scale={3.5}>
         <meshBasicMaterial color={props.shadowColor} depthWrite={false} />
         </mesh>
-        <mesh geometry={model.nodes.bottle.geometry} position={[0,-2,0]}  scale={3}>
+        <mesh geometry={model.nodes.bottle.geometry}  scale={3}>
         <meshStandardMaterial flatShading = {true} map={txtr_keyboard_Base} roughnessMap={txtr_keyboard_Roughness} bumpMap={txtr_keyboard_Displace}  />
         </mesh>
-        <mesh geometry={model.nodes.outline.geometry} position={[0,-2,0]}  scale={3}>
+        <mesh geometry={model.nodes.outline.geometry}  scale={3}>
         <meshBasicMaterial  color={'#111111'} />
         </mesh>
+        </group>
 
 
         </>)
