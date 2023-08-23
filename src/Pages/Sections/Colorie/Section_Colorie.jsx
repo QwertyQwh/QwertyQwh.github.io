@@ -18,8 +18,8 @@ import { useNavigate } from 'react-router-dom';
 import Svg_Home from '../../../assets/svg/home.svg'
 import ModelInk from './ModelInk';
 import settings from '../../../Settings'; 
-import { useThree } from '@react-three/fiber';
 import ColorieScene from './ColorieScene';
+import { useSwipeable } from 'react-swipeable';
 
 const num_bubbles = 7
 const bubbleInterval = Math.PI/3/(num_bubbles-3)
@@ -365,10 +365,14 @@ export default function Section_Colorie(props){
         }
       }
   useEventListener('wheel', handleWheel,window);
+  const handlers = useSwipeable({
+    onSwipedUp: (eventData) => handleWheel({deltaY:1}),
+    onSwipedDown: (eventData) => handleWheel({deltaY:-1}),
+  });
     //#endregion
 
     return (<>
-        <div className='colorieBg' style={{backgroundColor: colorLight}}>
+        <div className='colorieBg' style={{backgroundColor: colorLight}} {...handlers}>
 
         <span className='homeDot' ref = {ref_ColorDotBottom} />
         <span className='homeDot' ref = {ref_ColorDotTop} />
