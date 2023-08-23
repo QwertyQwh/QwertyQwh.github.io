@@ -788,7 +788,6 @@ export default memo(function Home(){
   const artLogsFadeInAnim = useRef()
   const artLogsFadeOutAnim = useRef()
   const PlayArtLogsFadeIn = ()=>{
-    console.log('fading in')
     artLogsFadeOutAnim.current?.pause()
     artLogsFadeOutAnim.current = null
     artLogsFadeInAnim.current ??= anime.timeline().add({
@@ -806,7 +805,6 @@ export default memo(function Home(){
     },'+=500')
   }
   const PlayArtLogsFadeOut = ()=>{
-    console.log('fading out')
     artLogsFadeInAnim.current?.pause()
     artLogsFadeInAnim.current = null
     artLogsFadeOutAnim.current ??= anime.timeline().add({
@@ -857,7 +855,7 @@ export default memo(function Home(){
   const track4 = anime.path('#track4 path');
   const animDotJump = useRef()
   const PlayArtDotJump = ()=>{
-    if(animDotJump.current){
+    if(animDotJump.current || animCtrl_Transition.current){
       return
     }
     artDot.current.style.opacity = 1
@@ -1305,7 +1303,6 @@ const OnShapesLeave = (page)=>{
 const mobileFirstClick = useRef(0)
 const OnShapesClick = (page)=>{
   if(device=='mobile'&& mobileFirstClick.current == 0){
-    console.log('first Click')
     mobileFirstClick.current++
     return
   }
