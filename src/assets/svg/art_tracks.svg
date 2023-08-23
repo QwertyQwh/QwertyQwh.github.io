@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="tracks" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242.32 193.7">
   <g id="track4">
-    <path d="m183.73,121.18S214.35.8,227.87,2.01c8.58.77,13.88,51.16,12.11,191.42" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="m183.73,135S214.35.8,227.87,2.01c8.58.77,13.88,51.16,12.11,191.42" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
   </g>
   <g id="track3">
-    <path id="track4-2" data-name="track4" d="m124.69,122.28S151.29,1.9,163.04,3.94c11.23,1.95,20.69,117.24,20.69,117.24" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path id="track4-2" data-name="track4" d="m124.69,136.47S151.29,1.89,163.04,3.94c11.23,1.95,20.69,131.06,20.69,131.06" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
   </g>
   <g id="track1">
-    <path d="m1.98,193.43C21.47,51.85,29.21,10.37,38.07,10.84c13.17.69,31.45,100.41,31.45,100.41" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="m1.98,193.42C21.47,51.85,29.21,10.37,38.07,10.84c13.17.69,31.45,125.63,31.45,125.63" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
   </g>
   <g id="track2">
-    <path d="m69.52,111.25S92.03,5.56,102.02,6.82c10.22,1.29,22.68,115.47,22.68,115.47" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="m69.52,136.47S92.03,5.56,102.02,6.82c10.22,1.29,22.68,129.65,22.68,129.65" style="fill: none; stroke: #df5f3f; stroke-miterlimit: 10; stroke-width: 4px;"/>
   </g>
 </svg>

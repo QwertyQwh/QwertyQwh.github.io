@@ -887,23 +887,23 @@ export default memo(function Home(){
     })
     animDotJump.current ??= anime.timeline().add({
       targets: '#track1 path',
-      strokeDashoffset: [80, -300],
+      strokeDashoffset: [80, -320],
       easing: 'cubicBezier(0.000, 0.755, 1.000, 0.535)',
       duration: 400,
       delay:200
     }).add({
       targets: '#track2 path',
-      strokeDashoffset: [80, -230],
+      strokeDashoffset: [80, -270],
       easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
       duration: 400,
     }).add({
       targets: '#track3 path',
-      strokeDashoffset: [80, -245],
+      strokeDashoffset: [80, -280],
       easing: 'cubicBezier(0.000, 0.30, 1.000, 0.70)',
       duration: 400,
     }).add({
       targets: '#track4 path',
-      strokeDashoffset: [80, -320],
+      strokeDashoffset: [80, -340],
       easing: 'cubicBezier(0.000, 0.440, 1.000, 0.325)',
       duration: 400,
       complete:()=>{
@@ -915,7 +915,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:450
+      delay:500
     }).add({
       targets: '#art_1',
       translateY:'-=20',
@@ -927,7 +927,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:850
+      delay:900
     }).add({
       targets: '#art_2',
       translateY:'-=20',
@@ -939,7 +939,7 @@ export default memo(function Home(){
       translateY:'+=20',
       easing: 'easeOutQuad',
       duration:200,
-      delay:1250
+      delay:1300
     }).add({
       targets: '#art_3',
       translateY:'-=20',
