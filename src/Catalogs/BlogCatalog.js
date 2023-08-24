@@ -4,17 +4,17 @@ import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Test from "../BlogContents/Blog_Test"
 
 export default {
-    test1:{
-        content: <Blog_Test />,
-        title: "This is the title中文也要考虑",
+    auguscript:{
+        title:"陋室翻新其二——Auguscript",
+        content: <Blog_Auguscript />,
         date: {
             month:8,
-            day:25,
+            day:24,
             year:2023,
         },
-        about:"A bunch of desc",
+        about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍两年来积攒的dev流程，还有经验教训。',
+        thumbnail: 'Auguscript',
         sectionId: 'coding',
-        thumbnail: '0',
     },
     acadia:{
         content: <Blog_Acadia />,
@@ -53,41 +53,7 @@ export default {
         thumbnail: 'Animation',
         sectionId: 'art',
     },
-    auguscript:{
-        title:"陋室翻新其二——Auguscript",
-        content: <Blog_Auguscript />,
-        date: {
-            month:8,
-            day:24,
-            year:2023,
-        },
-        about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍两年来积攒的dev流程，还有经验教训。',
-        thumbnail: 'Auguscript',
-        sectionId: 'coding',
-    },
-    testwriting:{
-        content: <Blog_Test />,
-        title: "Thie is TestWriting",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '5',
-        sectionId: 'writing'
-    },
-    testArt:{
-        content: <Blog_Test />,
-        title: "Thie is TestArt",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '5',
-        sectionId: 'art'
-    }
+
+
 
 }
