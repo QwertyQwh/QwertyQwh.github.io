@@ -37,7 +37,7 @@ export default memo(function  ModelPortal(props){
     txtr_portal_Normal.flipY = false
     
     return  (<>
-    <group scale={0.95}>
+    <group scale={0.9}>
         <mesh geometry={windowOutline.nodes.windowOutline.geometry}  scale={1.25}>
         <meshBasicMaterial color={props.shadowColor} depthWrite={false} />
         </mesh>
