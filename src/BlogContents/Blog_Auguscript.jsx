@@ -74,7 +74,7 @@ export default function Blog_Auguscript(){
     <p>3D资源。首先如果你是专业美术的话，影视级别模型就别想了。别说影视，游戏级别也有困难。网页的渲染能力是绝对没办法做物理真实的。考虑到要兼容移动端，即使你能接受幻灯片画质也不行。面数上不去，主要靠贴图和shader。我目前这个水平，个人感觉一切项目走blender+substance就够用了。当然如果做纯2D的话，这块可以忽略。</p>
     <p>低模要做好效果就要花些小心思。比如这个模型：</p>
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoPortal} type="video/mp4"/></video></p>
-    <p>这个trick，常做3D的基本都看得出，就是一个场景渲染两次。正面看到的是这样的：</p>
+    <p>这个trick，接触过GL应该都看得出，就是一个场景渲染两次。正面看到的是这样的：</p>
     <p className="image"> <img src={imgPortal1}  /></p>
     <p>背面是这样的：</p>
     <p className="image"> <img src={imgPortal2}  /></p>
@@ -97,5 +97,13 @@ export default function Blog_Auguscript(){
     <p>最后我测试的时候，animejs在移动端有时候会出现同一个动画调用一次，却播放两次的情况，所以主页的咖啡动画在手机上播放不正确，目前也不知道怎么解决。开始新项目的话建议用其他module。</p>
     <p style={{textAlign:"center"}}>——DNS迁移——</p>
     <p>这个问题会花这么久我是没想到的。最开始我还打算用<a href='https://pages.github.com/'>Github Pages</a>  + <a href='https://aws.amazon.com/cn/route53/'> Aws route 53</a>，但是router完全不管用，只有./home能访问。网上有人提出<a href='https://github.com/rafgraph/spa-github-pages#readme'>用404.html做手动重新导航的方案</a>，我试了一下，还是不完善。</p>
-    <p>后来听说<a href='https://www.netlify.com/'>Netlify</a> 这块的支持做的很好</p>
+    <p>后来听说<a href='https://www.netlify.com/'>Netlify</a> 这块的支持做的很好，我就投敌了。没有想到！Netlify其实也不支持！所以最后如你所见用的是'/#/home'的地址形式。相当于是作弊了。</p>
+    <p>Netlify有自己的DNS，我刚开始打算让route 53我自己域名的Name Server指向Netlify，然后直接在Netlify上配置记录。</p>
+      <p>  我的兴趣基本在于前端，对网络和后端一窍不通，dig了半天还是不成功。并且这种迁移，因为有延迟的关系，地址无法访问的时候，都不知道是配置的问题还是propogation没到位的关系。所以如果你也想采用Aws+Netlify的组合的话，建议别去改NS，DNS还是配置在route 53自己的"hosted zone"这个目录下面。加两条记录A和CNAME指向Netlify提供的Production Damain。可以省去很多麻烦。</p>
+    <p>当然Netlify也还是有很多优势的。不说别的，Netlify支持从多个repository分别部署多个独立的网页，这点就比Github Pages每人一个主页的形式要好太多。</p>
+
+    <p style={{textAlign:"center"}}>——内容迁移——</p>
+    <p>顾名思义，所有的blog要从以前的html文件迁移到现在的json配置文件。因为不是很多所以就手动做了。</p>
+
+    <p>到现在也写了几个Nodejs项目了，</p>
 </>}
