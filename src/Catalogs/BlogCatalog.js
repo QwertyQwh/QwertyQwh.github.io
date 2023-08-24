@@ -12,7 +12,7 @@ export default {
             day:24,
             year:2023,
         },
-        about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍两年来积攒的dev流程，还有经验教训。',
+        about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍一下两年来积攒的dev流程，还有关于时间利用的一点感想。',
         thumbnail: 'Auguscript',
         sectionId: 'coding',
     },
