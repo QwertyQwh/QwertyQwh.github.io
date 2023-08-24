@@ -35,6 +35,7 @@ export default {
             day:30,
             year:2023,
         },
+        about: 'A random maze generator using WebGL, featuring wire/solid modes, color modes, real-time shadows etc. ',
         thumbnail:'GLMaze',
         sectionId: 'coding',
         url: "https://glmaze.netlify.app",

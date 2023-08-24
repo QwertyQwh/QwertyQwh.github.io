@@ -1248,6 +1248,7 @@ const OnShapesEnter = (page)=>{
   //   return
   // }
   cursor.Focus.current()
+  console.log(page,'entering')
 
   switch (page) {
     case codingPage:
@@ -1276,7 +1277,7 @@ const OnShapesEnter = (page)=>{
 
 }
 const OnShapesLeave = (page)=>{
-
+console.log(page,'leaving')
   mobileFirstClick.current = 0
   cursor.DeFocus.current()
   switch (page) {
@@ -1510,6 +1511,45 @@ return (<div {...handlers}>
   {cntntCoding}
   </div>
   </span>
+  <span className='_ArtSection' ref = {artSection} >
+  <div style={{position:'absolute'}} ref = {artOverlays}>
+  <div className='homeOverlays david' ref={artDavidOverlay} >
+  <Svg_ShapeArtDavidOverlay />
+  </div>
+  <div className='homeOverlays hand' ref={artHandOverlay} >
+  <Svg_ShapeArtHandOverlay />
+  </div>
+  </div>
+  
+  <div   onMouseEnter={()=>OnShapesEnter(artPage)} onMouseLeave = {()=>OnShapesLeave(artPage)} onClick={()=>OnShapesClick(artPage)}>
+
+  <div className='homeShapes david' ref={artDavid} >
+  <Svg_ShapeArtDavid />
+  </div>
+  <div className='homeShapes homeLog1' ref = {artLog1}>
+  <Svg_ShapeArtLog1 />
+  </div>
+  <div className='homeShapes angry' ref = {artAngry}>
+  <Svg_ShapeArtAngry />
+  </div>
+  <div className='homeShapes homeLog2'ref = {artLog2} >
+  <Svg_ShapeArtLog2 />
+  </div>
+  </div>
+
+  {/* <div className = 'artTrack' >
+  <Svg_ArtTrack  />
+  </div> */}
+  <div className = 'artTrack' >
+  <Svg_ArtTracks  />
+      <div className='artDot' ref = {artDot}/>
+      </div>
+    <div className='homeTitles'ref={titleArt} onMouseEnter={()=>OnTitlesEnter(artPage)}>
+
+    {cntntArt}
+    </div>
+  </span>
+
   <span className='_WritingSection' ref = {writingSection}>
 
   <div className='homeOverlays' ref = {writingOverlay}>
@@ -1550,44 +1590,6 @@ return (<div {...handlers}>
   <a id = "writingTitleSuffix" style ={{fontFamily: "OLDENG"}} className='writingLetters'></a>
   </span>
   </div>
-  </span>
-  <span className='_ArtSection' ref = {artSection} >
-  <div style={{position:'absolute'}} ref = {artOverlays}>
-  <div className='homeOverlays david' ref={artDavidOverlay} >
-  <Svg_ShapeArtDavidOverlay />
-  </div>
-  <div className='homeOverlays hand' ref={artHandOverlay} >
-  <Svg_ShapeArtHandOverlay />
-  </div>
-  </div>
-  
-  <div   onMouseEnter={()=>OnShapesEnter(artPage)} onMouseLeave = {()=>OnShapesLeave(artPage)} onClick={()=>OnShapesClick(artPage)}>
-
-  <div className='homeShapes david' ref={artDavid} >
-  <Svg_ShapeArtDavid />
-  </div>
-  <div className='homeShapes homeLog1' ref = {artLog1}>
-  <Svg_ShapeArtLog1 />
-  </div>
-  <div className='homeShapes angry' ref = {artAngry}>
-  <Svg_ShapeArtAngry />
-  </div>
-  <div className='homeShapes homeLog2'ref = {artLog2} >
-  <Svg_ShapeArtLog2 />
-  </div>
-  </div>
-
-  {/* <div className = 'artTrack' >
-  <Svg_ArtTrack  />
-  </div> */}
-  <div className = 'artTrack' >
-  <Svg_ArtTracks  />
-      <div className='artDot' ref = {artDot}/>
-      </div>
-    <div className='homeTitles'ref={titleArt} onMouseEnter={()=>OnTitlesEnter(artPage)}>
-
-    {cntntArt}
-    </div>
   </span>
 
 <span className='_IconSection'>
