@@ -1,10 +1,15 @@
 import imgCover from '../assets/images/blogs/auguscript/cover.png'
 import imgChrome from '../assets/images/blogs/auguscript/chrome.png'
 import imgMeetFresh from '../assets/images/blogs/auguscript/light_dof3.png'
+import imgPortal1 from '../assets/images/blogs/auguscript/portal1.png'
+import imgPortal2 from '../assets/images/blogs/auguscript/portal2.png'
 import videoMouse from '../assets/videos/blogs/auguscript/mouse.mp4'
 import videoArt from '../assets/videos/blogs/auguscript/art.mp4'
 import videoCoding from '../assets/videos/blogs/auguscript/coding.mp4'
 import videoWriting from '../assets/videos/blogs/auguscript/writing.mp4'
+import videoIcons from '../assets/videos/blogs/auguscript/icons.mp4'
+import videoColorie from '../assets/videos/blogs/auguscript/colorie.mp4'
+import videoPortal from '../assets/videos/blogs/auguscript/portal.mp4'
 
 
 
@@ -22,8 +27,8 @@ export default function Blog_Auguscript(){
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoWriting} type="video/mp4"/></video></p>
     
       <p> 十一月还没到，不能做Codevember，就叫Auguscript。对于网页这块，我也是两年前才开始接触，所以自己这两年慢慢摸索的一套流程，对于想要开发网页不知从何入手的朋友可能有些许的帮助。所有资源和代码照例开源在<a href='https://github.com/QwertyQwh/QwertyQwh.github.io'>github</a>上。</p>
-    <p className="image"> <img src={imgCover}  /></p>
     <p>先从用时说起，十四天的时间到今天正好截止。按照坐在电脑前的时间算，前七天比较悠哉，每天八小时左右。到了第八天见势不妙，提高到了十二小时。持续两天有点吃不消，转到十小时。这样总时长大概是8*7+12*2+10*5 = 130hr。</p>
+    <p className="image"> <img src={imgCover}  /></p>
 <p> 这里还要提一个时间转化率的问题。刚刚进大学在华师的时候就发现一个奇怪的现象——图书馆每天人满为患，却只有大概六七成的人在学习。其他热门活动包括睡觉，玩手机，追剧。我也是图书馆的常客，经常观察到有些人每天以惊人的毅力准时出现在同一座位，拿出笔记本，挽起袖子，低下头——开始玩手机。我对玩手机没有任何意见，我不太理解的是，这些活动何必安排在图书馆呢？</p>
 <p>后来我才慢慢体会到，这是一种很微妙的平衡。常见的情况是：你的头脑昏昏沉沉一点也不想干活，但是你的焦虑/恐惧又催促着你去行动，你被夹在中间里外不是人。于是折中方案就是去图书馆——安慰良心，然后娱乐——安慰头脑。然后顺便祈祷一下知识之神为你每天的朝圣之旅感动，在晚上做梦的时候赐予你一些启示之类的。</p>
 <p>在这种情况下，每天蹲图书馆的时间看似是达标，但转化率可能连两成也不到——看一眼vscode，刷一下小红书；搜一下stackoverflow，回一下消息。也就是说，如果不在乎“良心”的形式主义要求的话，这和一个每天只专心干两个小时活儿，其他时间全在玩的人没什么区别。而且，他过得洒脱。</p>
@@ -59,5 +64,21 @@ export default function Blog_Auguscript(){
     <p>需要注意的是，这些工具基本不相互依赖，比如你可以做一个纯react的单页网站，完全不用router。你也可以完全不用3D的素材，这样threejs和r3f就完全没必要了解。甚至你可以只用css的动画属性，这样animejs也可以省略。但是strip to the bare bones，webpack和react还是必备的。（或者其他替代的一个bundler和一个UIFrame）。如果想从头上手的话，<a href='https://create-react-app.dev/'>create-react-app</a>是一个不错的起点。</p>
     <p>最后，养成好习惯，每天打开vs前记得默默感谢所有开发者持续的更新和努力，Love to the Dev。</p>
     <p style={{textAlign:"center"}}>——美术资源——</p>
-    <p>这块</p>
+    <p>美术主要分2D和3D资源。</p>
+    
+    <p>先说2D资源。值得一提的是，这次没有用到任何像素化的素材，也就是png，jpg这种。因为svg和网页的相性真的太好了。举个例子，像这种动画，我真不知道除了矢量图还有什么好办法：</p>
+    <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoIcons} type="video/mp4"/></video></p>
+    <p>工具的话，说起svg当然就是Illustrator了。不过AI的svg导出做的真的很差，自定义css加不上就不说了，还有bug。譬如说，我第一天存档，第二天打开.ai文件重新导出svg，整个尺寸就全部错位。对于一个按月付费的主流软件，这个标准是不是太低了。</p>
+    <p>So plz show some love for svg Adobe. plz plz plz.</p>
+    <p>3D资源。首先如果你是专业美术的话，影视级别模型就别想了。别说影视，游戏级别也有困难。网页的渲染能力是绝对没办法做物理真实的。考虑到要兼容移动端，即使你能接受幻灯片画质也不行。面数上不去，主要靠贴图和shader。我目前这个水平，个人感觉一切项目走blender+substance就够用了。当然如果做纯2D的话，这块可以忽略。</p>
+    <p>低模要做好效果就要花些小心思。比如这个模型：</p>
+    <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoPortal} type="video/mp4"/></video></p>
+    <p>这个trick，常做3D的基本都看得出，就是一个场景渲染两次。正面看到的是这样的：</p>
+    <p className="image"> <img src={imgPortal1}  /></p>
+    <p>背面是这样的：</p>
+    <p className="image"> <img src={imgPortal2}  /></p>
+    <p>所有窗外的模型全部分一个组单独渲染，然后作为贴图贴到窗中间的画布上去，作出一种see through的错觉。</p>
+    <p>至于描边就是常用的翻转normal的方法。阴影就是同一个模型但是用单色的材质，同时不写入深度通道。</p>
+    <p style={{textAlign:"center"}}>——动画——</p>
+    <p>所有动画都是'2D'的。没有绑定，没有骨骼，只有位移，旋转，缩放。</p>
 </>}
