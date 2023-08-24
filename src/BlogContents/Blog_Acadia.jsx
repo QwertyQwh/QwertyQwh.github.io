@@ -83,7 +83,7 @@ export default function Blog_Acadia(){
     
     <p>其实本地居民和游客很好分辨。本地人大多比较壮实，穿的像饭团。鼻头永远是红红的，说话带着夸张的口音。游客一般是年轻couple，穿着冲锋衣或者登山服，鼻子和脸没有色差。</p>
     <p>夜里下起了大雪，如果有圣诞老人的话，可能就会住在这样的小镇上吧。</p>
-    <p className="video"><video autoPlay={true} muted loop={true}><source src={videoSnow} type="video/mp4"/></video></p>
+    <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoSnow} type="video/mp4"/></video></p>
     <p>第三天走了一天的路。几个著名景观——sand beach，thunder hole， otter point，Jordon pond全部踩到。</p>
     
     <p className="image"> <img src={imgSeaside}  /></p>
@@ -102,7 +102,7 @@ export default function Blog_Acadia(){
     <p>第四天五点半起床去看日出。把车停在停车场，天边已经泛白，雪水汇成了小溪，没有融化的暗冰让我摔了一跤。不过还是赶在太阳升起之前到达了otter point。</p>
     <p className="image"> <img src={imgMorning}  /></p>
     <p>写日出的作文，我们小学都背诵过，我的语文水平这些年大概只有退步，就不尝试了。不过在看着太阳升起的这一个小时里，还是注意到了自己这一年的变化。</p>
-    <p className="video"><video autoPlay={true} muted loop={true}><source src={videoRising} type="video/mp4"/></video></p>
+    <p className="video"><video autoPlay={true} muted playsInline={true} loop={true}><source src={videoRising} type="video/mp4"/></video></p>
     <p>例如，上山时一路无人，清晨的冷空气大口大口吸进肺里，转化成喜悦。这样我才意识到，啊原来开心是这样的感觉。</p>
     <p>再比如，但是在原地站了五分钟之后，无聊的沉闷感就涌了上来。远处钟声随着海浪起伏，却烦躁不安，下意识的想拿手机（即使没有信号）。</p>
     <p>还比如，在太阳跃升而出的一刹那，似乎有一种很久之前曾经体会过的强烈感觉要涌现出来，半晌梗在喉咙里，在转换为语言之前就消失了。</p>

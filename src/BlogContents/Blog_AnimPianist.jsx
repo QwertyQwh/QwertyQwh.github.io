@@ -23,7 +23,7 @@ export default function Blog_AnimPianist(){
     <p> 说是小动画，动画的部分反倒是最简陋的。除了走路没有用到别的，也是考虑到水平和时间有限。 </p>
     <p className="video"><video autoPlay={true} muted loop={true}><source src={videoWalk} type="video/mp4"/></video></p>
     <p> 甚至像史莱姆这样一团浆糊的玩意儿，干脆连骨骼也不做，整体变形就完了。 </p>
-    <p className="video"><video autoPlay muted loop src={videoCountdown} /></p>
+    <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoCountdown} type="video/mp4"/></video></p>
     <p> 虽然软踏踏的东西要移动起来还是调试了很久。 </p>
     <p className="video"><video autoPlay muted loop src={videoCreep} /></p>
     <p> 对了，偶尔它还要跳一跳。 </p>
