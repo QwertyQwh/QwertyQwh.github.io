@@ -369,7 +369,7 @@ export default function Section_Colorie(props){
   const handlers = useSwipeable({
     onSwipedUp: (eventData) => handleWheel({deltaY:1}),
     onSwipedDown: (eventData) => handleWheel({deltaY:-1}),
-  });
+  },{preventScrollOnSwipe: true});
     //#endregion
 
     return (<>
