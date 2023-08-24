@@ -83,7 +83,7 @@ export default function Blog_Acadia(){
     
     <p>其实本地居民和游客很好分辨。本地人大多比较壮实，穿的像饭团。鼻头永远是红红的，说话带着夸张的口音。游客一般是年轻couple，穿着冲锋衣或者登山服，鼻子和脸没有色差。</p>
     <p>夜里下起了大雪，如果有圣诞老人的话，可能就会住在这样的小镇上吧。</p>
-    <p className="video"><video autoPlay muted loop src={videoSnow} /></p>
+    <p className="video"><video autoPlay={true} muted loop={true}><source src={videoSnow} type="video/mp4"/></video></p>
     <p>第三天走了一天的路。几个著名景观——sand beach，thunder hole， otter point，Jordon pond全部踩到。</p>
     
     <p className="image"> <img src={imgSeaside}  /></p>

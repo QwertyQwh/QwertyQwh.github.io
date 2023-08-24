@@ -21,7 +21,7 @@ export default function Blog_AnimPianist(){
 	<iframe src="https://player.bilibili.com/player.html?aid=590910177&bvid=BV1oq4y1R7eb&cid=422292073&page=1&high_quality=1&danmaku=0"  width="100%" style={{height: "50vw"}}> </iframe>
     <p> 最初想做小动画的动机其实是很可笑的，现在都不大好意思讲。等若干年后头发白了再讲出来丢脸。结果上来说也算检验断断续续的3D学习成果，就当这是动机吧。 </p>
     <p> 说是小动画，动画的部分反倒是最简陋的。除了走路没有用到别的，也是考虑到水平和时间有限。 </p>
-    <p className="video"><video autoPlay muted loop src={videoWalk} /></p>
+    <p className="video"><video autoPlay={true} muted loop={true}><source src={videoWalk} type="video/mp4"/></video></p>
     <p> 甚至像史莱姆这样一团浆糊的玩意儿，干脆连骨骼也不做，整体变形就完了。 </p>
     <p className="video"><video autoPlay muted loop src={videoCountdown} /></p>
     <p> 虽然软踏踏的东西要移动起来还是调试了很久。 </p>
