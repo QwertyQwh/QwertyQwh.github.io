@@ -91,7 +91,7 @@ export default function Blog_Acadia(){
     
     <p className="image"> <img src={imgFoot}  /></p>
 
-    <p><pzh>冬天的trail还是有一定危险的。积雪之下都是暗冰。</pzh></p>
+    <p>冬天的trail还是有一定危险的。积雪之下都是暗冰。</p>
     <p className="image"> <img src={imgIce}  /></p>
 
     <p>一个人走在山路上，慢慢的，雪地里的脚印消失了，只能勉强看出trail的走向。停下脚步，听得到积雪融化的声音。天与地，山与水，都是我一人的。</p>

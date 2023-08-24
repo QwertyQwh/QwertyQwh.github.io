@@ -26,7 +26,10 @@ export default function Blog(){
         document.querySelectorAll('.blogBg .titleBlock img').forEach((elmt,id)=>{
             elmt.style.maxWidth = `${(ref_cntntPost.current.clientWidth-1.5*5)*0.8}px`
         })
-    },[width,height])
+        document.querySelectorAll('.blogBg .titleBlock video').forEach((elmt,id)=>{
+            elmt.style.maxWidth = `${(ref_cntntPost.current.clientWidth-1.5*5)*0.8}px`
+        })
+    })
     
     const OnBtnHomeClicked = ()=>{
         const rect = ref_BtnHome.current.getBoundingClientRect()
