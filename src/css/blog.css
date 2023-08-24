@@ -162,6 +162,16 @@ button.home:active .button_top {
   text-align: center;
 
 }
+.blogBg .post p.image, 
+.blogBg .post p.video{
+  display: block;
+  text-align: center;
+
+}
+
+.blogBg .post p{
+  
+}
 
 .blogBg .post img,
 .blogBg .post video {
@@ -175,9 +185,23 @@ button.home:active .button_top {
   border-radius: var(--button_radius);
 }
 
+.blogBg .post ul li{
+  font-size: 17px;
+  line-height: 25px;
+  margin: 0;
+  color: #4d4d4d;
+  display: list-item;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-right: 10px;
+  -webkit-font-smoothing: antialiased;
+}
 
-.blogBg .heading_1{
-  
+.blogBg .post ul{
+  list-style-type: disc;
+  padding-right: 0px;
+  padding-left: 40px;
 }
 
 @media screen and (min-width: 400px){
