@@ -20,9 +20,11 @@ export default function Blog_Auguscript(){
     <p className="image"> <img src={imgChrome}  /></p>
     <p>这两年看dev blog几次看到别人做Codevember——大概就是定下一个主题，然后十一月里每天写一个小snippet，最后汇总成三十个。</p>
     <p>过去一年里一直有在断断续续地构建网站。但是经常因为构想太复杂，超越自身能力，忙活几个礼拜就陷入停滞。比如之前写了一个用webgl的剪刀工具来切分canvas，从而达到同一canvas同时渲染很多场景，并且支持滚动的主页。代码大概花了一个月左右。结果虽然做出来了，但是帧率堪忧不说，要自己去做几十个美术资源也不太可能，只好搁置了。那之后精疲力竭，停了很长一段时间。</p>
-    <p>八月十号夜里降落纽约，地铁里熟悉的臭气扑面而来。佛罗里达的太阳抓到一个毫无防备的外人，一点也没客气。不过没关系，自西藏一月之后，就白不回去了。</p>
-     <p> 说起西藏，已经甩在身后一年有余，看看日历，到生日正好剩两个礼拜。</p>
-    <p>两个礼拜能不能做完呢？这次务求可行性优先，在规划阶段就努力把任务量限制在期限内。 其实看<a href='https://www.awwwards.com/'>awwwards</a>会发现，互动好的网站，元素不需要太复杂，只要细节到位，风格统一，效果也不错。比如看起来能互动的组件都套上动画：</p>
+    <p>八月十号夜里降落，佛罗里达的太阳丢在身后，纽约地铁熟悉的臭气扑面而来。也许有一天我会怀念这个味道也说不定。</p>
+    <p>开玩笑，不可能的。</p>
+     <p> 看看日历，到生日正好剩两个礼拜。</p>
+    <p>两个礼拜，其实有336小时，两万多分钟，能不能用这点时间做完网站，跑赢25岁呢？</p>
+      <p>  总之这次务求可行性优先，在规划阶段就努力把任务量限制在期限内。 看<a href='https://www.awwwards.com/'>awwwards</a>会发现，互动好的网站，元素不需要太复杂，只要细节到位，风格统一，效果也不错。比如看起来能互动的组件都套上动画：</p>
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoArt} type="video/mp4"/></video></p>
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoCoding} type="video/mp4"/></video></p>
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoWriting} type="video/mp4"/></video></p>
@@ -72,7 +74,7 @@ export default function Blog_Auguscript(){
     <p>工具的话，说起svg当然就是Illustrator了。不过AI的svg导出做的真的很差，自定义css加不上就不说了，还有bug。譬如说，我第一天存档，第二天打开.ai文件重新导出svg，整个尺寸就全部错位。对于一个按月付费的主流软件，这个标准是不是太低了。</p>
     <p>So plz show some love for svg Adobe. plz plz plz.</p>
     <p>3D资源。首先如果你是专业美术的话，影视级别模型就别想了。别说影视，游戏级别也有困难。网页的渲染能力是绝对没办法做物理真实的。考虑到要兼容移动端，即使你能接受幻灯片画质也不行。面数上不去，主要靠贴图和shader。我目前这个水平，个人感觉一切项目走blender+substance就够用了。当然如果做纯2D的话，这块可以忽略。</p>
-    <p>低模要做好效果就要花些小心思。比如这个模型：</p>
+    <p>低模要做好就要花些小心思。比如这个模型：</p>
     <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoPortal} type="video/mp4"/></video></p>
     <p>这个trick，接触过GL应该都看得出，就是一个场景渲染两次。正面看到的是这样的：</p>
     <p className="image"> <img src={imgPortal1}  /></p>
@@ -105,5 +107,6 @@ export default function Blog_Auguscript(){
     <p style={{textAlign:"center"}}>——内容迁移——</p>
     <p>顾名思义，所有的blog要从以前的html文件迁移到现在的json配置文件。因为不是很多所以就手动做了。</p>
 
-    <p>到现在也写了几个Nodejs项目了，</p>
+    <p>到现在也写了几个Nodejs项目了，有些心得可以分享。</p>
+    <p>到现在也写了几个Nodejs项目了，有些心得可以分享。</p>
 </>}
