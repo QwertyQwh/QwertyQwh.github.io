@@ -24,7 +24,6 @@ export default function Blog(){
     const cursor = useContext(CursorContext)
     useEffect(()=>{
         document.querySelectorAll('.blogBg .titleBlock img').forEach((elmt,id)=>{
-            console.log(elmt)
             elmt.style.maxWidth = `${(ref_cntntPost.current.clientWidth-1.5*5)*0.8}px`
         })
     },[width,height])
