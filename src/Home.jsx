@@ -1354,9 +1354,9 @@ const OnShapesClick = (page)=>{
   }
     
   const handlers = useSwipeable({
-    onSwipedUp: (eventData) => handleWheel({deltaY:1}),
+    onSwipedUp: (eventData) =>   handleWheel({deltaY:1}),
     onSwipedDown: (eventData) => handleWheel({deltaY:-1}),
-  });
+  },{preventScrollOnSwipe: true});
   useEventListener('wheel', handleWheel,window);
   //#endregion
 
