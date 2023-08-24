@@ -2,12 +2,13 @@ import Blog_Acadia from "../BlogContents/Blog_Acadia"
 import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Diary from "../BlogContents/Blog_Diary"
+import Blog_Renovate from "../BlogContents/Blog_Renovate"
 import Blog_Test from "../BlogContents/Blog_Test"
 import Blog_Tibet from "../BlogContents/Blog_Tibet"
 
 export default {
     auguscript:{
-        title:"陋室翻新其二——Auguscript",
+        title:"陋室翻新·其二——Auguscript",
         content: <Blog_Auguscript />,
         date: {
             month:8,
@@ -17,6 +18,18 @@ export default {
         about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍一下两年来积攒的dev流程，还有关于时间利用的一点感想。',
         thumbnail: 'Auguscript',
         sectionId: 'coding',
+    },
+    tibet1:{
+        title:'西藏·壹',
+        content: <Blog_Tibet />,
+        date: {
+            month:5,
+            day:20,
+            year:2023,
+        },
+        about: '五月底了，正是上海封城一周年。去年从上海逃跑，一路辗转去骑川藏的这月余，无论是于宏大的国家还是于我渺小的个人，都可以算是“历史事件”',
+        thumbnail: '西藏·壹',
+        sectionId: 'writing',
     },
     acadia:{
         content: <Blog_Acadia />,
@@ -55,16 +68,17 @@ export default {
         thumbnail: '小动画',
         sectionId: 'art',
     },
-    tibet1:{
-        title:'西藏·壹',
-        content: <Blog_Tibet />,
+
+    renovate:{
+        title:'陋室翻新·其一',
+        content: <Blog_Renovate />,
         date: {
-            month:5,
-            day:20,
-            year:2023,
+            month:1,
+            day:8,
+            year:2022,
         },
-        about: '五月底了，正是上海封城一周年。去年从上海逃跑，一路辗转去骑川藏的这月余，无论是于宏大的国家还是于我渺小的个人，都可以算是“历史事件”',
-        thumbnail: '西藏·壹',
+        about: '大约一个礼拜前收到了2021年最后一张信用卡账单，上面清清楚楚记载了12月以来的无度挥霍——我指买了永远也不会看的书。',
+        thumbnail: '陋室翻新',
         sectionId: 'writing',
     },
     diary1:{
