@@ -9,7 +9,9 @@ import { CursorContext, TransitionCircleContext } from "../../Contexts/Contexts"
 
 export default function Blog(){
     const data =useLoaderData()
-    console.log(data)
+    if(data.external){
+        window.location.assign(data.url)
+    }
     const navigate = useNavigate()
     //smooth scrolling
     const ref_post = useRef()

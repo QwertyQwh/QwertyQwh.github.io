@@ -97,6 +97,7 @@ background-color: #EADCC2;
   margin-bottom: 0.5em;
   font-size: 3em;
   font-family: Poiret,GDC_L;;
+  text-align: center;
 }
 
 
@@ -133,13 +134,15 @@ button.home:active .button_top {
   transform: translateY(0);
 }
 
-.blogBg .post p.image{
+.blogBg .post p.image, 
+.blogBg .post p.video{
   display: block;
   text-align: center;
 
 }
 
-.blogBg .post img{
+.blogBg .post img,
+.blogBg .post video {
   display: inline-block;
   margin: 0 auto;
   margin-top: 1em;

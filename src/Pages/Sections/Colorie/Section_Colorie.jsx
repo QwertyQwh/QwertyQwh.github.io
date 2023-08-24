@@ -1,22 +1,16 @@
 import { useRef,useEffect, useState, useContext, cloneElement } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ACESFilmicToneMapping,LinearToneMapping,CineonToneMapping,ReinhardToneMapping,NoToneMapping } from 'three';
-import { Perf } from 'r3f-perf';
-import ModelKeyboard from './ModelKeyboard';
 import anime from 'animejs';
 import { useControls,button } from 'leva';
 import { useEffectOnce, useEventListener, useInterval, useWindowSize } from 'usehooks-ts';
-import { PerspectiveCamera,OrbitControls, Environment } from '@react-three/drei';
 import Logger from '../../../Debug/Logger';
-import { Lightformer } from '@react-three/drei';
 import { CursorContext, DeviceContext,TransitionCircleContext } from '../../../Contexts/Contexts';
 import Colorie_Bubble from './Colorie_Bubble';
-import { Color } from 'three';
 import BlogCatalog from '../../../Catalogs/BlogCatalog';
 import { Number2Month, proper_modulo } from '../../../Utils/Utils';
 import { useNavigate } from 'react-router-dom';
 import Svg_Home from '../../../assets/svg/home.svg'
-import ModelInk from './ModelInk';
 import settings from '../../../Settings'; 
 import ColorieScene from './ColorieScene';
 import { useSwipeable } from 'react-swipeable';
@@ -103,7 +97,6 @@ export default function Section_Colorie(props){
         return ordinalSelf-oridnalTarget
     }
     useEffect(()=>{
-        console.log(props.id)
         TransitTo(0)
         blogList.current = []
         Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
@@ -160,7 +153,8 @@ export default function Section_Colorie(props){
     const  OnReadClick = ()=>{
         const x = '90%'
         const y = '10%'
-        transitionCircle.PlayTransition.current({x:x,y:y},colorsDark[curPage.current%num_bubbles],()=>navigate(`../blogs/${blogList.current[curPage.current%num_bubbles][0]}/`))
+        const config = blogList.current[curPage.current%num_bubbles]
+        transitionCircle.PlayTransition.current({x:x,y:y},colorsDark[curPage.current%num_bubbles],()=>{if(config[1].external){window.location.assign(config[1].url)}else{navigate(`../blogs/${config[0]}/`)}})
         cursor.DeFocus.current()
         
     } 
@@ -213,7 +207,10 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
-                ref_Title.current.textContent = blogList.current[page%num_bubbles][1].title
+                if(ref_Title.current){
+                    ref_Title.current.textContent = blogList.current[page%num_bubbles][1].title
+
+                }
             }
         }).add({
             targets:ref_About.current,
@@ -222,7 +219,9 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
+                if(ref_About.current){
                 ref_About.current.textContent = blogList.current[page%num_bubbles][1].about
+                }
             }
         },"-=400").add({
             targets:ref_Date.current,
@@ -231,9 +230,11 @@ export default function Section_Colorie(props){
             easing: 'easeInSine',
             duration:600,
             complete:()=>{
-                const date = blogList.current[page%num_bubbles][1].date
-                ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
-                ref_Year.current.textContent =  date.year
+                if(ref_MonthDay.current){
+                    const date = blogList.current[page%num_bubbles][1].date
+                    ref_MonthDay.current.textContent = `${Number2Month(date.month)}  ${date.day}`
+                    ref_Year.current.textContent =  date.year
+                }
             }
         },"-=400").add({
             targets:ref_Title.current,

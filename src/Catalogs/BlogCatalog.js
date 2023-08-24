@@ -1,3 +1,5 @@
+import Blog_Acadia from "../BlogContents/Blog_Acadia"
+import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Test from "../BlogContents/Blog_Test"
 
 export default {
@@ -13,89 +15,41 @@ export default {
         sectionId: 'coding',
         thumbnail: '0',
     },
-    test2:{
-        content: <Blog_Test />,
-        title: "Thie is Test2",
+    acadia:{
+        content: <Blog_Acadia />,
+        title: "Acadia",
         date: {
-            month:8,
-            day:25,
-            year:2023,
+            month:12,
+            day:31,
+            year:2022,
         },
-        about:"A bunch of desc",
-        thumbnail: '1',
-        sectionId: 'coding'
+        about:"2022最后一天补交作业。",
+        thumbnail: 'Acadia',
+        sectionId: 'writing'
     },
-    test3:{
-        content: <Blog_Test />,
-        title: "This is Test3",
+    glmaze:{
+        external: true,
+        title:'GLMaze',
         date: {
-            month:8,
-            day:25,
+            month:4,
+            day:30,
             year:2023,
         },
-        about:"A bunch of desc",
-        thumbnail: '2',
-        sectionId: 'coding'
+        thumbnail:'GLMaze',
+        sectionId: 'coding',
+        url: "https://glmaze.netlify.app",
     },
-    test4:{
-        content: <Blog_Test />,
-        title: "Thie is Test4",
+    animPianist:{
+        title:'小动画——Masked Pianist',
+        content: <Blog_AnimPianist />,
         date: {
-            month:8,
-            day:25,
-            year:2023,
+            month:10,
+            day:8,
+            year:2021,
         },
-        about:"A bunch of desc",
-        thumbnail: '3',
-        sectionId: 'coding'
-    },
-    test5:{
-        content: <Blog_Test />,
-        title: "Thie is Test5",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '4',
-        sectionId: 'coding'
-    },
-    test6:{
-        content: <Blog_Test />,
-        title: "Thie is Test6",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '5',
-        sectionId: 'coding'
-    },
-    test7:{
-        content: <Blog_Test />,
-        title: "Thie is Test7",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '5',
-        sectionId: 'coding'
-    },
-    test8:{
-        content: <Blog_Test />,
-        title: "Thie is Test8",
-        date: {
-            month:8,
-            day:25,
-            year:2023,
-        },
-        about:"A bunch of desc",
-        thumbnail: '5',
-        sectionId: 'coding'
+        about: '21年中秋假期憋在家做的小动画',
+        thumbnail: 'Animation',
+        sectionId: 'art',
     },
     testwriting:{
         content: <Blog_Test />,

@@ -1,5 +1,5 @@
-import test from '../assets/images/glow.png'
-import star from '../assets/images/star.png'
+import test from '../assets/images/test/glow.png'
+import star from '../assets/images/test/star.png'
 import { useState,useEffect, forwardRef,useImperativeHandle,memo, useRef } from "react";
 import { useEventListener, useInterval } from 'usehooks-ts';
 import anime from 'animejs/lib/anime.es.js'

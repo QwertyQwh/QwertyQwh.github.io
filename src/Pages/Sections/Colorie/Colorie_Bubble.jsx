@@ -62,7 +62,7 @@ export default forwardRef(function Colorie_Bubble({id,spin,phaseAngle,radius,onM
         onMouseLeave={()=>onMouseLeave(id)}
         onClick={()=>onMouseClick(id)}
         ref={ref_bubble}>
-        <div className='txtBubble'>
+        <div className='txtBubble' >
             <a style={{color: "#1e1e1e"}} ref={ref_thumbnail}>
     
             </a>

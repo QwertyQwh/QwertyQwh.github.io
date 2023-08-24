@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useRef } from 'react';
 import { useEventListener,useEffectOnce } from 'usehooks-ts';
 import TitleImg from './TitleImg';
-import nosignal from '../../assets/images/nosignal.jpg'
-import nosignal_depth from '../../assets/images/nosignal_depth.jpg'
+import nosignal from '../../assets/images/test/nosignal.jpg'
+import nosignal_depth from '../../assets/images/test/nosignal_depth.jpg'
 import { useLoaderData } from 'react-router-dom';
 
 export default function Blog_Legacy(props){

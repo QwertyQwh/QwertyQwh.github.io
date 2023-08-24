@@ -883,7 +883,7 @@ export default memo(function Home(){
     artDot.current.style.opacity = 0
       }
     })
-    animDotJump.current ??= anime.timeline().add({
+     anime.timeline().add({
       targets: '#track1 path',
       strokeDashoffset: [80, -320],
       easing: 'cubicBezier(0.000, 0.755, 1.000, 0.535)',
@@ -904,9 +904,7 @@ export default memo(function Home(){
       strokeDashoffset: [80, -340],
       easing: 'cubicBezier(0.000, 0.440, 1.000, 0.325)',
       duration: 400,
-      complete:()=>{
-        animDotJump.current = null
-      }
+
     })
     anime.timeline().add({
       targets: '#art_1',
@@ -932,7 +930,7 @@ export default memo(function Home(){
       easing: 'easeInQuad',
       duration:400,
     })
-    anime.timeline().add({
+    animDotJump.current ??=anime.timeline().add({
       targets: '#art_3',
       translateY:'+=20',
       easing: 'easeOutQuad',
@@ -943,6 +941,9 @@ export default memo(function Home(){
       translateY:'-=20',
       easing: 'easeInQuad',
       duration:400,
+      complete:()=>{
+        animDotJump.current = null
+      }
     })
   }
   const PlayWritingBookOverlayTextFadeIn = ()=>{
@@ -1052,7 +1053,7 @@ export default memo(function Home(){
     PlayWritingFanLoop()
     PlayWritingSheepLoop()
     PlayArtHandLoop()
-    setIndex(2)
+    setIndex(0)
   })
 
 //#region IconEvents
