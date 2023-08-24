@@ -97,6 +97,10 @@ export default function Section_Colorie(props){
         return ordinalSelf-oridnalTarget
     }
     useEffect(()=>{
+  
+    })
+
+    useEffect(()=>{
         TransitTo(0)
         blogList.current = []
         Object.entries(BlogCatalog).forEach((elmt,id)=>{if(elmt[1].sectionId == props.id){blogList.current.push(elmt)}})
@@ -120,8 +124,12 @@ export default function Section_Colorie(props){
             duration:1500,
             easing:'easeInOutSine'
         })
-    
-   
+        if(device == 'mobile'){
+            setpaletteRad(100)
+            setbubbleSpin(130)
+            setbubbleRad(20)
+
+        }
 
     })
     const animReadSwell = useRef()
@@ -419,13 +427,14 @@ export default function Section_Colorie(props){
         </Canvas>
         </div>
         <div className='bubbles'>
-        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={bubbleSpin} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
+            {/* hack: setSpindoesn't work somehow */}
+        {[...Array(num_bubbles)].map((elmt,id)=>{return (<Colorie_Bubble key={id} id={id}  phaseAngle={bubbleRotOffset+id*bubbleInterval} spin={device == 'mobile'?130:300} radius = {bubbleRad} onMouseEnter = {OnBubbleEnter} onMouseLeave = {OnBubbleLeave} onMouseClick={OnBubbleClick} ref={refs_bubbles[id]}/>)})}
         </div>
         <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,bottom:`${-bubbleSpin*.5-paletteRad }px`,left:`${-paletteRad }px`}} ref={ref_Palette}>
             <div className='txtPalette' >
             </div>
         </div>
-        <div className='cornerPalette' style={{width: `${paletteRad*2}px`,height: `${paletteRad*2}px`,top:`${-bubbleSpin*.5-paletteRad }px`,right:`${-paletteRad }px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink} onClick={OnReadClick}>
+        <div className='cornerPalette' style={{width: `${250*2}px`,height: `${250*2}px`,top:`${-300*.5-250 }px`,right:`${-250}px`}} ref = {ref_Read}  onMouseOver={PlayReadSwell} onMouseOut={PlayReadShrink} onClick={OnReadClick}>
             <div className='txtPalette'  >
             READ
             </div>
