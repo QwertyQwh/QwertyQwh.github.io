@@ -3,6 +3,7 @@ import imgChrome from '../assets/images/blogs/auguscript/chrome.png'
 import imgMeetFresh from '../assets/images/blogs/auguscript/light_dof3.png'
 import imgPortal1 from '../assets/images/blogs/auguscript/portal1.png'
 import imgPortal2 from '../assets/images/blogs/auguscript/portal2.png'
+import imgAnims from '../assets/images/blogs/auguscript/anims.png'
 import videoMouse from '../assets/videos/blogs/auguscript/mouse.mp4'
 import videoArt from '../assets/videos/blogs/auguscript/art.mp4'
 import videoCoding from '../assets/videos/blogs/auguscript/coding.mp4'
@@ -80,5 +81,21 @@ export default function Blog_Auguscript(){
     <p>所有窗外的模型全部分一个组单独渲染，然后作为贴图贴到窗中间的画布上去，作出一种see through的错觉。</p>
     <p>至于描边就是常用的翻转normal的方法。阴影就是同一个模型但是用单色的材质，同时不写入深度通道。</p>
     <p style={{textAlign:"center"}}>——动画——</p>
-    <p>所有动画都是'2D'的。没有绑定，没有骨骼，只有位移，旋转，缩放。</p>
+    <p>所有动画都是'2D'的。没有绑定，没有骨骼，只有位移，旋转，缩放。那为什么要花这么久呢？</p>
+    <p>第一，数量很多，且非常细碎。譬如home这一页，需要做成时间线的动画就有26个。因为来不及写任何工具的关系，这些动画都要直接写在代码里，非常费时费力。</p>
+    <p className="image"> <img src={imgAnims}  /></p>
+    <p>第二，动画之间的互动逻辑往往会很复杂。譬如这个页脚的pager：</p>
+    <p className="video"><video autoPlay={true} muted loop={true} playsInline = {true}><source src={videoColorie} type="video/mp4"/></video></p>
+    <p>需要动画的情况共有三种：</p>
+    <ul>
+    <li>上下滑动切页：需要旋转和位移。</li>
+    <li>直接点击切页：需要旋转和位移。</li>
+    <li>鼠标悬浮：边界变色的同时，如果不是当前页，需要放大；同时当前页签缩小。如果是当前页，只需要边界变色。</li>
+    </ul>
+    <p>这三种动画完全可能在其他动画播放时互相乱入，非常混乱。</p>
+    <p>这里分享一个常见错误，动画播放的结束回调一定要做null check，因为你的动画结束的时候可能UI已经切页了，你本来要控制的按钮都消失了。</p>
+    <p>最后我测试的时候，animejs在移动端有时候会出现同一个动画调用一次，却播放两次的情况，所以主页的咖啡动画在手机上播放不正确，目前也不知道怎么解决。开始新项目的话建议用其他module。</p>
+    <p style={{textAlign:"center"}}>——DNS迁移——</p>
+    <p>这个问题会花这么久我是没想到的。最开始我还打算用<a href='https://pages.github.com/'>Github Pages</a>  + <a href='https://aws.amazon.com/cn/route53/'> Aws route 53</a>，但是router完全不管用，只有./home能访问。网上有人提出<a href='https://github.com/rafgraph/spa-github-pages#readme'>用404.html做手动重新导航的方案</a>，我试了一下，还是不完善。</p>
+    <p>后来听说<a href='https://www.netlify.com/'>Netlify</a> 这块的支持做的很好</p>
 </>}
