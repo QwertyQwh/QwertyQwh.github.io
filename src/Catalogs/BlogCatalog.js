@@ -1,5 +1,6 @@
 import Blog_Acadia from "../BlogContents/Blog_Acadia"
 import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
+import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Test from "../BlogContents/Blog_Test"
 
 export default {
@@ -51,6 +52,18 @@ export default {
         about: '21年中秋假期憋在家做的小动画',
         thumbnail: 'Animation',
         sectionId: 'art',
+    },
+    auguscript:{
+        title:"陋室翻新其二——Auguscript",
+        content: <Blog_Auguscript />,
+        date: {
+            month:8,
+            day:24,
+            year:2023,
+        },
+        about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍两年来积攒的dev流程，还有经验教训。',
+        thumbnail: 'Auguscript',
+        sectionId: 'coding',
     },
     testwriting:{
         content: <Blog_Test />,
