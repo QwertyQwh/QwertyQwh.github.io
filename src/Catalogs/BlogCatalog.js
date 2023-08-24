@@ -1,6 +1,7 @@
 import Blog_Acadia from "../BlogContents/Blog_Acadia"
 import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
+import Blog_Diary from "../BlogContents/Blog_Diary"
 import Blog_Test from "../BlogContents/Blog_Test"
 
 export default {
@@ -50,9 +51,21 @@ export default {
             year:2021,
         },
         about: '21年中秋假期憋在家做的小动画',
-        thumbnail: 'Animation',
+        thumbnail: '小动画',
         sectionId: 'art',
     },
+    diary1:{
+        title:'日记碎片',
+        content: <Blog_Diary />,
+        date: {
+            month:10,
+            day:10,
+            year:2018,
+        },
+        about: '',
+        thumbnail: '日记',
+        sectionId: 'writing',
+    }
 
 
 
