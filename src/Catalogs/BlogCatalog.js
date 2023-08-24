@@ -3,6 +3,7 @@ import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Diary from "../BlogContents/Blog_Diary"
 import Blog_Test from "../BlogContents/Blog_Test"
+import Blog_Tibet from "../BlogContents/Blog_Tibet"
 
 export default {
     auguscript:{
@@ -54,6 +55,18 @@ export default {
         thumbnail: '小动画',
         sectionId: 'art',
     },
+    tibet1:{
+        title:'西藏·壹',
+        content: <Blog_Tibet />,
+        date: {
+            month:5,
+            day:20,
+            year:2023,
+        },
+        about: '五月底了，正是上海封城一周年。去年从上海逃跑，一路辗转去骑川藏的这月余，无论是于宏大的国家还是于我渺小的个人，都可以算是“历史事件”',
+        thumbnail: '西藏·壹',
+        sectionId: 'writing',
+    },
     diary1:{
         title:'日记碎片',
         content: <Blog_Diary />,
@@ -65,7 +78,8 @@ export default {
         about: '',
         thumbnail: '日记',
         sectionId: 'writing',
-    }
+    },
+
 
 
 

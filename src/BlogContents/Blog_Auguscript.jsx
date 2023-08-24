@@ -4,6 +4,7 @@ import imgMeetFresh from '../assets/images/blogs/auguscript/light_dof3.png'
 import imgPortal1 from '../assets/images/blogs/auguscript/portal1.png'
 import imgPortal2 from '../assets/images/blogs/auguscript/portal2.png'
 import imgAnims from '../assets/images/blogs/auguscript/anims.png'
+import imgLunch from '../assets/images/blogs/auguscript/lunch.jpg'
 import videoMouse from '../assets/videos/blogs/auguscript/mouse.mp4'
 import videoArt from '../assets/videos/blogs/auguscript/art.mp4'
 import videoCoding from '../assets/videos/blogs/auguscript/coding.mp4'
@@ -107,6 +108,11 @@ export default function Blog_Auguscript(){
     <p style={{textAlign:"center"}}>——内容迁移——</p>
     <p>顾名思义，所有的blog要从以前的html文件迁移到现在的json配置文件。因为不是很多所以就手动做了。</p>
 
-    <p>到现在也写了几个Nodejs项目了，有些心得可以分享。</p>
-    <p>到现在也写了几个Nodejs项目了，有些心得可以分享。</p>
+    <p>到现在也写了几个Nodejs项目了，有一点心得。</p>
+    <p>首先最重要的，计划计划计划。先期规划不做好，中期临时想要加一些很酷的东西的话，就会开始分裂。右脑：这个功能想想就很酷炫诶！快做做看！左脑：报销两百行代码，不要。</p>
+    <p>如果有非常炫酷的效果想实现，首先先去搜搜有没有现成的包。nodejs的库真的是千奇百怪无所不包。你多半不是最先想到的那个大聪明。</p>
+    <p>但是同时，用别人的API还是会有麻烦的地方。周下载量在十万级的module一般没什么大问题。但是冷门一点的运行库，万一存在代码漏洞，或者优化很差，那自己这边是很难检查出来的。甚至还不如自己从底层开始写来的方便。</p>
+    <p>两个礼拜的任务基本完成。下一步最优先需要一个内容编辑器，这样自己就不用手写json了。网页这块的话，很长一段时间不会再想碰js了，如果要做的话想试一试wasm。</p>
+    <p>写着写着又到饭点。Bon Appétit.</p>
+    <p className="image"> <img src={imgLunch}  /></p>
 </>}
