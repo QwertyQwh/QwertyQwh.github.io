@@ -136,7 +136,7 @@ export default memo(function Home(){
   //#region Animations
   const PlayGlobalFadeIn = ()=>{
     anime({
-      targets: [writingSection.current,codingSection.current,artSection.current],
+      targets: [writingSection.current,codingSection.current,artSection.current,artDavid.current],
       opacity: [-1,1],
       easing: 'steps(2)',
       duration: 8000,
