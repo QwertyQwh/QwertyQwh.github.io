@@ -68,6 +68,7 @@ background-color: #EADCC2;
 .blogBg .post h1,.blogBg .post a,.blogBg .post  p{
   max-width: 600px;
   margin: 0 auto;
+  font-size: 18px;
   padding-left: 10px;
   padding-right: 10px;
 }

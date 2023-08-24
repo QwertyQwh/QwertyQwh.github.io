@@ -46,8 +46,8 @@ export default function Blog_Auguscript(){
     <li><a href='https://threejs.org/'> threejs</a>负责在vanilla javascript里提供webgl的各种包装接口。因为网页的运行性能有限，所以光追什么就别想了。</li>
     <li><a href='https://docs.pmnd.rs/react-three-fiber/getting-started/introduction'> r3f（react three fiber）</a>和它的一些姊妹包一起负责在react中提供threejs的包装。是不是有点套娃的味道了？</li>
     <li><a href='https://animejs.com/documentation/#cssSelector'>animejs</a> 负责所有的2d动画。（但是这个库有一些设计上的缺陷，还有一个疑似移动端bug，之后会讲，慎用）</li>
-    <li><a href='https://reactrouter.com/en/main'>react-router-dom</a> 负责所有页面间的navigation。说起来有点丢人，我之前以为设置地址唯一的办法就是本地放一堆html文件。都不知道原来还能做client side routing。不过这个feature有很多DNS是不支持的。比如github pages。所以我这次迁移到了Netlify。这个后面会讲。</li>
+    <li><a href='https://reactrouter.com/en/main'>react-router-dom</a> 负责所有页面间的navigation。说起来有点丢人，我之前以为设置地址唯一的办法就是本地放一堆html文件。都不知道原来还能做client side routing。不过这个feature有很多DNS是不支持的。别躲了，说的就是你，Github Pages。所以我这次迁移到了Netlify。这个后面会讲。</li>
     </ul>
-    
-    <p>每天打开vs前记得感谢所有这些开发者持续的更新和努力，Love to the Dev。</p>
+    <p>需要注意的是，这些工具基本不相互依赖，比如你可以做一个纯react的单页网站，完全不用router。你也可以完全不用3D的素材，这样threejs和r3f就完全没必要了解。甚至你可以只用css的动画属性，这样animejs也可以省略。但是strip to the bare bones，webpack和react还是必备的。（或者其他替代的一个bundler和一个UIFrame）。如果想从头上手的话，<a href='https://create-react-app.dev/'>create-react-app</a>是一个不错的起点。</p>
+    <p>最后，养成好习惯，每天打开vs前记得默默感谢所有开发者持续的更新和努力，Love to the Dev。</p>
 </>}
