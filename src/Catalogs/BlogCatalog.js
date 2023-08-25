@@ -56,6 +56,19 @@ export default {
         sectionId: 'coding',
         url: "https://glmaze.netlify.app",
     },
+    jsBalloon:{
+        external: true,
+        title:'JS Balloons',
+        date: {
+            month:2,
+            day:14,
+            year:2022,
+        },
+        about: 'A javascript widget for valentine ) ',
+        thumbnail:'JSBalloon',
+        sectionId: 'coding',
+        url: "https://jsheart.netlify.app/",
+    },
     animPianist:{
         title:'小动画——Masked Pianist',
         content: <Blog_AnimPianist />,

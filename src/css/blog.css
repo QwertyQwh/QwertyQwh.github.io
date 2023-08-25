@@ -185,6 +185,10 @@ button.home:active .button_top {
   border: 5px solid var(--button_outline_color);
   border-radius: var(--button_radius);
 }
+.blogBg .post video {
+
+
+}
 
 .blogBg .post ul li{
   font-size: 17px;
