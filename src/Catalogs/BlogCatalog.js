@@ -2,6 +2,7 @@ import Blog_Acadia from "../BlogContents/Blog_Acadia"
 import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Diary from "../BlogContents/Blog_Diary"
+import Blog_MeetFresh from "../BlogContents/Blog_Meetfresh"
 import Blog_Renovate from "../BlogContents/Blog_Renovate"
 import Blog_Test from "../BlogContents/Blog_Test"
 import Blog_Tibet from "../BlogContents/Blog_Tibet"
@@ -18,6 +19,18 @@ export default {
         about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍一下两年来积攒的dev流程，还有关于时间利用的一点感想。',
         thumbnail: 'Auguscript',
         sectionId: 'coding',
+    },
+    meetFresh:{
+        title:'MeetFresh Illustration',
+        content: <Blog_MeetFresh />,
+        date: {
+            month:6,
+            day:7,
+            year:2023,
+        },
+        about: 'Illustration of a boba shop in Newport',
+        thumbnail: 'MeetFresh',
+        sectionId: 'art',
     },
     tibet1:{
         title:'西藏·壹',
