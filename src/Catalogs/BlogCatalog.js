@@ -1,6 +1,7 @@
 import Blog_Acadia from "../BlogContents/Blog_Acadia"
 import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
+import Blog_Automaton from "../BlogContents/Blog_Automaton"
 import Blog_Diary from "../BlogContents/Blog_Diary"
 import Blog_MeetFresh from "../BlogContents/Blog_Meetfresh"
 import Blog_Renovate from "../BlogContents/Blog_Renovate"
@@ -19,6 +20,18 @@ export default {
         about: '赶在25岁生日之前花两周把长久拖欠的网站做完。主要介绍一下两年来积攒的dev流程，还有关于时间利用的一点感想。',
         thumbnail: 'Auguscript',
         sectionId: 'coding',
+    },
+    mouseAutomaton:{
+        title:'Automaton Animation',
+        content: <Blog_Automaton />,
+        date: {
+            month:6,
+            day:28,
+            year:2023,
+        },
+        about: '做了一只上发条的老鼠。',
+        thumbnail: 'Automaton',
+        sectionId: 'art',
     },
     meetFresh:{
         title:'MeetFresh Illustration',
