@@ -98,14 +98,14 @@ text-decoration: none;
   border: none;
   border-top: 1px solid #e4e4e4;
   border-bottom: 1px solid #e4e4e4;
-  /* background-color: #fafafa; */
 }
 
-.blogBg code.default{
+.blogBg code{
   padding: 1em;
-  width: 700px;
   margin: 0 auto;
   display: block;
+  overflow-wrap: normal;
+  text-wrap: wrap;
   font-family: Code;
 }
 

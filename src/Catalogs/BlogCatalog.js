@@ -5,6 +5,7 @@ import Blog_Automaton from "../BlogContents/Blog_Automaton"
 import Blog_Diary from "../BlogContents/Blog_Diary"
 import Blog_MeetFresh from "../BlogContents/Blog_Meetfresh"
 import Blog_Renovate from "../BlogContents/Blog_Renovate"
+import Blog_Solidity from "../BlogContents/Blog_Solidity"
 import Blog_Test from "../BlogContents/Blog_Test"
 import Blog_Tibet from "../BlogContents/Blog_Tibet"
 
@@ -82,6 +83,18 @@ export default {
         sectionId: 'coding',
         url: "https://glmaze.netlify.app",
     },
+    solidity:{
+        title:'Solidity x Unity',
+        content: <Blog_Solidity />,
+        date: {
+            month:2,
+            day:25,
+            year:2022,
+        },
+        about: '这次用智能合约和Unity做了一个简单的石头剪刀布Demo。 ',
+        thumbnail:'Solidity',
+        sectionId: 'coding',
+    },
     jsBalloon:{
         external: true,
         title:'JS Balloons',
@@ -107,7 +120,6 @@ export default {
         thumbnail: '小动画',
         sectionId: 'art',
     },
-
     renovate:{
         title:'陋室翻新·其一',
         content: <Blog_Renovate />,
