@@ -3,6 +3,7 @@ import Blog_AnimPianist from "../BlogContents/Blog_AnimPianist"
 import Blog_Auguscript from "../BlogContents/Blog_Auguscript"
 import Blog_Automaton from "../BlogContents/Blog_Automaton"
 import Blog_Diary from "../BlogContents/Blog_Diary"
+import Blog_Hyperbolic from "../BlogContents/Blog_Hyperbolic"
 import Blog_MeetFresh from "../BlogContents/Blog_Meetfresh"
 import Blog_Renovate from "../BlogContents/Blog_Renovate"
 import Blog_Solidity from "../BlogContents/Blog_Solidity"
@@ -108,6 +109,19 @@ export default {
         sectionId: 'coding',
         url: "https://jsheart.netlify.app/",
     },
+
+    renovate:{
+        title:'陋室翻新·其一',
+        content: <Blog_Renovate />,
+        date: {
+            month:1,
+            day:8,
+            year:2022,
+        },
+        about: '大约一个礼拜前收到了2021年最后一张信用卡账单，上面清清楚楚记载了12月以来的无度挥霍——我指买了永远也不会看的书。',
+        thumbnail: '陋室翻新',
+        sectionId: 'writing',
+    },
     animPianist:{
         title:'小动画——Masked Pianist',
         content: <Blog_AnimPianist />,
@@ -120,17 +134,17 @@ export default {
         thumbnail: '小动画',
         sectionId: 'art',
     },
-    renovate:{
-        title:'陋室翻新·其一',
-        content: <Blog_Renovate />,
+    hyperbolic:{
+        title:'Hyperbolic Raytracer',
+        content: <Blog_Hyperbolic />,
         date: {
-            month:1,
-            day:8,
-            year:2022,
+            month:5,
+            day:1,
+            year:2020,
         },
-        about: '大约一个礼拜前收到了2021年最后一张信用卡账单，上面清清楚楚记载了12月以来的无度挥霍——我指买了永远也不会看的书。',
-        thumbnail: '陋室翻新',
-        sectionId: 'writing',
+        about: 'A brief journey into the hyperbolic space, where five squares share a common corner.',
+        thumbnail: 'Hyperbolic',
+        sectionId: 'coding',
     },
     diary1:{
         title:'日记碎片',
