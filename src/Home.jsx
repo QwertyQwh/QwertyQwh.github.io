@@ -1247,7 +1247,6 @@ const OnShapesEnter = (page)=>{
   //   return
   // }
   cursor.Focus.current()
-  console.log(page,'entering')
 
   switch (page) {
     case codingPage:
@@ -1276,7 +1275,6 @@ const OnShapesEnter = (page)=>{
 
 }
 const OnShapesLeave = (page)=>{
-console.log(page,'leaving')
   mobileFirstClick.current = 0
   cursor.DeFocus.current()
   switch (page) {
