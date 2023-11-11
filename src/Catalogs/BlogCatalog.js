@@ -6,11 +6,24 @@ import Blog_Diary from "../BlogContents/Blog_Diary"
 import Blog_Hyperbolic from "../BlogContents/Blog_Hyperbolic"
 import Blog_MeetFresh from "../BlogContents/Blog_Meetfresh"
 import Blog_Renovate from "../BlogContents/Blog_Renovate"
+import Blog_JSF from "../BlogContents/Blog_SJF"
 import Blog_Solidity from "../BlogContents/Blog_Solidity"
 import Blog_Test from "../BlogContents/Blog_Test"
 import Blog_Tibet from "../BlogContents/Blog_Tibet"
 
 export default {
+    sjf:{
+        title:'读书笔记————What\'s Our Problem',
+        content: <Blog_JSF />,
+        date: {
+            month:11,
+            day:10,
+            year:2023,
+        },
+        about: "",
+        thumbnail: 'What\'s Our Problem',
+        sectionId: 'writing',
+    },
     auguscript:{
         title:"陋室翻新·其二——Auguscript",
         content: <Blog_Auguscript />,

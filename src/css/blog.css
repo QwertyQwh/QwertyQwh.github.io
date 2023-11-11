@@ -69,8 +69,13 @@ background-color: #EADCC2;
   max-width: 600px;
   margin: 0 auto;
   font-size: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
+}
+
+.blogBg .post .quote{
+  padding-left: 10%;
+  padding-right: 10%;
+  font-style: italic;
+  font-family:'Times New Roman', Times, serif
 }
 
 .blogBg .post a:link{
@@ -100,12 +105,19 @@ text-decoration: none;
   border-bottom: 1px solid #e4e4e4;
 }
 
+.blogBg .segment{
+  text-align:center;
+  font-style:italic;
+  padding-top: 50px;
+  padding-bottom:20px;
+  border-top: dashed;
+}
+
 .blogBg code{
   padding: 1em;
   margin: 0 auto;
   display: block;
   overflow-wrap: normal;
-  text-wrap: wrap;
   font-family: Code;
 }
 
