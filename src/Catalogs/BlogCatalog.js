@@ -10,8 +10,21 @@ import Blog_JSF from "../BlogContents/Blog_SJF"
 import Blog_Solidity from "../BlogContents/Blog_Solidity"
 import Blog_Test from "../BlogContents/Blog_Test"
 import Blog_Tibet from "../BlogContents/Blog_Tibet"
+import Blog_Foster from "../BlogContents/Blog_Foster"
 
 export default {
+    foster:{
+        title: 'Foster by Claire Keegan',
+        content: <Blog_Foster />,
+        date: {
+            month:12,
+            day:29,
+            year:2023,
+        },
+        about: "",
+        thumbnail: 'Foster',
+        sectionId: 'writing',
+    },
     sjf:{
         title:'读书笔记————What\'s Our Problem',
         content: <Blog_JSF />,
